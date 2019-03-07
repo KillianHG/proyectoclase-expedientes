@@ -74,7 +74,7 @@
 
         methods: {
             loadAlumnos(id){
-                this.$router.push('/demandas/' + id)
+                this.$router.push('/demandas?id=' + id)
             }
         }
     }

@@ -5,7 +5,6 @@ import Alumnos from '@/components/Alumnos/Alumnos'
 import Demandas from '@/components/Demandas/Demandas'
 import Intervenciones from '@/components/Intervenciones/Intervenciones'
 
-
 Vue.use(Router)
 
 export default new Router({
@@ -21,7 +20,7 @@ export default new Router({
             component: Alumnos
         },
         {
-            path: '/demandas/:id',
+            path: '/demandas?id=',
             name: 'Demandas',
             component: Demandas
         },
