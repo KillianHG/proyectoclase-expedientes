@@ -21,7 +21,12 @@ export default new Router({
             component: Alumnos
         },
         {
-            path: '/demandas',
+            path: '/demandas/:id',
+            name: 'Demandas',
+            component: Demandas
+        },
+        {
+            path: '/demandas/',
             name: 'Demandas',
             component: Demandas
         },

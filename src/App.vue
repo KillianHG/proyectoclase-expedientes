@@ -26,7 +26,7 @@
                 </v-list-tile>
             </v-list>
         </v-navigation-drawer>
-        <v-toolbar height="50" class="light-blue lighten-1">
+        <v-toolbar height="45" class="light-blue lighten-1">
             <v-toolbar-title>
                 <router-link to="/" tag="soan" style="cursor: pointer"><i class="ss ss-2x ss-mor"></i>Home</router-link>
             </v-toolbar-title>
@@ -57,8 +57,7 @@
     export default {
         data() {
             return {
-                sideNav: false,
-                iconMoon: 'ss ss-2x ss-drk'
+                sideNav: false
             }
         },
         computed: {

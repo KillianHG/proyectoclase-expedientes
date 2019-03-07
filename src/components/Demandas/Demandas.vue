@@ -1,12 +1,18 @@
 <template>
     <div>
-        <p>The DEMANDAS page</p>
+        <p>
+            {{ id }}
+        </p>
     </div>
 </template>
 
 <script>
     export default {
-        name: "Demandas"
+        data () {
+            return {
+                id: 7
+            }
+        }
     }
 </script>
 
