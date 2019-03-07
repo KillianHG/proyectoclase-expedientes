@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <v-navigation-drawer absolute v-model="sideNav">
+        <v-navigation-drawer temporary absolute v-model="sideNav">
             <v-toolbar flat>
                 <v-list>
                     <v-list-tile>
