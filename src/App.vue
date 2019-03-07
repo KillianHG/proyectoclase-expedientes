@@ -1,6 +1,17 @@
 <template>
   <v-app>
-    <v-navigation-drawer temporary absolute v-model="sideNav">
+    <v-navigation-drawer absolute v-model="sideNav">
+      <v-toolbar flat>
+        <v-list>
+          <v-list-tile>
+            <v-list-tile-title class="title">
+              <router-link to="/" tag="soan" style="cursor: pointer"><i class="ss ss-2x ss-mor"></i>Home</router-link>
+            </v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-toolbar>
+
+      <v-divider></v-divider>
       <v-list>
         <v-list-tile
                 v-for="item in menuItems"
@@ -14,7 +25,7 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar class="light-blue lighten-1">
+    <v-toolbar height="50" class="light-blue lighten-1">
       <v-toolbar-title>
         <router-link to="/" tag="soan" style="cursor: pointer"><i class="ss ss-2x ss-mor"></i>Home</router-link>
       </v-toolbar-title>
