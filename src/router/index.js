@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import Alumnos from '@/components/Alumnos/Alumnos'
-import Demandas from '@/components/Demandas/Demandas'
-import Intervenciones from '@/components/Intervenciones/Intervenciones'
-import CrearUsuario from '@/components/Usuarios/CrearUsuario'
-import ValidarUsuario from '@/components/Usuarios/validarusuario'
+import Alumnos from '@/components/Alumnos/alumnos'
+import Demandas from '@/components/Demandas/demandas'
+import Intervenciones from '@/components/Intervenciones/intervenciones'
+import CrearUsuario from '@/components/Usuarios/crear-usuario'
+import ValidarUsuario from '@/components/Usuarios/validar-usuario'
 
 Vue.use(Router)
 
@@ -18,32 +18,32 @@ export default new Router({
         },
         {
             path: '/alumnos',
-            name: 'Alumnos',
+            name: 'alumnos',
             component: Alumnos
         },
         {
             path: '/demandas?id=',
-            name: 'Demandas',
+            name: 'demandas',
             component: Demandas
         },
         {
             path: '/demandas/',
-            name: 'Demandas',
+            name: 'demandas',
             component: Demandas
         },
         {
             path: '/intervenciones',
-            name: 'Intervenciones',
+            name: 'intervenciones',
             component: Intervenciones
         },
         {
             path: '/crearusuario',
-            name: 'CrearUsuario',
+            name: 'crear-usuario',
             component: CrearUsuario
         },
         {
             path: '/validarusuario',
-            name: 'validarusuario',
+            name: 'validar-usuario',
             component: ValidarUsuario
         }
     ],
