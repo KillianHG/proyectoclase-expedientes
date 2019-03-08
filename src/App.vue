@@ -67,7 +67,9 @@
                     {icon: '', title: 'Demandas', link: '/demandas'},
                     {icon: '', title: 'Intervenciones', link: '/intervenciones'},
                     {icon: '', title: 'Nueva', link: '/nueva'},
-                    {icon: '', title: 'Eliminar', link: '/eliminar'}
+                    {icon: '', title: 'Eliminar', link: '/eliminar'},
+                    {icon: '', title: 'Crear', link: '/crearusuario'},
+                    {icon: '', title: 'Validar', link: '/validarusuario'}
                 ]
                 if (this.$route.path == '/demandas') {
                     menuItems = [
