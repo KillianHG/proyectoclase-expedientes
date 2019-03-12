@@ -27,8 +27,9 @@
             </v-list>
         </v-navigation-drawer>
         <v-toolbar height="45" class="light-blue lighten-1">
-            <v-toolbar-title>
-                <router-link to="/" tag="soan" style="cursor: pointer"><i class="ss ss-2x ss-mor"></i>Home</router-link>
+            <v-toolbar-title
+                    class="hidden-xs-only">
+                <router-link to="/" tag="soan" style="cursor: pointer">Home</router-link>
             </v-toolbar-title>
             <v-toolbar-side-icon
                     @click.native.stop="sideNav = !sideNav"

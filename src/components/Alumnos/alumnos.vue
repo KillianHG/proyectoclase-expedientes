@@ -4,6 +4,10 @@
         <v-flex xs12 sm8 offset-sm2>
             <v-card>
                 <v-list two-line>
+                    <div class="grey lighten-5" >
+                        <v-subheader>ALUMNOS</v-subheader>
+                        <v-divider divider></v-divider>
+                    </div>
                     <template v-for="(item, index) in items">
                         <v-list-tile
                                 :key="item.dni"
