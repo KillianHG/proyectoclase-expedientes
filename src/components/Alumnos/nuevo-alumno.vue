@@ -1,10 +1,10 @@
-<template>
+<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
     <div id="crearusuario">
         <v-app id="inspire">
             <v-form>
                 <v-container>
 
-                    <h1>ALTA USUARIO</h1>
+                    <h1>NUEVO ALUMNO</h1>
                     <h3>Datos personales</h3>
                     <v-layout row wrap>
                         <v-flex xs12 sm6 md3>
@@ -29,16 +29,49 @@
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
+                            <v-menu
+                                    ref="menu"
+                                    v-model="menu"
+                                    :close-on-content-click="false"
+                                    :nudge-right="40"
+                                    :return-value.sync="date"
+                                    lazy
+                                    transition="scale-transition"
+                                    offset-y
+                                    full-width
+                                    min-width="290px"
+                            >
+                                <template v-slot:activator="{ on }">
+                                    <v-text-field
+                                            v-model="date"
+                                            label="Picker in menu"
+                                            prepend-icon="event"
+                                            readonly
+                                            v-on="on"
+                                    ></v-text-field>
+                                </template>
+                                <v-date-picker v-model="date" no-title scrollable>
+                                    <v-spacer></v-spacer>
+                                    <v-btn flat color="primary" @click="menu = false">Cancel</v-btn>
+                                    <v-btn flat color="primary" @click="$refs.menu.save(date)">OK</v-btn>
+                                </v-date-picker>
+                            </v-menu>
                             <v-text-field
                                     v-model="data.puesto"
-                                    label="Puesto de trabajo"
+                                    label="Fecha de nacimiento"
                                     required
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
-                                    v-model="data.jornada"
-                                    label="Jornada laboral"
+                                    v-model="data.ciudad"
+                                    label="Ciudad de nacimiento"
+                            ></v-text-field>
+                        </v-flex>
+                        <v-flex xs12 sm6 md5>
+                            <v-text-field
+                                    v-model="data.pais"
+                                    label="Pais de nacimiento"
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
@@ -59,51 +92,8 @@
                                     label="Provincia"
                             ></v-text-field>
                         </v-flex>
-                        <v-flex xs12 sm6 md5>
-                            <v-text-field
-                                    v-model="data.pais"
-                                    label="Pais"
-                            ></v-text-field>
-                        </v-flex>
-                        <v-flex xs12 sm6 md5>
-                            <v-text-field
-                                    v-model="data.telefono"
-                                    label="Numero de telefono"
-                                    required
-                            ></v-text-field>
-                        </v-flex>
-                        <v-flex xs12 sm6 md5>
-                            <v-text-field
-                                    v-model="data.telefono2"
-                                    label="Numero de telefono 2(Opcional)"
-                            ></v-text-field>
-                        </v-flex>
                     </v-layout>
-                    <h3></h3>
-                    <h3>Asignacion Correo Electronico y Password</h3>
-                    <v-layout row wrap>
-                        <v-flex xs12 sm6 md5>
-                            <v-text-field
-                                    v-model="data.correo"
-                                    :rules="rules.emailRules"
-                                    label="Correo Electronico"
-                                    required
-                            ></v-text-field>
-                        </v-flex>
-                        <v-flex xs12 sm5>
-                            <v-text-field
-                                    v-model="data.password"
-                                    :append-icon="show1 ? 'visibility_off' : 'visibility'"
-                                    :rules="[rules.required, rules.min]"
-                                    :type="show1 ? 'text' : 'password'"
-                                    name="input-10-1"
-                                    label="Nuevo Password"
-                                    hint="AL menos 8 caracteres"
-                                    counter
-                                    @click:append="show1 = !show1"
-                            ></v-text-field>
-                        </v-flex>
-                    </v-layout>
+
                     <v-flex xs12 sm5>
                         <div>
                             <v-btn color="primary" flat @click="submit">Submit</v-btn>
@@ -122,38 +112,30 @@
         <p> {{ data.dni }} </p>
         <p> {{ data.nombre }} </p>
         <p> {{ data.apellido }} </p>
-        <p> {{ data.puesto }} </p>
-        <p> {{ data.jornada }} </p>
+        <p> {{ data.nacimiento }} </p>
+        <p> {{ data.ciudad }} </p>
+        <p> {{ data.pais }} </p>
         <p> {{ data.direccion }} </p>
         <p> {{ data.poblacion }} </p>
         <p> {{ data.provincia }} </p>
-        <p> {{ data.pais }} </p>
-        <p> {{ data.telefono }} </p>
-        <p> {{ data.telefono2 }} </p>
-        <p> {{ data.correo }} </p>
-        <p> {{ data.password }} </p>
     </div>
 </template>
 
 <script>
     export default {
-        name: "crearusuario",
+        name: "nuevo-alumno",
         data () {
             return {
                 data: {
                     dni: '',
                     nombre: '',
                     apellido: '',
-                    puesto: '',
-                    jornada: '',
+                    nacimiento: '',
+                    ciudad: '',
+                    pais: '',
                     direccion: '',
                     poblacion: '',
                     provincia: '',
-                    pais: '',
-                    telefono: '',
-                    telefono2: '',
-                    correo: '',
-                    password: ''
                 },
                 show1: false,
                 show2: true,

@@ -6,6 +6,7 @@ import Demandas from '@/components/Demandas/demandas'
 import Intervenciones from '@/components/Intervenciones/intervenciones'
 import CrearUsuario from '@/components/Usuarios/crear-usuario'
 import ValidarUsuario from '@/components/Usuarios/validar-usuario'
+import NuevoAlumno from '@/components/Alumnos/nuevo-alumno'
 
 Vue.use(Router)
 
@@ -20,6 +21,11 @@ export default new Router({
             path: '/alumnos',
             name: 'alumnos',
             component: Alumnos
+        },
+        {
+            path: '/alumno/nuevo',
+            name: 'nuevo-alumno',
+            component: NuevoAlumno
         },
         {
             path: '/demandas?id=',

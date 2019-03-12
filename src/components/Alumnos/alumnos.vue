@@ -2,6 +2,10 @@
 
     <v-layout row>
         <v-flex xs12 sm8 offset-sm2>
+            <div>
+                <v-btn large color="primary"
+                       @click="newAlumno">Nuevo Alumno</v-btn>
+            </div>
             <v-card>
                 <v-list two-line>
                     <div class="grey lighten-5" >
@@ -76,6 +80,9 @@
         methods: {
             loadAlumnos(id){
                 this.$router.push('/demandas?id=' + id)
+            },
+            newAlumno(){
+                this.$router.push('/alumno/nuevo')
             }
         }
     }
