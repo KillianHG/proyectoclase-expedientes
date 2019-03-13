@@ -20,9 +20,9 @@
                                 @click="loadAlumnos(item.dni)"
                         >
                             <v-list-tile-content>
-                                <v-list-tile-title>{{ item.nombre }} {{ item.apellido }}</v-list-tile-title>
+                                <v-list-tile-title>{{ item.nombre }} {{ item.apellidos }}</v-list-tile-title>
 
-                                <v-list-tile-sub-title>{{ item.centro }}</v-list-tile-sub-title>
+                                <v-list-tile-sub-title>{{ item.id_centro }}</v-list-tile-sub-title>
                             </v-list-tile-content>
                             <v-list-tile-action>
                                 <v-list-tile-action-text>{{ item.dni }}</v-list-tile-action-text>
@@ -41,11 +41,15 @@
 </template>
 
 <script>
+
+    import axios from 'axios';
+
     export default {
         data () {
             return {
                 selected: [],
-                items: [
+                items: null
+                /*[
                     {
                         dni: '12345678K',
                         nombre: 'Nombre',
@@ -73,10 +77,13 @@
                         apellido: 'Alumno',
                         centro: 'Instituto a secas'
                     },
-                ]
+                ]*/
             }
         },
-
+        mounted() {
+            axios.get('http://localhost:3000/api/alumnos')
+                .then(response => this.items = response.data)
+        },
         methods: {
             loadAlumnos(id){
                 this.$router.push('/demandas?id=' + id)
