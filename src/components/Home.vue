@@ -1,7 +1,5 @@
 <template>
-    <div>
-        <p>The HOME page</p>
-    </div>
+   <h1>Bienvenido</h1>
 </template>
 
 <script>
@@ -11,5 +9,15 @@
 </script>
 
 <style scoped>
+    h1{
+        color:blue;
+
+
+    }
+    h3{
+        text-decoration: underline;
+        padding-top: 10px;
+
+    }
 
 </style>

@@ -3,7 +3,6 @@
         <v-app id="inspire">
             <v-form>
                 <v-container>
-
                     <h1>NUEVO ALUMNO</h1>
                     <h3>Datos personales</h3>
                     <v-layout row wrap>

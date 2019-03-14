@@ -1,13 +1,14 @@
 <template>
-    <div>
-        <p>The INTERVENCIONES page</p>
-    </div>
+
 </template>
 
 <script>
     export default {
-        name: "Intervenciones"
+        name: "Intervenciones",
+
+
     }
+
 </script>
 
 <style scoped>
