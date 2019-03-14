@@ -52,7 +52,7 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:3000/api/alumnos')
+            axios.get('http://172.31.73.46/api/alumnos')
                 .then(response => this.items = response.data)
         },
         methods: {
