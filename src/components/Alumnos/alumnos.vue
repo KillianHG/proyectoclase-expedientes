@@ -1,5 +1,4 @@
 <template>
-
     <v-layout row>
         <v-flex xs12 sm8 offset-sm2>
             <div>
@@ -17,7 +16,7 @@
                                 :key="item.dni"
                                 avatar
                                 ripple
-                                @click="loadAlumnos(item.dni)"
+                                @click="loadAlumno(item.dni)"
                         >
                             <v-list-tile-content>
                                 <v-list-tile-title>{{ item.nombre }} {{ item.apellidos }}</v-list-tile-title>
@@ -39,7 +38,6 @@
         </v-flex>
     </v-layout>
 </template>
-
 <script>
 
     import axios from 'axios';
@@ -52,12 +50,12 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:3000/api/alumnos')
+            axios.get('http://172.31.73.46:3000/api/alumnos')
                 .then(response => this.items = response.data)
         },
         methods: {
-            loadAlumnos(id){
-                this.$router.push('/demandas?id=' + id)
+            loadAlumno(id){
+                this.$router.push('/alumno?id=' + id)
             },
             newAlumno(){
                 this.$router.push('/alumno/nuevo')

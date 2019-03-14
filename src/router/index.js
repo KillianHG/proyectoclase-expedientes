@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
+import Alumno from '@/components/Alumnos/alumno'
 import Alumnos from '@/components/Alumnos/alumnos'
 import Demandas from '@/components/Demandas/demandas'
 import Intervenciones from '@/components/Intervenciones/intervenciones'
@@ -21,6 +22,16 @@ export default new Router({
             path: '/alumnos',
             name: 'alumnos',
             component: Alumnos
+        },
+        {
+            path: '/alumno?id=',
+            name: 'alumno',
+            component: Alumno
+        },
+        {
+            path: '/alumno',
+            name: 'alumno',
+            component: Alumno
         },
         {
             path: '/alumno/nuevo',

@@ -149,12 +149,12 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:3000/api/centros')
+            axios.get('http://172.31.73.46:3000/api/centros')
                 .then(response => this.centros = response.data)
         },
         methods: {
             postData() {
-                axios.post('http://localhost:3000/api/alumnos', this.data)
+                axios.post('http://172.31.73.46:3000/api/alumnos', this.data)
                     .then(this.$router.push('/alumnos'))
             }
         }
