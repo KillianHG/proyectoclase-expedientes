@@ -1,10 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import Alumnos from '@/components/Alumnos/Alumnos'
-import Demandas from '@/components/Demandas/Demandas'
-import Intervenciones from '@/components/Intervenciones/Intervenciones'
-
+import Alumno from '@/components/Alumnos/alumno'
+import Alumnos from '@/components/Alumnos/alumnos'
+import Demandas from '@/components/Demandas/demandas'
+import Intervenciones from '@/components/Intervenciones/intervenciones'
+import CrearUsuario from '@/components/Usuarios/crear-usuario'
+import ValidarUsuario from '@/components/Usuarios/validar-usuario'
+import NuevoAlumno from '@/components/Alumnos/nuevo-alumno'
+import NuevoDemandas from '@/components/Demandas/nuevo-demandas'
+import NuevoIntervenciones from '@/components/Intervenciones/nuevo-intervenciones'
 
 Vue.use(Router)
 
@@ -17,18 +22,58 @@ export default new Router({
         },
         {
             path: '/alumnos',
-            name: 'Alumnos',
+            name: 'alumnos',
             component: Alumnos
         },
         {
-            path: '/demandas',
-            name: 'Demandas',
+            path: '/alumno?id=',
+            name: 'alumno',
+            component: Alumno
+        },
+        {
+            path: '/alumno',
+            name: 'alumno',
+            component: Alumno
+        },
+        {
+            path: '/alumno/nuevo',
+            name: 'nuevo-alumno',
+            component: NuevoAlumno
+        },
+        {
+            path: '/demandas?id=',
+            name: 'demandas',
             component: Demandas
         },
         {
-            path: '/Intervenciones',
-            name: 'Intervenciones',
+            path: '/demandas/',
+            name: 'demandas',
+            component: Demandas
+        },
+        {
+            path: '/demandas/',
+            name: 'nuevo-demandas',
+            component: NuevoDemandas
+        },
+        {
+            path: '/intervenciones',
+            name: 'intervenciones',
             component: Intervenciones
+        },
+        {
+            path: '/nuevo-intervenciones',
+            name: 'nuevo-intervenciones',
+            component: NuevoIntervenciones
+        },
+        {
+            path: '/crearusuario',
+            name: 'crear-usuario',
+            component: CrearUsuario
+        },
+        {
+            path: '/validarusuario',
+            name: 'validar-usuario',
+            component: ValidarUsuario
         }
     ],
     mode: 'history'

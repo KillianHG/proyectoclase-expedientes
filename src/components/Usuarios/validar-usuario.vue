@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-layout>
-            <v-flex xs12 sm6 offset-sm3>
+            <v-flex xs12 sm8 offset-sm2>
                 <v-card-text>
                     <v-container>
                         <form @submit.prevent="onSignup">
@@ -59,7 +59,7 @@
 
 <script>
     export default {
-        name: "validarusuario"
+        name: "validar-usuario"
 
 
     }

@@ -9,83 +9,90 @@
                     <v-layout row wrap>
                         <v-flex xs12 sm6 md3>
                             <v-text-field
+                                    v-model="data.dni"
                                     label="Dni"
                                     required
                             ></v-text-field>
                         </v-flex>
-                        <v-flex xs12 sm6 md6>
+                        <v-flex xs12 sm6 md7>
                             <v-text-field
+                                    v-model="data.nombre"
                                     label="Nombre"
                                     required
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
+                                    v-model="data.apellido"
                                     label="Apellido"
                                     required
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
+                                    v-model="data.puesto"
                                     label="Puesto de trabajo"
                                     required
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
+                                    v-model="data.jornada"
                                     label="Jornada laboral"
-
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
+                                    v-model="data.direccion"
                                     label="Direccion"
-
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
+                                    v-model="data.poblacion"
                                     label="Poblacion"
-
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
+                                    v-model="data.provincia"
                                     label="Provincia"
-
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
+                                    v-model="data.pais"
                                     label="Pais"
-
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
+                                    v-model="data.telefono"
                                     label="Numero de telefono"
                                     required
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
+                                    v-model="data.telefono2"
                                     label="Numero de telefono 2(Opcional)"
-
                             ></v-text-field>
                         </v-flex>
                     </v-layout>
                     <h3></h3>
-                    <h3>Asignacion COrreo Electronico y Password</h3>
+                    <h3>Asignacion Correo Electronico y Password</h3>
                     <v-layout row wrap>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
+                                    v-model="data.correo"
+                                    :rules="rules.emailRules"
                                     label="Correo Electronico"
                                     required
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm5>
                             <v-text-field
-                                    v-model="password"
+                                    v-model="data.password"
                                     :append-icon="show1 ? 'visibility_off' : 'visibility'"
                                     :rules="[rules.required, rules.min]"
                                     :type="show1 ? 'text' : 'password'"
@@ -111,6 +118,20 @@
                 </v-container>
             </v-form>
         </v-app>
+        <!-- Los siguientes paragrafos son una prueba para ver que se pasan los datos del formulario a la data correctamente (es provisional) -->
+        <p> {{ data.dni }} </p>
+        <p> {{ data.nombre }} </p>
+        <p> {{ data.apellido }} </p>
+        <p> {{ data.puesto }} </p>
+        <p> {{ data.jornada }} </p>
+        <p> {{ data.direccion }} </p>
+        <p> {{ data.poblacion }} </p>
+        <p> {{ data.provincia }} </p>
+        <p> {{ data.pais }} </p>
+        <p> {{ data.telefono }} </p>
+        <p> {{ data.telefono2 }} </p>
+        <p> {{ data.correo }} </p>
+        <p> {{ data.password }} </p>
     </div>
 </template>
 
@@ -119,15 +140,32 @@
         name: "crearusuario",
         data () {
             return {
+                data: {
+                    dni: '',
+                    nombre: '',
+                    apellido: '',
+                    puesto: '',
+                    jornada: '',
+                    direccion: '',
+                    poblacion: '',
+                    provincia: '',
+                    pais: '',
+                    telefono: '',
+                    telefono2: '',
+                    correo: '',
+                    password: ''
+                },
                 show1: false,
                 show2: true,
                 show3: false,
                 show4: false,
-                password: 'Password',
                 rules: {
                     required: value => !!value || 'Requerido.',
                     min: v => v.length >= 8 || 'Minimo 8 caracteres',
-                    emailMatch: () => ('The email and password you entered don\'t match')
+                    emailRules: [
+                        v => !!v || 'E-mail is required',
+                        v => /.+@.+/.test(v) || 'E-mail must be valid'
+                    ],
                 }
 
 
