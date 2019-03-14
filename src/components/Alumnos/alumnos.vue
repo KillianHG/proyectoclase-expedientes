@@ -49,35 +49,6 @@
             return {
                 selected: [],
                 items: null
-                /*[
-                    {
-                        dni: '12345678K',
-                        nombre: 'Nombre',
-                        apellido: 'Ejemplo',
-                        centro: 'Centro Ejemplo'
-                    },
-                    {
-                        dni: '99911100Z',
-                        nombre: 'Ninguno',
-                        apellido: 'Nadie',
-                        centro: 'Estuche'
-                    },{
-                        dni: '83279822L',
-                        nombre: 'Yo',
-                        apellido: 'Yo',
-                        centro: 'Sants Innocents'
-                    },{
-                        dni: '98723478S',
-                        nombre: 'Con',
-                        apellido: 'Demanda',
-                        centro: 'Poblenou'
-                    },{
-                        dni: '87654321S',
-                        nombre: 'Alumno',
-                        apellido: 'Alumno',
-                        centro: 'Instituto a secas'
-                    },
-                ]*/
             }
         },
         mounted() {

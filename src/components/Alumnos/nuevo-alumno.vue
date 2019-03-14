@@ -88,10 +88,10 @@
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
-                            <v-text-field
-                                    v-model="data.id_centro"
-                                    label="Id centro"
-                            ></v-text-field>
+                            <v-select
+                                    :items="centros.items"
+                                    label="Centros"
+                            ></v-select>
                         </v-flex>
                     </v-layout>
                     <v-flex xs12 sm5>
@@ -104,7 +104,8 @@
             </v-form>
         </v-app>
         <!-- Los siguientes paragrafos son una prueba para ver que se pasan los datos del formulario a la data correctamente (es provisional) -->
-        <p> {{ data }} </p>
+        <p> {{ centros }} </p>
+        <p> Selected: {{ selected }} </p>
     </div>
 </template>
 
@@ -116,6 +117,9 @@
         name: "nuevo-alumno",
         data() {
             return {
+                centros: {
+                    items:[]
+                },
                 data: {
                     dni: '',
                     nombre: '',
@@ -144,15 +148,14 @@
 
             }
         },
+        mounted() {
+            axios.get('http://localhost:3000/api/centros')
+                .then(response => this.centros = response.data)
+        },
         methods: {
             postData() {
                 axios.post('http://localhost:3000/api/alumnos', this.data)
-                    .then(res => {
-                        console.log(res)
-                        this.$router.push('/alumnos');
-                    }).catch(error => {
-                        console.log(error)
-                })
+                    .then(this.$router.push('/alumnos'))
             }
         }
     }
