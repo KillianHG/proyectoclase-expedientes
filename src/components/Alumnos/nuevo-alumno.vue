@@ -23,7 +23,7 @@
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
-                                    v-model="data.apellido"
+                                    v-model="data.apellidos"
                                     label="Apellido"
                                     required
                             ></v-text-field>
@@ -43,65 +43,60 @@
                             >
                                 <template v-slot:activator="{ on }">
                                     <v-text-field
-                                            v-model="date"
+                                            v-model="data.fecha_de_nacimiento"
                                             label="Picker in menu"
                                             prepend-icon="event"
                                             readonly
                                             v-on="on"
                                     ></v-text-field>
                                 </template>
-                                <v-date-picker v-model="date" no-title scrollable>
+                                <v-date-picker v-model="data.fecha_de_nacimiento" no-title scrollable>
                                     <v-spacer></v-spacer>
                                     <v-btn flat color="primary" @click="menu = false">Cancel</v-btn>
                                     <v-btn flat color="primary" @click="$refs.menu.save(date)">OK</v-btn>
                                 </v-date-picker>
                             </v-menu>
-                            <v-text-field
-                                    v-model="data.puesto"
-                                    label="Fecha de nacimiento"
-                                    required
-                            ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
-                                    v-model="data.ciudad"
+                                    v-model="data.ciudad_de_nacimiento"
                                     label="Ciudad de nacimiento"
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
-                                    v-model="data.pais"
+                                    v-model="data.pais_de_nacimiento"
                                     label="Pais de nacimiento"
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
-                                    v-model="data.direccion"
+                                    v-model="data.direccion_reside"
                                     label="Direccion"
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
-                                    v-model="data.poblacion"
+                                    v-model="data.poblacion_reside"
                                     label="Poblacion"
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
-                                    v-model="data.provincia"
+                                    v-model="data.provincia_reside"
                                     label="Provincia"
                             ></v-text-field>
                         </v-flex>
+                        <v-flex xs12 sm6 md5>
+                            <v-text-field
+                                    v-model="data.id_centro"
+                                    label="Id centro"
+                            ></v-text-field>
+                        </v-flex>
                     </v-layout>
-
                     <v-flex xs12 sm5>
                         <div>
-                            <v-btn color="primary" flat @click="submit">Submit</v-btn>
-                        </div>
-                    </v-flex>
-                    <v-flex xs12 sm5>
-                        <div>
-                            <v-btn large color="primary">Dar Alta</v-btn>
+                            <v-btn large color="primary" @click="postData">Dar Alta</v-btn>
                         </div>
                     </v-flex>
 
@@ -109,33 +104,29 @@
             </v-form>
         </v-app>
         <!-- Los siguientes paragrafos son una prueba para ver que se pasan los datos del formulario a la data correctamente (es provisional) -->
-        <p> {{ data.dni }} </p>
-        <p> {{ data.nombre }} </p>
-        <p> {{ data.apellido }} </p>
-        <p> {{ data.nacimiento }} </p>
-        <p> {{ data.ciudad }} </p>
-        <p> {{ data.pais }} </p>
-        <p> {{ data.direccion }} </p>
-        <p> {{ data.poblacion }} </p>
-        <p> {{ data.provincia }} </p>
+        <p> {{ data }} </p>
     </div>
 </template>
 
 <script>
+
+    import axios from 'axios';
+
     export default {
         name: "nuevo-alumno",
-        data () {
+        data() {
             return {
                 data: {
                     dni: '',
                     nombre: '',
-                    apellido: '',
-                    nacimiento: '',
-                    ciudad: '',
-                    pais: '',
-                    direccion: '',
-                    poblacion: '',
-                    provincia: '',
+                    apellidos: '',
+                    fecha_de_nacimiento: '',
+                    ciudad_de_nacimiento: '',
+                    pais_de_nacimiento: '',
+                    direccion_reside: '',
+                    poblacion_reside: '',
+                    provincia_reside: '',
+                    id_centro: ''
                 },
                 show1: false,
                 show2: true,
@@ -151,7 +142,17 @@
                 }
 
 
-
+            }
+        },
+        methods: {
+            postData() {
+                axios.post('http://localhost:3000/api/alumnos', this.data)
+                    .then(res => {
+                        console.log(res)
+                        this.$router.push('/alumnos');
+                    }).catch(error => {
+                        console.log(error)
+                })
             }
         }
     }
