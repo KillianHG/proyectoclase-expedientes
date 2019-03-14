@@ -7,6 +7,8 @@ import Intervenciones from '@/components/Intervenciones/intervenciones'
 import CrearUsuario from '@/components/Usuarios/crear-usuario'
 import ValidarUsuario from '@/components/Usuarios/validar-usuario'
 import NuevoAlumno from '@/components/Alumnos/nuevo-alumno'
+import NuevoDemandas from '@/components/Demandas/nuevo-demandas'
+import NuevoIntervenciones from '@/components/Intervenciones/nuevo-intervenciones'
 
 Vue.use(Router)
 
@@ -38,9 +40,19 @@ export default new Router({
             component: Demandas
         },
         {
+            path: '/demandas/',
+            name: 'nuevo-demandas',
+            component: NuevoDemandas
+        },
+        {
             path: '/intervenciones',
             name: 'intervenciones',
             component: Intervenciones
+        },
+        {
+            path: '/nuevo-intervenciones',
+            name: 'nuevo-intervenciones',
+            component: NuevoIntervenciones
         },
         {
             path: '/crearusuario',
