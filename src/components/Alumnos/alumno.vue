@@ -75,6 +75,10 @@
                                     :disabled="true"
                             ></v-text-field>
                         </v-flex>
+                        <v-flex xs12 sm6 md5>
+                            <v-btn large color="primary"
+                                   @click="showDemandas">Ver demandas</v-btn>
+                        </v-flex>
                     </v-layout>
                 </v-container>
             </v-form>
@@ -96,9 +100,15 @@
             this.dni = this.$route.query.id
         },
         mounted() {
-            axios.get('http://172.31.73.46:3000/api/alumnos/' + this.dni)
+            axios.get('http://localhost:3000/api/alumnos/' + this.dni)
                 .then(response => this.items = response.data)
         },
+        methods: {
+            showDemandas(){
+                this.$router.push('/demandas?id=' + this.dni)
+            }
+        }
+
     }
 </script>
 

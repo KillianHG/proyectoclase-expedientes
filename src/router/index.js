@@ -51,7 +51,7 @@ export default new Router({
             component: Demandas
         },
         {
-            path: '/demandas/',
+            path: '/demandas/nuevo',
             name: 'nuevo-demandas',
             component: NuevoDemandas
         },
