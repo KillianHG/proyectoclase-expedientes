@@ -102,9 +102,6 @@
                 </v-container>
             </v-form>
         </v-app>
-        <!-- Los siguientes paragrafos son una prueba para ver que se pasan los datos del formulario a la data correctamente (es provisional) -->
-        <p> {{ centros }} </p>
-        <p> Selected: {{ selected }} </p>
     </div>
 </template>
 

@@ -118,20 +118,6 @@
                 </v-container>
             </v-form>
         </v-app>
-        <!-- Los siguientes paragrafos son una prueba para ver que se pasan los datos del formulario a la data correctamente (es provisional) -->
-        <p> {{ data.dni }} </p>
-        <p> {{ data.nombre }} </p>
-        <p> {{ data.apellido }} </p>
-        <p> {{ data.puesto }} </p>
-        <p> {{ data.jornada }} </p>
-        <p> {{ data.direccion }} </p>
-        <p> {{ data.poblacion }} </p>
-        <p> {{ data.provincia }} </p>
-        <p> {{ data.pais }} </p>
-        <p> {{ data.telefono }} </p>
-        <p> {{ data.telefono2 }} </p>
-        <p> {{ data.correo }} </p>
-        <p> {{ data.password }} </p>
     </div>
 </template>
 

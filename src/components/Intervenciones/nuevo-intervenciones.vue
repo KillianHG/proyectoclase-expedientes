@@ -92,13 +92,34 @@
 </template>
 
 <script>
+    import axios from 'axios';
+
     export default {
-        name: "nuevo-intervenciones",
-        data: () => ({
-            actuaciones:['random 1', 'random 2', 'random 3']
-
-
-        })
+        data() {
+            return {
+                actuaciones:['random 1', 'random 2', 'random 3'],
+                id_demanda: this.$route.query.id,
+                items: null,
+                data: {
+                    no_registro: '',
+                    ficha_demanda_id_demanda: '',
+                    fecha_de_actuacion: '',
+                    actuacion: '',
+                    descripcion: '',
+                }
+            }
+        },
+        mounted() {
+            axios.get('http://172.31.73.46:3000/api/demanda/' + this.dni)
+                .then(response => this.items = response.data)
+        },
+        methods: {
+            postData() {
+                this.data.id_demanda = this.id_demanda
+                axios.post('http://172.31.73.46:3000/api/intervenciones', this.data)
+                    .then(this.$router.push('/intervenciones/?id=' +this.dni))
+            }
+        }
     }
 </script>
 
