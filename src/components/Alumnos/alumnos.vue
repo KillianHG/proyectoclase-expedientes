@@ -2,9 +2,9 @@
     <v-layout row>
         <v-flex xs12 sm8 offset-sm2>
             <div>
-                <v-btn large color="primary"
-                       @click="newAlumno">Nuevo Alumno</v-btn>
-            </div>
+            <v-btn large color="primary"
+                   @click="newAlumno">Nuevo Alumno</v-btn>
+        </div>
             <v-card>
                 <v-list two-line>
                     <div class="grey lighten-5" >
@@ -50,7 +50,7 @@
             }
         },
         mounted() {
-            axios.get('http://172.31.73.46:3000/api/alumnos')
+            axios.get('http://localhost:3000/api/alumnos')
                 .then(response => this.items = response.data)
         },
         methods: {

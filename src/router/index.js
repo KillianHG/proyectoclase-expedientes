@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Alumno from '@/components/Alumnos/alumno'
 import Alumnos from '@/components/Alumnos/alumnos'
+import Demanda from '@/components/Demandas/demanda'
 import Demandas from '@/components/Demandas/demandas'
 import Intervenciones from '@/components/Intervenciones/intervenciones'
 import CrearUsuario from '@/components/Usuarios/crear-usuario'
@@ -54,6 +55,11 @@ export default new Router({
             path: '/demandas/nuevo',
             name: 'nuevo-demandas',
             component: NuevoDemandas
+        },
+        {
+            path: '/demanda/',
+            name: 'demanda',
+            component: Demanda
         },
         {
             path: '/intervenciones',

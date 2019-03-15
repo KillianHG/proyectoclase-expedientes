@@ -148,7 +148,7 @@
             }
         },
         mounted() {
-            axios.get('http://172.31.73.46:3000/api/centros')
+            axios.get('http://localhost:3000/api/centros')
                 .then(response => this.centros = response.data)
         },
         methods: {

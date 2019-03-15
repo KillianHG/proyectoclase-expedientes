@@ -16,6 +16,7 @@
                                 :key="item.dni"
                                 avatar
                                 ripple
+                                @click="loadDemanda(item.id_demanda)"
                         >
                             <v-list-tile-content>
                                 <v-list-tile-title>{{ item.nombre }} {{ item.apellidos }}</v-list-tile-title>
@@ -62,7 +63,10 @@
         methods: {
             newDemanda() {
                 this.$router.push('/demandas/nuevo/?id=' + this.id )
-            }
+            },
+            loadDemanda(id){
+                this.$router.push('/demanda?id=' + id)
+            },
         }
     }
 </script>
