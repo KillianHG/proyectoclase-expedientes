@@ -26,6 +26,9 @@
                             <v-list-tile-action>
                                 <v-list-tile-action-text>{{ item.dni }}</v-list-tile-action-text>
                             </v-list-tile-action>
+                            <v-list-tile-action>
+                                <v-list-tile-action-text>{{ item.id_demanda }}</v-list-tile-action-text>
+                            </v-list-tile-action>
                         </v-list-tile>
                         <v-divider
                                 v-if="index + 1 < items.length"
@@ -51,10 +54,10 @@
         },
         mounted() {
             if(this.id != null) {
-                axios.get('http://localhost:3000/api/demandas/' + this.id)
+                axios.get('http://172.31.73.46:3000/api/demandas/' + this.id)
                     .then(response => this.items = response.data)
             } else {
-                axios.get('http://localhost:3000/api/demandas/')
+                axios.get('http://172.31.73.46:3000/api/demandas/')
                     .then(response => this.items = response.data)
             }
 

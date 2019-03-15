@@ -62,8 +62,11 @@
                                     :disabled="true"
                             ></v-textarea>
                         </v-flex>
+                        <v-flex xs12 sm6 md5>
+                            <v-btn large color="primary"
+                                   @click="showIntervenciones">Ver intervenciones</v-btn>
+                        </v-flex>
                     </v-layout>
-
                 </v-container>
             </v-form>
         </v-app>
@@ -84,12 +87,12 @@
             this.id = this.$route.query.id
         },
         mounted() {
-            axios.get('http://localhost:3000/api/demandas/' + this.id)
+            axios.get('http://172.31.73.46:3000/api/demanda/' + this.id)
                 .then(response => this.items = response.data)
         },
         methods: {
-            showDemandas(){
-                this.$router.push('/demandas?id=' + this.id)
+            showIntervenciones(){
+                this.$router.push('/intervenciones?id=' + this.id)
             }
         }
 

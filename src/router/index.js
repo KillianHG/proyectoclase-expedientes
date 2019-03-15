@@ -67,7 +67,7 @@ export default new Router({
             component: Intervenciones
         },
         {
-            path: '/nuevo-intervenciones',
+            path: '/intervenciones/nuevo',
             name: 'nuevo-intervenciones',
             component: NuevoIntervenciones
         },
