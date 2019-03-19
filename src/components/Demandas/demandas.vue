@@ -54,10 +54,10 @@
         },
         mounted() {
             if(this.id != null) {
-                axios.get('http://172.31.73.46:3000/api/demandas/' + this.id)
+                axios.get('http://localhost:3000/api/demandas/' + this.id)
                     .then(response => this.items = response.data)
             } else {
-                axios.get('http://172.31.73.46:3000/api/demandas/')
+                axios.get('http://localhost:3000/api/demandas/')
                     .then(response => this.items = response.data)
             }
 

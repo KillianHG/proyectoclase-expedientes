@@ -53,16 +53,16 @@
         },
         mounted() {
             if(this.id != null) {
-                axios.get('http://172.31.73.46:3000/api/intervenciones/' + this.id)
+                axios.get('http://localhost:3000/api/intervenciones/' + this.id)
                     .then(response => this.items = response.data)
             } else {
-                axios.get('http://172.31.73.46:3000/api/intervenciones/')
+                axios.get('http://localhost:3000/api/intervenciones/')
                     .then(response => this.items = response.data)
             }
         },
         methods: {
             newIntervencion() {
-                this.$router.push('/intervencion/nuevo/?id=' + this.id )
+                this.$router.push('/intervenciones/nuevo/?id=' + this.id )
             },
             loadIntervencion(id){
                 this.$router.push('/intervencion?id=' + id)

@@ -100,7 +100,7 @@
             this.dni = this.$route.query.id
         },
         mounted() {
-            axios.get('http://172.31.73.46:3000/api/alumnos/' + this.dni)
+            axios.get('http://localhost:3000/api/alumnos/' + this.dni)
                 .then(response => this.items = response.data)
         },
         methods: {

@@ -5,6 +5,7 @@ import Alumno from '@/components/Alumnos/alumno'
 import Alumnos from '@/components/Alumnos/alumnos'
 import Demanda from '@/components/Demandas/demanda'
 import Demandas from '@/components/Demandas/demandas'
+import Intervencion from '@/components/Intervenciones/intervencion'
 import Intervenciones from '@/components/Intervenciones/intervenciones'
 import CrearUsuario from '@/components/Usuarios/crear-usuario'
 import ValidarUsuario from '@/components/Usuarios/validar-usuario'
@@ -60,6 +61,11 @@ export default new Router({
             path: '/demanda/',
             name: 'demanda',
             component: Demanda
+        },
+        {
+            path: '/intervencione',
+            name: 'intervencione',
+            component: Intervencion
         },
         {
             path: '/intervenciones',

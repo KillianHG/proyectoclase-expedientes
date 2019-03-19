@@ -1,14 +1,13 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
-    <div id="nuevo-intervenciones">
+    <div id="intervencion">
         <v-app id="">
             <v-form>
                 <v-container>
-                    <h1>Intervenciones</h1>
+                    <h1>Intervencion</h1>
                     <v-layout row wrap>
                         <v-flex xs12 sm12 md12>
                             <v-flex xs3 sm3 md3>
                                 <v-text-field
-                                        v-model="items[0].dni"
                                         label="Dni"
                                         required
                                         :disabled="true"
@@ -17,7 +16,6 @@
                         </v-flex>
                         <v-flex xs12 sm6 md6>
                             <v-text-field
-                                    v-model="items[0].nombre"
                                     label="Nombre"
                                     required
                                     :disabled="true"
@@ -25,7 +23,6 @@
                         </v-flex>
                         <v-flex xs12 sm6 md6>
                             <v-text-field
-                                    v-model="items[0].apellidos"
                                     label="Apellidos"
                                     required
                                     :disabled="true"
@@ -33,7 +30,6 @@
                         </v-flex>
                         <v-flex xs12 sm6 md6>
                             <v-text-field
-                                    v-model="items[0].id_centro"
                                     label="Centro"
                                     required
                                     :disabled="true"
@@ -51,17 +47,19 @@
                                     offset-y
                                     full-width
                                     min-width="290px"
+                                    :disabled="true"
                             >
                                 <template v-slot:activator="{ on }">
                                     <v-text-field
-                                            v-model="data.fecha_intervencion"
+                                            v-model="date"
                                             label="Fecha Intervencion"
                                             prepend-icon="event"
                                             readonly
                                             v-on="on"
+                                            :disabled="true"
                                     ></v-text-field>
                                 </template>
-                                <v-date-picker v-model="data.fecha_intervencion" no-title scrollable>
+                                <v-date-picker v-model="date" no-title scrollable>
                                     <v-spacer></v-spacer>
                                     <v-btn flat color="primary" @click="menu = false">Cancel</v-btn>
                                     <v-btn flat color="primary" @click="$refs.menu.save(date)">OK</v-btn>
@@ -71,8 +69,8 @@
                         <v-flex xs12 sm6 md6>
                             <v-autocomplete
                                     ref="Actuacion"
-                                    v-model="data.actuacion"
-                                    :rules="[() => !!data.actuacion || 'Este apartado es requerido']"
+                                    v-model="actuacion"
+                                    :rules="[() => !!actuacion || 'Este apartado es requerido']"
                                     :items="actuaciones"
                                     label="Actuacion"
                                     placeholder="Elige Actuacion"
@@ -81,7 +79,6 @@
                         </v-flex>
                         <v-flex xs12>
                             <v-textarea
-                                    v-model="data.descripcion_de_la_intervencion"
                                     label="Descripcion"
                                     required
                                     box
@@ -106,28 +103,36 @@
     export default {
         data() {
             return {
-                dni: this.$route.query.id,
                 actuaciones:['random 1', 'random 2', 'random 3'],
                 id_demanda: this.$route.query.id,
                 items: null,
                 data: {
-                    ficha_demanda_id_demanda: '',
-                    fecha_intervencion: '',
-                    actuacion: '',
-                    descripcion_de_la_intervencion: '',
+                    "no_registro": 2,
+                    "ficha_demanda_id_demanda": 2,
+                    "fecha_intervencion": 1553472000000,
+                    "actuacion": "actuacion2222",
+                    "descripcion_de_la_intervencion": "decripcion dos 2222",
+                    "id_demanda": 2,
+                    "numero_registro": 1111,
+                    "concrecion": "concrecion uno 1111",
+                    "alumnos_dni": "dni2222",
+                    "curso": 2019,
+                    "dni": "dni2222",
+                    "nombre": "alumno2",
+                    "apellidos": "apellido2",
+                    "fecha_de_nacimiento": 1331683200000,
+                    "ciudad_de_nacimiento": "ciudad222",
+                    "pais_de_nacimiento": "pais222",
+                    "direccion_reside": "direccion222",
+                    "poblacion_reside": "poblacion222",
+                    "provincia_reside": "provincia222",
+                    "id_centro": 2
                 }
             }
         },
         mounted() {
-            axios.get('http://localhost:3000/api/demanda/' + this.dni)
+            axios.get('http://localhost:3000/api/intervencion/' + this.dni)
                 .then(response => this.items = response.data)
-        },
-        methods: {
-            postData() {
-                this.data.ficha_demanda_id_demanda = this.id_demanda
-                axios.post('http://localhost:3000/api/intervenciones', this.data)
-                    .then(this.$router.push('/intervenciones/?id=' +this.dni))
-            }
         }
     }
 </script>
