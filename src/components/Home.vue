@@ -1,10 +1,18 @@
 <template>
-   <h1>Bienvenido</h1>
+<h1>hola care queso</h1>
+
 </template>
 
 <script>
+
+
+
     export default {
-        name: "Home"
+        name: "Home",
+       components:{
+
+       }
+
     }
 </script>
 
