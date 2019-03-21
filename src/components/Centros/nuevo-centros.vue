@@ -4,7 +4,7 @@
             <v-container>
                 <h1>Datos del Centro</h1>
                 <v-layout row wrap>
-                    <v-flex xs12 sm5 md12>
+                    <v-flex xs12 sm5 md5>
                         <v-text-field
                                 v-model="nombre_de_centro"
                                 label="Nombre Del Centro"
