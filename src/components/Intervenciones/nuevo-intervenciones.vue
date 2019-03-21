@@ -89,7 +89,7 @@
                         </v-flex>
                         <v-flex xs12 sm5>
                             <div>
-                                <v-btn large color="primary">Validar</v-btn>
+                                <v-btn large color="primary" @click="postData">Validar</v-btn>
                             </div>
                         </v-flex>
                     </v-layout>
@@ -106,7 +106,6 @@
     export default {
         data() {
             return {
-                dni: this.$route.query.id,
                 actuaciones:['random 1', 'random 2', 'random 3'],
                 id_demanda: this.$route.query.id,
                 items: null,
@@ -119,14 +118,14 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:3000/api/demanda/' + this.dni)
+            axios.get('http://localhost:3000/api/intervencion/' + this.id_demanda)
                 .then(response => this.items = response.data)
         },
         methods: {
             postData() {
                 this.data.ficha_demanda_id_demanda = this.id_demanda
                 axios.post('http://localhost:3000/api/intervenciones', this.data)
-                    .then(this.$router.push('/intervenciones/?id=' +this.dni))
+                    .then(this.$router.push('/intervenciones/?id=' +this.id_demanda))
             }
         }
     }

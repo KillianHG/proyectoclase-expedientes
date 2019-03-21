@@ -63,8 +63,8 @@ export default new Router({
             component: Demanda
         },
         {
-            path: '/intervencione',
-            name: 'intervencione',
+            path: '/intervencion',
+            name: 'intervencion',
             component: Intervencion
         },
         {
