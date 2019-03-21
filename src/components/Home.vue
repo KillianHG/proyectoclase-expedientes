@@ -1,15 +1,15 @@
 <template>
-<h1>hola care queso</h1>
-
+<NuevoCentros></NuevoCentros>
 </template>
 
 <script>
 
-
-
+    import NuevoCentros from "./Centros/nuevo-centros";
     export default {
         name: "Home",
        components:{
+           NuevoCentros,
+
 
        }
 
