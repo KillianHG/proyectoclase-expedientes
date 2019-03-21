@@ -1,10 +1,11 @@
 <template>
-    <v-app>        <v-navigation-drawer temporary absolute v-model="sideNav">
+    <v-app>
+        <v-navigation-drawer temporary absolute v-model="sideNav">
             <v-toolbar flat>
                 <v-list>
                     <v-list-tile>
                         <v-list-tile-title class="title">
-                            <router-link to="/" tag="soan" style="cursor: pointer"><i class="ss ss-2x ss-mor"></i>Home
+                            <router-link to="/" tag="soan" style="cursor: pointer"><i class="ss ss-2x ss-mor"></i>Principal
                             </router-link>
                         </v-list-tile-title>
                     </v-list-tile>
@@ -25,10 +26,10 @@
                 </v-list-tile>
             </v-list>
         </v-navigation-drawer>
-        <v-toolbar height="45" class="light-blue lighten-1">
+        <v-toolbar height="55" class="light-blue darken-2">
             <v-toolbar-title
                     class="hidden-xs-only">
-                <router-link to="/" tag="soan" style="cursor: pointer">Home</router-link>
+                <router-link to="/" tag="soan" style="cursor: pointer">Principal</router-link>
             </v-toolbar-title>
             <v-toolbar-side-icon
                     @click.native.stop="sideNav = !sideNav"
