@@ -5,6 +5,17 @@
                 <v-btn large color="primary"
                        @click="newIntervencion">Nueva intervencion</v-btn>
             </div>
+            <v-flex>
+                <v-alert
+                        v-model="alert"
+                        dismissible
+                        type="error"
+                        outline
+                        transition="scale-transition"
+                >
+                    Es necesario acceder a las intervenciones de una demanda concreta
+                </v-alert>
+            </v-flex>
             <v-card>
                 <v-list three-line>
                     <div class="grey lighten-5" >
@@ -47,6 +58,7 @@
     export default {
         data() {
             return {
+                alert: false,
                 id: this.$route.query.id,
                 items: null
             }
@@ -62,7 +74,11 @@
         },
         methods: {
             newIntervencion() {
-                this.$router.push('/intervenciones/nuevo/?id=' + this.id )
+                if (this.id != null){
+                    this.$router.push('/intervenciones/nuevo/?id=' + this.id )
+                } else {
+                    this.alert = true
+                }
             },
             loadIntervencion(id){
                 this.$router.push('/intervencion?id=' + id)

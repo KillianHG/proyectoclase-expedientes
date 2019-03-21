@@ -86,10 +86,13 @@
                                     label="Provincia"
                             ></v-text-field>
                         </v-flex>
-                        <v-flex xs12 sm6 md5>
+                        <v-flex xs12 sm6 md6>
                             <v-select
+                                    v-model="data.id_centro"
                                     :items="centros.items"
-                                    label="Centros"
+                                    label="Centro"
+                                    item-text="nombre_de_centro"
+                                    item-value="id_centro"
                             ></v-select>
                         </v-flex>
                     </v-layout>
@@ -113,9 +116,8 @@
         name: "nuevo-alumno",
         data() {
             return {
-                centros: {
-                    items:[]
-                },
+                centros: null
+                ,
                 data: {
                     dni: '',
                     nombre: '',
@@ -147,6 +149,7 @@
         mounted() {
             axios.get('http://localhost:3000/api/centros')
                 .then(response => this.centros = response.data)
+
         },
         methods: {
             postData() {

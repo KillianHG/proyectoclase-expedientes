@@ -5,6 +5,17 @@
                 <v-btn large color="primary"
                        @click="newDemanda">Nueva demanda</v-btn>
             </div>
+            <v-flex>
+                <v-alert
+                        v-model="alert"
+                        dismissible
+                        type="error"
+                        outline
+                        transition="scale-transition"
+                >
+                    Es necesario acceder a las demandas de un alumno concreto
+                </v-alert>
+            </v-flex>
             <v-card>
                 <v-list two-line>
                     <div class="grey lighten-5" >
@@ -48,6 +59,7 @@
     export default {
         data() {
             return {
+                alert: false,
                 id: this.$route.query.id,
                 items: null
             }
@@ -65,10 +77,16 @@
         },
         methods: {
             newDemanda() {
-                this.$router.push('/demandas/nuevo/?id=' + this.id )
+                if (this.id != null) {
+                    this.$router.push('/demandas/nuevo/?id=' + this.id)
+                } else {
+                    this.alert = true
+                }
             },
             loadDemanda(id){
-                this.$router.push('/demanda?id=' + id)
+                if (id != null) {
+                    this.$router.push('/demanda?id=' + id)
+                }
             },
         }
     }
