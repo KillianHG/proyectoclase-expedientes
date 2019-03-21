@@ -14,7 +14,9 @@
                                     required
                             ></v-text-field>
                         </v-flex>
-                        <v-flex xs12 sm6 md7>
+                    </v-layout>
+                    <v-layout row wrap>
+                        <v-flex xs12 sm6 md5>
                             <v-text-field
                                     v-model="data.nombre"
                                     label="Nombre"
@@ -104,17 +106,13 @@
                             ></v-text-field>
                         </v-flex>
                     </v-layout>
-                    <v-flex xs12 sm5>
-                        <div>
-                            <v-btn color="primary" flat @click="submit">Submit</v-btn>
-                        </div>
-                    </v-flex>
+                    <v-layout row wrap>
                     <v-flex xs12 sm5>
                         <div>
                             <v-btn large color="primary">Dar Alta</v-btn>
                         </div>
                     </v-flex>
-
+                    </v-layout>
                 </v-container>
             </v-form>
         </v-app>
