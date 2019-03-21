@@ -42,14 +42,14 @@
                 </v-flex>
                 <v-flex xs12 sm6 md5>
                     <v-text-field
-                            v-model="telefono"
+                            v-model="telefono_1"
                             label="Telefono"
                             required
                     ></v-text-field>
                 </v-flex>
                 <v-flex xs12 sm6 md5>
                     <v-text-field
-                            v-model="telefono2"
+                            v-model="telefono_2"
                             label="Telefono 2(Opcional)"
                     ></v-text-field>
                 </v-flex>
@@ -77,8 +77,8 @@
                     apellidos: '',
                     parentesco: '',
                     nacionalidad: '',
-                    telefono: '',
-                    telefono2: ''
+                    telefono_1: '',
+                    telefono_2: ''
                 },
                 methods: {
                     postData() {
