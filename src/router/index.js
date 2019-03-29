@@ -12,6 +12,13 @@ import ValidarUsuario from '@/components/Usuarios/validar-usuario'
 import NuevoAlumno from '@/components/Alumnos/nuevo-alumno'
 import NuevoDemandas from '@/components/Demandas/nuevo-demandas'
 import NuevoIntervenciones from '@/components/Intervenciones/nuevo-intervenciones'
+import NuevoTutores from '@/components/Tutores/nuevo-tutores'
+import Tutor from '@/components/Tutores/tutor'
+import Tutores from '@/components/Tutores/tutores'
+import Centro from '@/components/Centros/centro'
+import Centros from '@/components/Centros/centros'
+import NuevoCentros from '@/components/Centros/nuevo-centros'
+
 
 Vue.use(Router)
 
@@ -86,6 +93,36 @@ export default new Router({
             path: '/validarusuario',
             name: 'validar-usuario',
             component: ValidarUsuario
+        },
+        {
+            path: '/tutores/',
+            name: 'nuevo-tutores',
+            component: NuevoTutores
+        },
+        {
+            path: '/tutores/',
+            name: 'tutor',
+            component: Tutor
+        },
+        {
+            path: '/tutores/',
+            name: 'tutores',
+            component: Tutores
+        },
+        {
+            path: '/centro/',
+            name: 'centro',
+            component: Centro
+        },
+        {
+            path: '/centros/',
+            name: 'centros',
+            component: Centros
+        },
+        {
+            path: '/nuevocentros/',
+            name: 'nuevo-centros',
+            component: NuevoCentros
         }
     ],
     mode: 'history'
