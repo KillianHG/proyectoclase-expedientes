@@ -86,7 +86,7 @@
                                     label="Provincia"
                             ></v-text-field>
                         </v-flex>
-                        <v-flex xs12 sm6 md6>
+                        <v-flex xs12 sm6 md5>
                             <v-select
                                     v-model="data.id_centro"
                                     :items="centros.items"
