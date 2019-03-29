@@ -45,11 +45,12 @@
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
-                            <v-text-field
+                            <v-select
                                     v-model="data.curso"
+                                    :items="years"
                                     label="Curso"
-                                    required
-                            ></v-text-field>
+                                    item-text="curso"
+                            ></v-select>
                         </v-flex>
                         <v-flex xs12>
                             <v-textarea
@@ -69,6 +70,9 @@
                 </v-container>
             </v-form>
         </v-app>
+        <p>
+            {{ data.curso }}
+        </p>
     </div>
 </template>
 
@@ -98,6 +102,12 @@
                 this.data.alumnos_dni = this.dni
                 axios.post('http://localhost:3000/api/demandas', this.data)
                     .then(this.$router.push('/demandas/?id=' +this.dni))
+            }
+        },
+        computed : {
+            years () {
+                const year = new Date().getFullYear()
+                return Array.from({length: year - 1900}, (value, index) => year - index + '/' + (year - index + 1) )
             }
         }
     }

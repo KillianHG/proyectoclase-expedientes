@@ -106,7 +106,17 @@
     export default {
         data() {
             return {
-                actuaciones:['random 1', 'random 2', 'random 3'],
+                actuaciones:[
+                    'Avaluació psicopedagògica',
+                    'Coordinació amb el centre',
+                    'Entrevista família',
+                    'CAD-Comissió social',
+                    'Coordinació Serveis Socials',
+                    'Coordinació CSMIJ',
+                    'Coordinació CDIAP',
+                    'Coordinació CEE',
+                    'Coordinació serveis externs',
+                    'Altres'],
                 id_demanda: this.$route.query.id,
                 items: null,
                 data: {

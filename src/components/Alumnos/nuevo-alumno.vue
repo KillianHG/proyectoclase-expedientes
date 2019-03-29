@@ -97,14 +97,19 @@
                         </v-flex>
                     </v-layout>
                     <v-flex xs12 sm5>
+
                         <div>
-                            <v-btn large color="primary" @click="postData">Dar Alta</v-btn>
+                            <v-btn v-if="!test" large disabled @click="postData">Dar Alta</v-btn>
+                            <v-btn v-else large color="primary" @click="postData">Dar Alta</v-btn>
+
                         </div>
+
                     </v-flex>
 
                 </v-container>
             </v-form>
         </v-app>
+        {{ test }}
     </div>
 </template>
 
@@ -116,6 +121,7 @@
         name: "nuevo-alumno",
         data() {
             return {
+                test: false,
                 centros: null
                 ,
                 data: {
@@ -155,6 +161,17 @@
             postData() {
                 axios.post('http://localhost:3000/api/alumnos', this.data)
                     .then(this.$router.push('/alumnos'))
+            },
+        },
+        watch: {
+            data: {
+                handler: function () {
+                    // Return the object that changed
+                    if(this.data.id_centro != null) {
+                        this.test = true
+                    }
+                },
+                deep: true
             }
         }
     }
