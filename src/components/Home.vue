@@ -1,15 +1,17 @@
 <template>
-<ValidarUsuario></ValidarUsuario>
+<centro></centro>
 </template>
 
 <script>
 
 
-    import ValidarUsuario from "./Usuarios/validar-usuario";
+
+    import Centro from "./Centros/centro";
     export default {
         name: "Home",
        components:{
-           ValidarUsuario
+           Centro
+
 
 
 
