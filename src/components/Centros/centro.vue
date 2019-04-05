@@ -55,11 +55,24 @@
         </v-app>
     </div>
 </template>
-
-
 <script>
+    import axios from 'axios';
+
     export default {
-        name: "centro"
+        data() {
+            return {
+                dni: null,
+                items: null
+            }
+        },
+        created() {
+            this.dni = this.$route.query.id
+        },
+        mounted() {
+            axios.get('http://localhost:3000/api/centros/' + this.dni)
+                .then(response => this.items = response.data)
+        }
+
     }
 </script>
 

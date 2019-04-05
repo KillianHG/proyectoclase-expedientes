@@ -3,7 +3,7 @@
         <v-flex xs12 sm8 offset-sm2>
             <div>
                 <v-btn large color="primary"
-                       @click="newAlumno">Nuevo Centro</v-btn>
+                       @click="newCentro">Nuevo Centro</v-btn>
             </div>
             <v-card>
                 <v-list two-line>
@@ -16,15 +16,14 @@
                                 :key="item.dni"
                                 avatar
                                 ripple
-                                @click="loadAlumno(item.dni)"
+                                @click="loadCentro(item.dni)"
                         >
                             <v-list-tile-content>
-                                <v-list-tile-title>{{ item.nombre }} {{ item.apellidos }}</v-list-tile-title>
-
                                 <v-list-tile-sub-title>{{ item.id_centro }}</v-list-tile-sub-title>
+                                <v-list-tile-title>{{ item.nombre_de_centro }} {{ item.direccion_de_centro }}</v-list-tile-title>
                             </v-list-tile-content>
                             <v-list-tile-action>
-                                <v-list-tile-action-text>{{ item.dni }}</v-list-tile-action-text>
+                                <v-list-tile-action-text>{{ item.id_centro }}</v-list-tile-action-text>
                             </v-list-tile-action>
 
                         </v-list-tile>
@@ -37,7 +36,6 @@
             </v-card>
         </v-flex>
     </v-layout>
-</template>
 </template>
 
 <script>
@@ -59,8 +57,8 @@
             loadCentro(id){
                 this.$router.push('/centro?id=' + id)
             },
-            newAlumno(){
-                this.$router.push('/alumno/nuevo')
+            newCentro(){
+                this.$router.push('/nuevocentros/nuevo')
             }
         }
     }
