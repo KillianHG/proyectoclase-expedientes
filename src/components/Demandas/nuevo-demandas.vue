@@ -4,6 +4,17 @@
             <v-form>
                 <v-container>
                     <h1>Demandas</h1>
+                    <v-layout>
+                        <v-flex xs12 sm6 md5>
+                            <v-select
+                                    v-model="dni"
+                                    :items="alumnos"
+                                    label="Alumno"
+                                    item-text="nombre"
+                                    item-value="dni"
+                            ></v-select>
+                        </v-flex>
+                    </v-layout>
                     <v-layout row wrap>
                         <v-flex xs12 sm6 md6>
                             <v-text-field
@@ -62,7 +73,8 @@
                         </v-flex>
                         <v-flex xs12 sm5>
                             <div>
-                                <v-btn large color="primary" @click="postData">Validar</v-btn>
+                                <v-btn v-if="!enabled" large disabled @click="postData">Validar</v-btn>
+                                <v-btn v-else large color="primary" @click="postData">Validar</v-btn>
                             </div>
                         </v-flex>
                     </v-layout>
@@ -70,9 +82,6 @@
                 </v-container>
             </v-form>
         </v-app>
-        <p>
-            {{ data.curso }}
-        </p>
     </div>
 </template>
 
@@ -83,8 +92,21 @@
     export default {
         data() {
             return {
+                enabled: false,
+                alumnos: null,
                 dni: this.$route.query.id,
-                items: null,
+                items: [{
+                    nombre: null,
+                    apellidos: null,
+                    fecha_de_nacimiento: null,
+                    ciudad_de_nacimiento: null,
+                    pais_de_nacimiento: null,
+                    direccion_reside: null,
+                    poblacion_reside: null,
+                    provincia_reside: null,
+                    id_centro: null,
+                    nombre_de_centro: null
+                }],
                 data: {
                     alumnos_dni: '',
                     curso: '',
@@ -94,20 +116,37 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:3000/api/alumnos/' + this.dni)
-                .then(response => this.items = response.data)
+            if (this.id != null) {
+                axios.get('http://localhost:3000/api/alumnos/' + this.dni)
+                    .then(response => this.items = response.data)
+            }
+            axios.get('http://localhost:3000/api/alumnosdni/')
+                .then(response => this.alumnos = response.data)
         },
         methods: {
             postData() {
                 this.data.alumnos_dni = this.dni
                 axios.post('http://localhost:3000/api/demandas', this.data)
                     .then(this.$router.push('/demandas/?id=' +this.dni))
+            },
+            validateForm() {
+                //metodo que comprobara si los datos de la demanda se han rellenado
             }
         },
         computed : {
             years () {
                 const year = new Date().getFullYear()
                 return Array.from({length: year - 1900}, (value, index) => year - index + '/' + (year - index + 1) )
+            }
+        },
+        watch: {
+            dni: {
+                handler: function () {
+                    // Return the object that changed
+                    axios.get('http://localhost:3000/api/alumnos/' + this.dni)
+                        .then(response => this.items = response.data)
+                },
+                deep: true
             }
         }
     }
