@@ -3,7 +3,6 @@
         <v-app id="inspire">
             <v-form>
                 <v-container>
-
                     <h1>ALTA USUARIO</h1>
                     <h3>Datos personales</h3>
                     <v-layout row wrap>
@@ -109,7 +108,7 @@
                     <v-layout row wrap>
                     <v-flex xs12 sm5>
                         <div>
-                            <v-btn large color="primary">Dar Alta</v-btn>
+                            <v-btn large color="primary" @click="postData">Dar Alta</v-btn>
                         </div>
                     </v-flex>
                     </v-layout>
@@ -120,6 +119,9 @@
 </template>
 
 <script>
+
+    import axios from 'axios';
+
     export default {
         name: "crearusuario",
         data () {
@@ -150,6 +152,12 @@
                         v => !!v || 'E-mail is required',
                         v => /.+@.+/.test(v) || 'E-mail must be valid'
                     ],
+                },
+                methods: {
+                    postData() {
+                        axios.post('http://localhost:3000/api/empleados', this.data)
+                            .then(this.$router.push('/empleados'))
+                    },
                 }
 
 
