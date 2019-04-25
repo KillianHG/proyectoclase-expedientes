@@ -82,6 +82,9 @@
                 </v-container>
             </v-form>
         </v-app>
+        {{ enabled }}
+        {{ dni }}
+        {{ data }}
     </div>
 </template>
 
@@ -92,7 +95,6 @@
     export default {
         data() {
             return {
-                enabled: false,
                 alumnos: null,
                 dni: this.$route.query.id,
                 items: [{
@@ -116,12 +118,12 @@
             }
         },
         mounted() {
-            if (this.id != null) {
+            axios.get('http://localhost:3000/api/alumnosdni/')
+                .then(response => this.alumnos = response.data)
+            if (this.dni != null) {
                 axios.get('http://localhost:3000/api/alumnos/' + this.dni)
                     .then(response => this.items = response.data)
             }
-            axios.get('http://localhost:3000/api/alumnosdni/')
-                .then(response => this.alumnos = response.data)
         },
         methods: {
             postData() {
@@ -129,20 +131,23 @@
                 axios.post('http://localhost:3000/api/demandas', this.data)
                     .then(this.$router.push('/demandas/?id=' +this.dni))
             },
-            validateForm() {
-                //metodo que comprobara si los datos de la demanda se han rellenado
-            }
         },
         computed : {
             years () {
                 const year = new Date().getFullYear()
                 return Array.from({length: year - 1900}, (value, index) => year - index + '/' + (year - index + 1) )
+            },
+            enabled: function() {
+                if(this.dni && this.data.curso && this.data.numero_registro && this.data.concrecion) {
+                    return true
+                } else {
+                    return false
+                }
             }
         },
         watch: {
             dni: {
                 handler: function () {
-                    // Return the object that changed
                     axios.get('http://localhost:3000/api/alumnos/' + this.dni)
                         .then(response => this.items = response.data)
                 },
