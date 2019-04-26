@@ -42,8 +42,8 @@
 </template>
 
 <script>
-
     import axios from 'axios';
+    import constantes from '@/const.js';
 
     export default {
         data() {
@@ -55,10 +55,10 @@
         },
         mounted() {
             if(this.id != null) {
-                axios.get('http://localhost:3000/api/demandas/' + this.id)
+                axios.get(constantes.path + 'demandas/' + this.id)
                     .then(response => this.items = response.data)
             } else {
-                axios.get('http://localhost:3000/api/demandas/')
+                axios.get(constantes.path + 'demandas/')
                     .then(response => this.items = response.data)
             }
 

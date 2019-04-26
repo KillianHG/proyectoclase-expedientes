@@ -114,8 +114,8 @@
 </template>
 
 <script>
-
     import axios from 'axios';
+    import constantes from '@/const.js';
 
     export default {
         name: "nuevo-alumno",
@@ -153,13 +153,13 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:3000/api/centros')
+            axios.get(constantes.path + 'centros')
                 .then(response => this.centros = response.data)
 
         },
         methods: {
             postData() {
-                axios.post('http://localhost:3000/api/alumnos', this.data)
+                axios.post(constantes.path + 'alumnos', this.data)
                     .then(this.$router.push('/alumnos'))
             },
         },

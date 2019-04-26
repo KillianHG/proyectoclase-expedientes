@@ -41,6 +41,7 @@
 <script>
 
     import axios from 'axios';
+    import constantes from '@/const.js';
 
     export default {
         data () {
@@ -50,7 +51,7 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:3000/api/centros')
+            axios.get(constantes.path + 'centros')
                 .then(response => this.items = response.data)
         },
         methods: {

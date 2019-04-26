@@ -43,6 +43,7 @@
 
 <script>
     import axios from 'axios';
+    import constantes from '@/const.js';
 
     export default {
         data() {
@@ -54,10 +55,10 @@
         },
         mounted() {
             if(this.id != null) {
-                axios.get('http://localhost:3000/api/intervenciones/' + this.id)
+                axios.get(constantes.path + 'intervenciones/' + this.id)
                     .then(response => this.items = response.data)
             } else {
-                axios.get('http://localhost:3000/api/intervenciones/')
+                axios.get(constantes.path + 'intervenciones/')
                     .then(response => this.items = response.data)
             }
         },

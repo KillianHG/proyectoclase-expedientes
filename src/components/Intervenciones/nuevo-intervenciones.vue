@@ -4,11 +4,31 @@
             <v-form>
                 <v-container>
                     <h1>Intervenciones</h1>
+                    <v-layout>
+                        <v-flex xs12 sm6 md6>
+                            <v-select
+                                    v-model="dni"
+                                    :items="alumnos"
+                                    label="Alumno"
+                                    item-text="nombre"
+                                    item-value="dni"
+                            ></v-select>
+                        </v-flex>
+                        <v-flex xs12 sm6 md6>
+                            <v-select
+                                    v-model="id_demanda"
+                                    :items="demandas"
+                                    label="Curso"
+                                    item-text="curso"
+                                    item-value="id_demanda"
+                            ></v-select>
+                        </v-flex>
+                    </v-layout>
                     <v-layout row wrap>
                         <v-flex xs12 sm12 md12>
                             <v-flex xs3 sm3 md3>
                                 <v-text-field
-                                        v-model="items[0].dni"
+                                        v-model="dni"
                                         label="Dni"
                                         required
                                         :disabled="true"
@@ -97,11 +117,13 @@
                 </v-container>
             </v-form>
         </v-app>
+        {{ items }}
     </div>
 </template>
 
 <script>
     import axios from 'axios';
+    import constantes from '@/const.js';
 
     export default {
         data() {
@@ -117,8 +139,12 @@
                     'Coordinació CEE',
                     'Coordinació serveis externs',
                     'Altres'],
+                alumnos: null,
+                dni: null,
                 id_demanda: this.$route.query.id,
-                items: null,
+                demandas: [{}],
+                curso: '',
+                items: [{}],
                 data: {
                     ficha_demanda_id_demanda: '',
                     fecha_intervencion: '',
@@ -128,14 +154,32 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:3000/api/intervencion/' + this.id_demanda)
-                .then(response => this.items = response.data)
+            axios.get(constantes.path + 'alumnosdni/')
+                .then(response => this.alumnos = response.data)
+            if (this.id_demanda != null) {
+                axios.get(constantes.path + 'demanda/' + this.id_demanda)
+                    .then(response => this.demandas = response.data)
+            }
         },
         methods: {
             postData() {
                 this.data.ficha_demanda_id_demanda = this.id_demanda
-                axios.post('http://localhost:3000/api/intervenciones', this.data)
+                axios.post(constantes.path + 'intervenciones', this.data)
                     .then(this.$router.push('/intervenciones/?id=' +this.id_demanda))
+            }
+        },
+        watch: {
+            dni: {
+                handler: function () {
+                    axios.get(constantes.path + 'demandas/' + this.dni)
+                        .then(response => this.demandas = response.data)
+                }
+            },
+            id_demanda: {
+                handler: function () {
+                    axios.get(constantes.path + 'demanda/'+ this.id_demanda)
+                        .then(response => this.items = response.data)
+                }
             }
         }
     }

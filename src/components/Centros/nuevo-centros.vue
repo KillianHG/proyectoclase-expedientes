@@ -60,8 +60,8 @@
 </template>
 
 <script>
-
     import axios from 'axios';
+    import constantes from '@/const.js';
 
     export default {
         name: "nuevo-centros",
@@ -77,7 +77,7 @@
                 },
                 methods: {
                     postData() {
-                        axios.post('http://localhost:3000/api/centros', this.data)
+                        axios.post(constantes.path + 'centros', this.data)
                             .then(this.$router.push('/centros'))
                     }
                 }
