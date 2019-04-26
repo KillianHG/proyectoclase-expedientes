@@ -40,6 +40,7 @@
 
 <script>
     import axios from 'axios';
+    import constantes from '@/const.js';
 
     export default {
         name: "validar-usuario",
@@ -53,7 +54,7 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:3000/api/usuarios')
+            axios.get(constantes.path + 'usuarios')
                 .then(response => this.centros = response.data)
         },
 

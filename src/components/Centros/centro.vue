@@ -57,6 +57,7 @@
 </template>
 <script>
     import axios from 'axios';
+    import constantes from '@/const.js';
 
     export default {
         data() {
@@ -69,7 +70,7 @@
             this.dni = this.$route.query.id
         },
         mounted() {
-            axios.get('http://localhost:3000/api/centros/' + this.dni)
+            axios.get(constantes.path + 'centros/' + this.dni)
                 .then(response => this.items = response.data)
         }
 
