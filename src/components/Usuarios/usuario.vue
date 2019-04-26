@@ -3,80 +3,86 @@
         <v-app id="inspire">
             <v-form>
                 <v-container>
-                    <h1>ALTA USUARIO</h1>
+                    <h1>FICHA USUARIO</h1>
                     <h3>Datos personales</h3>
                     <v-layout row wrap>
                         <v-flex xs12 sm6 md3>
                             <v-text-field
-                                    v-model="data.dni"
+                                    v-model="items[0].dni"
                                     label="Dni"
-                                    required
+                                    :disabled="true"
                             ></v-text-field>
                         </v-flex>
                     </v-layout>
                     <v-layout row wrap>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
-                                    v-model="data.nombre"
+                                    v-model="items[0].nombre"
                                     label="Nombre"
-                                    required
+                                    :disabled="true"
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
-                                    v-model="data.apellidos"
+                                    v-model="items[0].apellidos"
                                     label="Apellido"
-                                    required
+                                    :disabled="true"
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
-                                    v-model="data.puesto_de_trabajo"
+                                    v-model="items[0].puesto_de_trabajo"
                                     label="Puesto de trabajo"
-                                    required
+                                    :disabled="true"
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
-                                    v-model="data.jornada_laboral"
+                                    v-model="items[0].jornada_laboral"
                                     label="Jornada laboral"
+                                    :disabled="true"
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
-                                    v-model="data.direccion"
+                                    v-model="items[0].direccion"
                                     label="Direccion"
+                                    :disabled="true"
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
-                                    v-model="data.poblacion"
+                                    v-model="items[0].poblacion"
                                     label="Poblacion"
+                                    :disabled="true"
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
-                                    v-model="data.provincia"
+                                    v-model="items[0].provincia"
                                     label="Provincia"
+                                    :disabled="true"
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
-                                    v-model="data.pais"
+                                    v-model="items[0].pais"
                                     label="Pais"
+                                    :disabled="true"
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
-                                    v-model="data.numero_telefono"
+                                    v-model="items[0].numero_telefono"
                                     label="Numero de telefono"
-                                    required
+                                    :disabled="true"
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
-                                    v-model="data.numero_telefono2"
+                                    v-model="items[0].numero_telefono2"
                                     label="Numero de telefono 2(Opcional)"
+                                    :disabled="true"
                             ></v-text-field>
                         </v-flex>
                     </v-layout>
@@ -85,32 +91,18 @@
                     <v-layout row wrap>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
-                                    v-model="data.correo_electronico"
-                                    :rules="rules.emailRules"
+                                    v-model="items[0].correo_electronico"
                                     label="Correo Electronico"
-                                    required
+                                    :disabled="true"
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm5>
                             <v-text-field
-                                    v-model="data.pasword"
-                                    :append-icon="show1 ? 'visibility_off' : 'visibility'"
-                                    :rules="[rules.required, rules.min]"
-                                    :type="show1 ? 'text' : 'password'"
-                                    name="input-10-1"
-                                    label="Nuevo Password"
-                                    hint="AL menos 8 caracteres"
-                                    counter
-                                    @click:append="show1 = !show1"
+                                    v-model="items[0].pasword"
+                                    label="Password"
+                                    :disabled="true"
                             ></v-text-field>
                         </v-flex>
-                    </v-layout>
-                    <v-layout row wrap>
-                    <v-flex xs12 sm5>
-                        <div>
-                            <v-btn large color="primary" @click="postData">Dar Alta</v-btn>
-                        </div>
-                    </v-flex>
                     </v-layout>
                 </v-container>
             </v-form>
@@ -123,60 +115,23 @@
     import axios from 'axios';
 
     export default {
-        name: "crearusuario",
-        data () {
+        data() {
             return {
-                data: {
-                    dni: '',
-                    nombre: '',
-                    apellidos: '',
-                    puesto_de_trabajo: '',
-                    jornada_laboral: '',
-                    direccion: '',
-                    poblacion: '',
-                    provincia: '',
-                    pais: '',
-                    numero_telefono: '',
-                    numero_telefono2: '',
-                    correo_electronico: '',
-                    pasword: ''
-                },
-                show1: false,
-                show2: true,
-                show3: false,
-                show4: false,
-                rules: {
-                    required: value => !!value || 'Requerido.',
-                    min: v => v.length >= 8 || 'Minimo 8 caracteres',
-                    emailRules: [
-                        v => !!v || 'E-mail is required',
-                        v => /.+@.+/.test(v) || 'E-mail must be valid'
-                    ],
-                },
-                methods: {
-                    postData() {
-                        axios.post('http://localhost:3000/api/empleados', this.data)
-                            .then(this.$router.push('/empleados'))
-                    },
-                }
-
-
-
+                dni: null,
+                items: null
             }
+        },
+        created() {
+            this.dni = this.$route.query.id
+        },
+        mounted() {
+            axios.get('http://localhost:3000/api/empleados/' + this.dni)
+                .then(response => this.items = response.data)
         }
+
     }
 </script>
 
 <style scoped>
-    h1{
-        color:blue;
-
-
-    }
-    h3{
-        text-decoration: underline;
-        padding-top: 10px;
-
-    }
 
 </style>

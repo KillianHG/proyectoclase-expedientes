@@ -18,6 +18,10 @@ import Tutores from '@/components/Tutores/tutores'
 import Centro from '@/components/Centros/centro'
 import Centros from '@/components/Centros/centros'
 import NuevoCentros from '@/components/Centros/nuevo-centros'
+import NuevoUsuario from '@/components/Usuarios/crear-usuario'
+import Usuarios from '@/components/Usuarios/usuarios'
+import Usuario from '@/components/Usuarios/usuario'
+
 
 
 Vue.use(Router)
@@ -124,7 +128,21 @@ export default new Router({
             name: 'nuevo-centros',
             component: NuevoCentros
         },
-
+        {
+            path: '/usuario/nuevo',
+            name: 'crear-usuario',
+            component: NuevoUsuario
+        },
+        {
+            path: '/usuarios',
+            name: 'usuarios',
+            component: Usuarios
+        },
+        {
+            path: '/usuario?id=',
+            name: 'usuario',
+            component: Usuario
+        },
 
     ],
     mode: 'history'

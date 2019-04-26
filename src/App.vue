@@ -67,28 +67,20 @@
                     {icon: '', title: 'Alumnos', link: '/alumnos'},
                     {icon: '', title: 'Demandas', link: '/demandas'},
                     {icon: '', title: 'Intervenciones', link: '/intervenciones'},
-                    {icon: '', title: 'Nueva', link: '/nueva'},
-                    {icon: '', title: 'Eliminar', link: '/eliminar'},
                     {icon: '', title: 'Crear', link: '/crearusuario'},
-                    {icon: '', title: 'Validar', link: '/validarusuario'},
-                    {icon: '', title: 'Empleados', link: '/empleados'}
+                    {icon: '', title: 'Usuarios', link: '/usuarios'}
                 ]
+                /*
                 if (this.$route.path == '/demandas') {
                     menuItems = [
                         {icon: '', title: 'Alumnos', link: '/alumnos'},
-                        {icon: '', title: 'TEST', link: '/demandas'},
-                        {icon: '', title: 'Intervenciones', link: '/intervenciones'},
-                        {icon: '', title: 'Nueva', link: '/nueva'},
-                        {icon: '', title: 'Eliminar', link: '/eliminar'}
-                    ]
-                }
-                if (this.$route.path == '/empleados') {
-                    menuItems = [
-                        {icon: '', title: 'lista usuarios', link: '/empleados'},
-                        {icon: '', title: 'crear usuario', link: '/demandas'},
+                        {icon: '', title: 'Demandas', link: '/demandas'},
+                        {icon: '', title: 'Intervenciones', link: '/intervenciones'}
 
                     ]
                 }
+                */
+
                 return menuItems
             }
         }
