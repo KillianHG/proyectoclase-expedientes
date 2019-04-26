@@ -27,7 +27,7 @@
                             </v-layout>
                             <v-layout>
                                 <v-flex xs12>
-                                    <v-btn type="submit">Aceptar</v-btn>
+                                    <v-btn large color="primary">Log in</v-btn>
                                 </v-flex>
                             </v-layout>
                         </form>
@@ -40,7 +40,6 @@
 
 <script>
     import axios from 'axios';
-    import constantes from '@/const.js';
 
     export default {
         name: "validar-usuario",
@@ -53,11 +52,12 @@
                 }
             }
         },
-        mounted() {
-            axios.get(constantes.path + 'usuarios')
-                .then(response => this.centros = response.data)
+        methods: {
+            getData() {
+                axios.get('http://localhost:3000/api/empleados', this.data)
+                    .then(this.$router.push('/empleados/?id=' +this.dni))
+            },
         },
-
 
 
 

@@ -3,11 +3,16 @@
 </template>
 
 <script>
+
     import Centro from "./Centros/centro";
     export default {
         name: "Home",
        components:{
            Centro
+
+
+
+
        }
 
     }

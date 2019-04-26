@@ -123,7 +123,9 @@ export default new Router({
             path: '/nuevocentros/',
             name: 'nuevo-centros',
             component: NuevoCentros
-        }
+        },
+
+
     ],
     mode: 'history'
 })
