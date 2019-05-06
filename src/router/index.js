@@ -75,7 +75,7 @@ export default new Router({
             component: Intervencion
         },
         {
-            path: '/intervenciones',
+            path: '/intervenciones/',
             name: 'intervenciones',
             component: Intervenciones
         },
@@ -95,7 +95,7 @@ export default new Router({
             component: ValidarUsuario
         },
         {
-            path: '/tutores/',
+            path: '/tutores/nuevo',
             name: 'nuevo-tutores',
             component: NuevoTutores
         },

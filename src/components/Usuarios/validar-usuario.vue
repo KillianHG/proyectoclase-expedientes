@@ -47,15 +47,15 @@
         data(){
             return{
                 data: {
-                    dni:'',
-                    pasword:''
+                    dni: '',
+                    pasword: ''
                 }
             }
         },
         methods: {
             getData() {
                 axios.get('http://localhost:3000/api/empleados', this.data)
-                    .then(this.$router.push('/empleados/?id=' +this.dni))
+                    .then(this.$router.push('/empleados/?id=' + this.dni))
             },
         },
 

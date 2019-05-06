@@ -4,17 +4,18 @@
             <v-form>
                 <v-container>
                     <h1>Intervenciones</h1>
-                    <v-layout>
+                    <v-layout row wrap>
                         <v-flex xs12 sm6 md6>
-                            <v-select
+                            <v-autocomplete
                                     v-model="dni"
                                     :items="alumnos"
+                                    :search-input.sync="search"
                                     label="Alumno"
                                     item-text="nombre"
                                     item-value="dni"
-                            ></v-select>
+                            ></v-autocomplete>
                         </v-flex>
-                        <v-flex xs12 sm6 md6>
+                        <v-flex xs12 sm6 md>
                             <v-select
                                     v-model="id_demanda"
                                     :items="demandas"
@@ -109,7 +110,8 @@
                         </v-flex>
                         <v-flex xs12 sm5>
                             <div>
-                                <v-btn large color="primary" @click="postData">Validar</v-btn>
+                                <v-btn v-if="!enabled" large disabled >Validar</v-btn>
+                                <v-btn v-else large color="primary" @click="postData">Validar</v-btn>
                             </div>
                         </v-flex>
                     </v-layout>
@@ -117,7 +119,6 @@
                 </v-container>
             </v-form>
         </v-app>
-        {{ items }}
     </div>
 </template>
 
@@ -128,6 +129,7 @@
     export default {
         data() {
             return {
+                search: null,
                 actuaciones:[
                     'Avaluació psicopedagògica',
                     'Coordinació amb el centre',
@@ -142,7 +144,7 @@
                 alumnos: null,
                 dni: null,
                 id_demanda: this.$route.query.id,
-                demandas: [{}],
+                demandas: [],
                 curso: '',
                 items: [{}],
                 data: {
@@ -156,16 +158,29 @@
         mounted() {
             axios.get(constantes.path + 'alumnosdni/')
                 .then(response => this.alumnos = response.data)
-            if (this.id_demanda != null) {
-                axios.get(constantes.path + 'demanda/' + this.id_demanda)
-                    .then(response => this.demandas = response.data)
-            }
         },
         methods: {
             postData() {
                 this.data.ficha_demanda_id_demanda = this.id_demanda
                 axios.post(constantes.path + 'intervenciones', this.data)
                     .then(this.$router.push('/intervenciones/?id=' +this.id_demanda))
+            },
+            querySelections (v) {
+                setTimeout(() => {
+                    this.items = this.states.filter(e => {
+                        return (e || '').toLowerCase().indexOf((v || '').toLowerCase()) > -1
+                    })
+                }, 500)
+            }
+        },
+        computed: {
+            enabled: function() {
+                if(this.dni && this.id_demanda && this.data.fecha_intervencion &&
+                    this.data.actuacion && this.data.descripcion_de_la_intervencion) {
+                    return true
+                } else {
+                    return false
+                }
             }
         },
         watch: {
@@ -180,6 +195,9 @@
                     axios.get(constantes.path + 'demanda/'+ this.id_demanda)
                         .then(response => this.items = response.data)
                 }
+            },
+            search (val) {
+                val && val !== this.select && this.querySelections(val)
             }
         }
     }
