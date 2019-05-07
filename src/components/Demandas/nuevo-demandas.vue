@@ -4,18 +4,17 @@
             <v-form>
                 <v-container>
                     <h1>Demandas</h1>
-                    <v-layout>
+                    <v-layout row wrap>
                         <v-flex xs12 sm6 md6>
-                            <v-select
+                            <v-autocomplete
                                     v-model="dni"
                                     :items="alumnos"
+                                    :search-input.sync="search"
                                     label="Alumno"
                                     item-text="nombre"
                                     item-value="dni"
-                            ></v-select>
+                            ></v-autocomplete>
                         </v-flex>
-                    </v-layout>
-                    <v-layout row wrap>
                         <v-flex xs12 sm6 md6>
                             <v-text-field
                                     v-model="items[0].nombre"
@@ -73,8 +72,8 @@
                         </v-flex>
                         <v-flex xs12 sm5>
                             <div>
-                                <v-btn v-if="!enabled" large disabled @click="postData">Validar</v-btn>
-                                <v-btn v-else large color="primary">Validar</v-btn>
+                                <v-btn v-if="!enabled" large disabled>Validar</v-btn>
+                                <v-btn v-else large color="primary" @click="postData">Validar</v-btn>
                             </div>
                         </v-flex>
                     </v-layout>
@@ -92,6 +91,7 @@
     export default {
         data() {
             return {
+                search: null,
                 alumnos: null,
                 dni: this.$route.query.id,
                 items: [{}],
@@ -117,6 +117,13 @@
                 axios.post(constantes.path + 'demandas', this.data)
                     .then(this.$router.push('/demandas/?id=' +this.dni))
             },
+            querySelections (v) {
+                setTimeout(() => {
+                    this.items = this.states.filter(e => {
+                        return (e || '').toLowerCase().indexOf((v || '').toLowerCase()) > -1
+                    })
+                }, 500)
+            }
         },
         computed : {
             years () {
@@ -138,6 +145,9 @@
                         .then(response => this.items = response.data)
                 },
                 deep: true
+            },
+            search (val) {
+                val && val !== this.select && this.querySelections(val)
             }
         }
     }
