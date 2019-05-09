@@ -29,7 +29,7 @@
         <v-toolbar height="55" class="light-blue darken-2">
             <v-toolbar-title
                     class="hidden-xs-only">
-                <router-link to="/" tag="soan" style="cursor: pointer">Principal</router-link>
+                <router-link to="/" tag="soan" style="cursor: pointer">Princial</router-link>
             </v-toolbar-title>
             <v-toolbar-side-icon
                     @click.native.stop="sideNav = !sideNav"
@@ -68,19 +68,14 @@
                     {icon: '', title: 'Demandas', link: '/demandas'},
                     {icon: '', title: 'Intervenciones', link: '/intervenciones'},
                     {icon: '', title: 'Crear', link: '/crearusuario'},
-                    {icon: '', title: 'Usuarios', link: '/usuarios'}
+                    {icon: '', title: 'Usuarios', link: '/usuarios'},
+                    {icon: '', title: 'Login', link: '/validarusuario'}
                 ]
-                /*
-                if (this.$route.path == '/demandas') {
+                if (this.$route.path == '/validarusuario') {
                     menuItems = [
-                        {icon: '', title: 'Alumnos', link: '/alumnos'},
-                        {icon: '', title: 'Demandas', link: '/demandas'},
-                        {icon: '', title: 'Intervenciones', link: '/intervenciones'}
 
                     ]
                 }
-                */
-
                 return menuItems
             }
         }

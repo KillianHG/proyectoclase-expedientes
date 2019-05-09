@@ -83,6 +83,7 @@
         mounted() {
             axios.get(constantes.path + 'tutores/' + this.dni)
                 .then(response => this.items = response.data)
+
         },
         methods: {
             showDemandas(){

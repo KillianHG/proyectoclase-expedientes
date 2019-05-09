@@ -93,7 +93,7 @@
                         </v-flex>
                         <v-flex xs12 sm5>
                             <v-text-field
-                                    v-model="data.pasword"
+                                    v-model="data.password"
                                     :append-icon="show1 ? 'visibility_off' : 'visibility'"
                                     :rules="[rules.required, rules.min]"
                                     :type="show1 ? 'text' : 'password'"
@@ -121,6 +121,7 @@
 <script>
 
     import axios from 'axios';
+    import constantes from '@/const.js';
 
     export default {
         name: "crearusuario",
@@ -139,7 +140,7 @@
                     numero_telefono: '',
                     numero_telefono2: '',
                     correo_electronico: '',
-                    pasword: ''
+                    password: ''
                 },
                 show1: false,
                 show2: true,
@@ -153,16 +154,15 @@
                         v => /.+@.+/.test(v) || 'E-mail must be valid'
                     ],
                 },
-                methods: {
-                    postData() {
-                        axios.post('http://localhost:3000/api/empleados', this.data)
-                            .then(this.$router.push('/empleados'))
-                    },
-                }
-
-
-
             }
+        },
+        methods: {
+            postData() {
+                axios.post(constantes.path + 'empleados', this.data)
+                    .then(this.$router.push('/usuarios'))
+
+                alert("Se ha dado de alta al usuario")
+            },
         }
     }
 </script>

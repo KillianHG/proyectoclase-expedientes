@@ -1,13 +1,13 @@
 <template>
     <v-container>
-        <v-layout justify-center style="padding-top: 150px">
+        <v-layout style="padding-top: 150px">
             <v-flex xs12 sm8 offset-sm2>
                 <h1 style="text-align: center">Login Usuario</h1>
                 <v-card-text>
                     <v-container>
                         <form @submit.prevent="onSignup">
-                            <v-layout row>
-                                <v-flex xs12>
+                            <v-layout row justify-center>
+                                <v-flex xs6>
                                     <v-text-field
                                             label="Dni"
                                             v-model="dni"
@@ -15,23 +15,25 @@
                                     ></v-text-field>
                                 </v-flex>
                             </v-layout>
-
-                            <v-layout row>
-                                <v-flex xs12>
+                            <v-layout row justify-center>
+                                <v-flex xs6>
                                     <v-text-field
                                             label="pasword"
-                                            v-model="pasword"
+                                            v-model="password"
                                             required
                                     ></v-text-field>
                                 </v-flex>
                             </v-layout>
                             <v-layout>
                                 <v-flex xs12>
-                                    <v-btn large color="primary">Log in</v-btn>
+                                    <div class="text-xs-center">
+                                    <v-btn large color="primary" @click="getData">Log in</v-btn>
+                                    </div>
                                 </v-flex>
                             </v-layout>
                         </form>
                     </v-container>
+
                 </v-card-text>
             </v-flex>
         </v-layout>
@@ -40,6 +42,8 @@
 
 <script>
     import axios from 'axios';
+     import constantes from '@/const.js';
+
 
     export default {
         name: "validar-usuario",
@@ -48,16 +52,33 @@
             return{
                 data: {
                     dni: '',
-                    pasword: ''
+                    password:''
+
                 }
             }
         },
         methods: {
             getData() {
-                axios.get('http://localhost:3000/api/empleados', this.data)
-                    .then(this.$router.push('/empleados/?id=' + this.dni))
-            },
-        },
+                   axios.get(constantes.path + 'empleados/' + this.dni)
+                       .then(response => this.items.password == response.data.password)
+
+                alert(this.items.password,this.items.dni)
+
+
+
+
+
+                },
+
+            }
+
+
+
+
+
+
+
+
 
 
 

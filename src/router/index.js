@@ -30,9 +30,15 @@ export default new Router({
     routes: [
         {
             path: '/',
-            name: 'Home',
-            component: Home
+            name: 'validar-usuario',
+            component: ValidarUsuario
         },
+        {
+            path: '/Home',
+            name: 'Home',
+            components:Home
+        },
+
         {
             path: '/alumnos',
             name: 'alumnos',

@@ -13,15 +13,13 @@
                     </div>
                     <template v-for="(item, index) in items">
                         <v-list-tile
-                                :key="item.dni"
+                                :key="index.dni"
                                 avatar
                                 ripple
                                 @click="loadUsuarios(item.dni)"
                         >
                             <v-list-tile-content>
                                 <v-list-tile-title>{{ item.nombre }} {{ item.apellidos }}</v-list-tile-title>
-
-
                             </v-list-tile-content>
                             <v-list-tile-action>
                                 <v-list-tile-action-text>{{ item.dni }}</v-list-tile-action-text>
@@ -35,6 +33,7 @@
                     </template>
                 </v-list>
             </v-card>
+            {{ items }}
         </v-flex>
     </v-layout>
 </template>
@@ -42,6 +41,8 @@
 <script>
 
     import axios from 'axios';
+    import constantes from '@/const.js';
+
 
     export default {
         data () {
@@ -51,7 +52,7 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:3000/api/empleados')
+            axios.get(constantes.path + 'empleados')
                 .then(response => this.items = response.data)
         },
         methods: {

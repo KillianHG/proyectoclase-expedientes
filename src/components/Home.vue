@@ -1,19 +1,22 @@
 <template>
-<centro></centro>
+<h2> TODAVIA NO ESTA DEFINIDO</h2>
 </template>
 
 <script>
 
-    import Centro from "./Centros/centro";
+
     export default {
         name: "Home",
-       components:{
-           Centro
+        data() {
+            return {
+
+            }
+        },
+
+        mounted() {
 
 
-
-
-       }
+        }
 
     }
 </script>
