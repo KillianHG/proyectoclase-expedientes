@@ -36,6 +36,7 @@
 
                 </v-card-text>
             </v-flex>
+            {{items}}
         </v-layout>
     </v-container>
 </template>
@@ -50,25 +51,39 @@
 
         data(){
             return{
-                data: {
-                    dni: '',
-                    password:''
 
-                }
+                    dni: '',
+                    password:'',
+                    items:null
+
+
             }
         },
         methods: {
             getData() {
-                   axios.get(constantes.path + 'empleados/' + this.dni)
-                       .then(response => this.items.password == response.data.password)
+                axios.get(constantes.path + 'empleados/' + this.dni+'?password='+this.password)
+                    .then(response => this.items = response.data).try(
 
-                alert(this.items.password,this.items.dni)
+                    alert("hijo de puta")
+
+
+                )
+
+
+
+
 
 
 
 
 
                 },
+
+            verificarlogin(){
+
+
+
+            }
 
             }
 

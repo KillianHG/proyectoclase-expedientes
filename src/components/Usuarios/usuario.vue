@@ -113,6 +113,7 @@
 <script>
 
     import axios from 'axios';
+    import constantes from '@/const.js';
 
     export default {
         data() {
@@ -125,7 +126,7 @@
             this.dni = this.$route.query.id
         },
         mounted() {
-            axios.get('http://localhost:3000/api/empleados/' + this.dni)
+            axios.get(constantes.path + 'empleados/' + this.dni)
                 .then(response => this.items = response.data)
         }
 
