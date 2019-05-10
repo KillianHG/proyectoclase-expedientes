@@ -96,6 +96,34 @@
                             ></v-select>
                         </v-flex>
                     </v-layout>
+                    {{ tutoresDni }}
+                    <v-layout v-for="(tutorDni, index) in tutoresDni" :key="index">
+                        <v-flex xs12 sm1 md1>
+                            <v-autocomplete
+                                    v-model="tutorDni.dni"
+                                    :items="tutores"
+                                    :search-input.sync="search"
+                                    label="Tutor"
+                                    item-text="dni"
+                                    item-value="dni"
+                            ></v-autocomplete>
+                        </v-flex>
+                        <v-flex xs12 sm1 md1>
+                            <v-text-field
+                                    v-model="tutorDni.nombre"
+                                    label="labeltest"
+                                    disabled
+                            ></v-text-field>
+                        </v-flex>
+                        <v-flex xs12 sm1 md1>
+                            <v-btn v-if="index!=0" flat icon color="red" @click="removeTutor(index)">
+                                <v-icon>clear</v-icon>
+                            </v-btn>
+                        </v-flex>
+                    </v-layout>
+                    <v-btn flat icon color="blue" @click="newTutor">
+                        <v-icon>add</v-icon>
+                    </v-btn>
                     <v-flex xs12 sm5>
 
                         <div>
@@ -109,7 +137,7 @@
                 </v-container>
             </v-form>
         </v-app>
-        {{ test }}
+        {{ tutores }}
     </div>
 </template>
 
@@ -122,7 +150,9 @@
         data() {
             return {
                 test: false,
-                centros: null
+                centros: null,
+                tutores: null,
+                tutoresDni: [{dni: '', nombre: '', apellidos: '', nacionalidad: '', telefono1: '', telefono2: ''},]
                 ,
                 data: {
                     dni: '',
@@ -155,12 +185,27 @@
         mounted() {
             axios.get(constantes.path + 'centros')
                 .then(response => this.centros = response.data)
+            axios.get(constantes.path + 'tutores')
+                .then(response => this.tutores = response.data)
 
         },
         methods: {
             postData() {
                 axios.post(constantes.path + 'alumnos', this.data)
                     .then(this.$router.push('/alumnos'))
+            },
+            querySelections (v) {
+                setTimeout(() => {
+                    this.items = this.states.filter(e => {
+                        return (e || '').toLowerCase().indexOf((v || '').toLowerCase()) > -1
+                    })
+                }, 500)
+            },
+            newTutor() {
+                this.tutoresDni.push({dni: '', nombre: '', apellidos: '', nacionalidad: '', telefono1: '', telefono2: ''})
+            },
+            removeTutor(index) {
+                this.tutoresDni.splice(index, 1)
             },
         },
         watch: {
@@ -172,7 +217,10 @@
                     }
                 },
                 deep: true
-            }
+            },
+            search (val) {
+                val && val !== this.select && this.querySelections(val)
+            },
         }
     }
 </script>
