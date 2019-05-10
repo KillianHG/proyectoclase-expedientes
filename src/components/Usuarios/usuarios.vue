@@ -19,7 +19,7 @@
                                 @click="loadUsuarios(item.dni)"
                         >
                             <v-list-tile-content>
-                                <v-list-tile-title>{{ item.nombre }} {{ item.apellidos }}</v-list-tile-title>
+                                <v-list-tile-title>{{ item.nombre}}</v-list-tile-title>
                             </v-list-tile-content>
                             <v-list-tile-action>
                                 <v-list-tile-action-text>{{ item.dni }}</v-list-tile-action-text>
@@ -33,7 +33,6 @@
                     </template>
                 </v-list>
             </v-card>
-            {{ items }}
         </v-flex>
     </v-layout>
 </template>

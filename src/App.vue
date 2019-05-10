@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <v-navigation-drawer temporary absolute v-model="sideNav">
+        <v-navigation-drawer temporary absolute v-model="sideNav" v-if="">
             <v-toolbar flat>
                 <v-list>
                     <v-list-tile>
@@ -29,7 +29,7 @@
         <v-toolbar height="55" class="light-blue darken-2">
             <v-toolbar-title
                     class="hidden-xs-only">
-                <router-link to="/" tag="soan" style="cursor: pointer">Princial</router-link>
+                <router-link to="/" tag="soan" style="cursor: pointer">Principal</router-link>
             </v-toolbar-title>
             <v-toolbar-side-icon
                     @click.native.stop="sideNav = !sideNav"
@@ -55,14 +55,20 @@
 
 <script>
 
+
     export default {
         data() {
             return {
-                sideNav: false
+                sideNav: false,
+
             }
+        },
+        mounted(){
+
         },
         computed: {
             menuItems() {
+
                 let menuItems = [
                     {icon: '', title: 'Alumnos', link: '/alumnos'},
                     {icon: '', title: 'Demandas', link: '/demandas'},
@@ -71,9 +77,9 @@
                     {icon: '', title: 'Usuarios', link: '/usuarios'},
                     {icon: '', title: 'Login', link: '/validarusuario'}
                 ]
-                if (this.$route.path == '/validarusuario') {
+                if (this.logueado) {
                     menuItems = [
-
+                        {icon: '', title: 'Login', link: '/validarusuario'}
                     ]
                 }
                 return menuItems

@@ -145,7 +145,7 @@ export default new Router({
             component: Usuarios
         },
         {
-            path: '/usuario?id=',
+            path: '/usuario',
             name: 'usuario',
             component: Usuario
         },

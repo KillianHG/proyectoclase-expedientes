@@ -8,7 +8,7 @@
             <v-card>
                 <v-list two-line>
                     <div class="grey lighten-5" >
-                        <v-subheader>ALUMNOS</v-subheader>
+                        <v-subheader>LISTA DE ALUMNOS</v-subheader>
                         <v-divider divider></v-divider>
                     </div>
                     <template v-for="(item, index) in items">

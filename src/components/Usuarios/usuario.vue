@@ -78,7 +78,7 @@
                                     :disabled="true"
                             ></v-text-field>
                         </v-flex>
-                        <v-flex xs12 sm6 md5>
+                        <v-flex xs12 sm6 md5 v-if="items[0].numero_telefono2 != null">
                             <v-text-field
                                     v-model="items[0].numero_telefono2"
                                     label="Numero de telefono 2(Opcional)"
@@ -98,7 +98,7 @@
                         </v-flex>
                         <v-flex xs12 sm5>
                             <v-text-field
-                                    v-model="items[0].pasword"
+                                    v-model="items[0].password"
                                     label="Password"
                                     :disabled="true"
                             ></v-text-field>

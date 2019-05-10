@@ -36,7 +36,7 @@
 
                 </v-card-text>
             </v-flex>
-            {{items}}
+
         </v-layout>
     </v-container>
 </template>
@@ -51,51 +51,41 @@
 
         data(){
             return{
-
+                    login:false,
                     dni: '',
                     password:'',
-                    items:null
+                    items:''
+
+
+
+
 
 
             }
         },
         methods: {
             getData() {
-                axios.get(constantes.path + 'empleados/' + this.dni+'?password='+this.password)
-                    .then(response => this.items = response.data).try(
+                axios.get(constantes.path + 'empleados/' + this.dni)
+                    .then(response => this.items = response.data)
 
-                    alert("hijo de puta")
+                    let token =this.items
 
+                    localStorage.setItem('token',token)
 
-                )
+                    if(this.items[0].password==this.password){
+                        this.login=true
 
-
-
-
-
-
+                        this.$router.push('/alumnos')
+                    }
+                    else{
+                        alert("contraseña o dni incorrectos")
+                    }
 
 
 
                 },
 
-            verificarlogin(){
-
-
-
             }
-
-            }
-
-
-
-
-
-
-
-
-
-
 
     }
 </script>
