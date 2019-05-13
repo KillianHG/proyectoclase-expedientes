@@ -11,6 +11,14 @@
                                 required
                         ></v-text-field>
                     </v-flex>
+
+                <v-flex xs12 sm6 md5>
+                    <v-text-field
+                            v-model="telefono_de_contacto"
+                            label="Telefono"
+                            required
+                    ></v-text-field>
+                </v-flex>
                 </v-layout>
                 <v-layout row wrap>
                     <v-flex xs12 sm6 md5>
@@ -38,13 +46,6 @@
                         <v-text-field
                                 v-model="provincia"
                                 label="Provincia"
-                                required
-                        ></v-text-field>
-                    </v-flex>
-                    <v-flex xs12 sm6 md5>
-                        <v-text-field
-                                v-model="telefono_de_contacto"
-                                label="Telefono"
                                 required
                         ></v-text-field>
                     </v-flex>

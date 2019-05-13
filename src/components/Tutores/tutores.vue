@@ -20,8 +20,6 @@
                         >
                             <v-list-tile-content>
                                 <v-list-tile-title>{{ item.nombre }} {{ item.apellidos }}</v-list-tile-title>
-
-                                <v-list-tile-sub-title>{{ item.id_centro }}</v-list-tile-sub-title>
                             </v-list-tile-content>
                             <v-list-tile-action>
                                 <v-list-tile-action-text>{{ item.dni }}</v-list-tile-action-text>
@@ -51,16 +49,13 @@
             }
         },
         mounted() {
-            axios.get(constantes.path + 'alumnos')
+            axios.get(constantes.path + 'tutores')
                 .then(response => this.items = response.data)
         },
         methods: {
             loadTutor(id){
-                this.$router.push('/alumno?id=' + id)
+                this.$router.push('/tutor?id=' + id)
             },
-            newAlumno(){
-                this.$router.push('/alumno/nuevo')
-            }
         }
     }
 </script>

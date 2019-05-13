@@ -21,8 +21,8 @@ import NuevoCentros from '@/components/Centros/nuevo-centros'
 import NuevoUsuario from '@/components/Usuarios/crear-usuario'
 import Usuarios from '@/components/Usuarios/usuarios'
 import Usuario from '@/components/Usuarios/usuario'
-
-
+import OpcionesCrear from '@/components/opciones-crear'
+import OpcionesLista from '@/components/opciones-lista'
 
 Vue.use(Router)
 
@@ -110,7 +110,7 @@ export default new Router({
             component: NuevoTutores
         },
         {
-            path: '/tutores/',
+            path: '/tutor/',
             name: 'tutor',
             component: Tutor
         },
@@ -149,6 +149,16 @@ export default new Router({
             name: 'usuario',
             component: Usuario
         },
+        {
+            path: '/opcionCrea',
+            name: 'opcion crear',
+            component: OpcionesCrear
+        },
+        {
+            path: '/opcionLista',
+            name: 'opcion-listar',
+            component: OpcionesLista
+        }
 
     ],
     mode: 'history'

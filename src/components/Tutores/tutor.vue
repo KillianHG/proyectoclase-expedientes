@@ -2,9 +2,9 @@
     <v-app>
         <v-form>
             <v-container>
-                <h1>Datos Tutor a Cargo</h1>
+                <h1>Informacion tutor a cargo</h1>
                 <v-layout row wrap>
-                    <v-flex xs12 sm5 md12>
+                    <v-flex xs12 sm6 md3>
                         <v-text-field
                                 v-model="items[0].dni"
                                 label="Dni"
@@ -29,13 +29,6 @@
                     </v-flex>
                     <v-flex xs12 sm6 md5>
                         <v-text-field
-                                v-model="items[0].parentesco"
-                                label="Parentesco"
-                                :disabled="true"
-                        ></v-text-field>
-                    </v-flex>
-                    <v-flex xs12 sm6 md5>
-                        <v-text-field
                                 v-model="items[0].nacionalidad"
                                 label="Nacionalidad"
                                 :disabled="true"
@@ -51,14 +44,9 @@
                     <v-flex xs12 sm6 md5>
                         <v-text-field
                                 v-model="items[0].telefono_2"
-                                label="Telefono 2(Opcional)"
+                                label="Telefono 2"
                                 :disabled="true"
                         ></v-text-field>
-                    </v-flex>
-                    <v-flex xs12 sm12>
-                        <div>
-                            <v-btn large color="primary" @click="postData">Dar Alta</v-btn>
-                        </div>
                     </v-flex>
                 </v-layout>
             </v-container>
@@ -86,9 +74,9 @@
 
         },
         methods: {
-            showDemandas(){
+            /*showDemandas(){
                 this.$router.push('/demandas?id=' + this.dni)
-            }
+            }*/
         }
 
     }

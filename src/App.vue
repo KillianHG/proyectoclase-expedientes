@@ -1,6 +1,6 @@
-<template>
+<template class="principal">
     <v-app>
-        <v-navigation-drawer temporary absolute v-model="sideNav" v-if="">
+        <v-navigation-drawer temporary absolute v-model="sideNav">
             <v-toolbar flat>
                 <v-list>
                     <v-list-tile>
@@ -60,7 +60,7 @@
         data() {
             return {
                 sideNav: false,
-
+                logueado:sessionStorage.getItem("login")
             }
         },
         mounted(){
@@ -70,16 +70,17 @@
             menuItems() {
 
                 let menuItems = [
-                    {icon: '', title: 'Alumnos', link: '/alumnos'},
-                    {icon: '', title: 'Demandas', link: '/demandas'},
-                    {icon: '', title: 'Intervenciones', link: '/intervenciones'},
-                    {icon: '', title: 'Crear', link: '/crearusuario'},
-                    {icon: '', title: 'Usuarios', link: '/usuarios'},
-                    {icon: '', title: 'Login', link: '/validarusuario'}
+                    //{icon: '', title: 'Alumnos', link: '/alumnos'},
+                    //{icon: '', title: 'Demandas', link: '/demand  as'},
+                   // {icon: '', title: 'Intervenciones', link: '/intervenciones'},
+
+                    //{icon: '', title: 'Login', link: '/validarusuario'}
                 ]
-                if (this.logueado) {
+                if (this.logueado=='true') {
                     menuItems = [
-                        {icon: '', title: 'Login', link: '/validarusuario'}
+                        {icon: '', title: 'Login', link: '/validarusuario'},
+                        {icon: '', title: 'Crear Nuevo', link: '/opcionCrea'},
+                        {icon: '', title: 'Listados', link: '/opcionLista'},
                     ]
                 }
                 return menuItems
@@ -87,4 +88,11 @@
         }
     }
 </script>
+<style>
+.principal{
 
+    background-image: url("/src/components/Usuarios/imagenes_nubes.jpg");
+}
+
+
+</style>

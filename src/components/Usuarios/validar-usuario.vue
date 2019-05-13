@@ -1,4 +1,4 @@
-<template>
+<template class="principal">
     <v-container>
         <v-layout style="padding-top: 150px">
             <v-flex xs12 sm8 offset-sm2>
@@ -55,36 +55,28 @@
                     dni: '',
                     password:'',
                     items:''
-
-
-
-
-
-
             }
         },
         methods: {
-            getData() {
-                axios.get(constantes.path + 'empleados/' + this.dni)
+            async getData() {
+                await axios.get(constantes.path + 'empleados/' + this.dni)
                     .then(response => this.items = response.data)
+                window.sessionStorage
 
-                    let token =this.items
 
-                    localStorage.setItem('token',token)
+
 
                     if(this.items[0].password==this.password){
-                        this.login=true
+                        sessionStorage.setItem("login",true)
 
-                        this.$router.push('/alumnos')
+                        this.$router.push('/opcionCrea')
+                        alert("bienvenido " + this.items[0].nombre)
                     }
                     else{
                         alert("contraseña o dni incorrectos")
+                        location.reload()
                     }
-
-
-
                 },
-
             }
 
     }
@@ -94,6 +86,10 @@
 
 h1{
     color:darkblue;
+
+}
+.principal{
+
 
 }
 

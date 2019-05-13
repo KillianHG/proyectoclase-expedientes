@@ -4,7 +4,7 @@
         <v-container>
             <h1>Datos Tutor a Cargo</h1>
             <v-layout row wrap>
-                <v-flex xs12 sm5 md12>
+                <v-flex xs12 sm6 md3>
                     <v-text-field
                             v-model="dni"
                             label="Dni"
