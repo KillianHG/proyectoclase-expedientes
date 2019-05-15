@@ -35,14 +35,14 @@
                     @click.native.stop="sideNav = !sideNav"
                     class="hidden-sm-and-up"></v-toolbar-side-icon>
             <spacer></spacer>
-            <v-toolbar-items class="hidden-xs-only">
+            <v-toolbar-items class="hidden-xs-only" >
                 <v-btn
                         flat
                         v-for="item in menuItems"
                         :key="item.title"
                         router
                         :to="item.link">
-                    <i :class="'ss ss-2x ss-'+item.icon"></i>                    &nbsp;
+                    <i :class="'ss ss-2x ss-'+item.icon"></i>&nbsp;
                     {{ item.title }}
                 </v-btn>
             </v-toolbar-items>
@@ -56,42 +56,59 @@
 <script>
 
 
+
     export default {
         data() {
             return {
                 sideNav: false,
-                logueado:sessionStorage.getItem("login")
+                login:false
             }
         },
         mounted(){
 
         },
         computed: {
+
+            autenticacion() {
+                return {
+
+                    login: sessionStorage.getItem("login")
+
+                }
+            },
             menuItems() {
+
+
 
                 let menuItems = [
                     //{icon: '', title: 'Alumnos', link: '/alumnos'},
                     //{icon: '', title: 'Demandas', link: '/demand  as'},
-                   // {icon: '', title: 'Intervenciones', link: '/intervenciones'},
+                    //{icon: '', title: 'Intervenciones', link: '/intervenciones'},
 
                     //{icon: '', title: 'Login', link: '/validarusuario'}
                 ]
-                if (this.logueado=='true') {
-                    menuItems = [
-                        {icon: '', title: 'Login', link: '/validarusuario'},
-                        {icon: '', title: 'Crear Nuevo', link: '/opcionCrea'},
-                        {icon: '', title: 'Listados', link: '/opcionLista'},
-                    ]
-                }
+
+                    if(this.login==false){
+                        menuItems = [
+                            {icon: '', title: 'Login', link: '/validarusuario'},
+                            {icon: '', title: 'Crear Nuevo', link: '/opcionCrea'},
+                            {icon: '', title: 'Listados', link: '/opcionLista'},
+                        ]
+                    }
+
+
                 return menuItems
             }
-        }
+        },
+
+
+
     }
 </script>
 <style>
 .principal{
 
-    background-image: url("/src/components/Usuarios/imagenes_nubes.jpg");
+
 }
 
 

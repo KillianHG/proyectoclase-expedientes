@@ -1,5 +1,5 @@
 <template>
-    <div id="crearusuario">
+    <div>
         <v-app id="inspire">
             <v-form>
                 <v-container>
@@ -9,6 +9,13 @@
                             <v-text-field
                                     v-model="items[0].nombre_de_centro"
                                     label="Nombre Del Centro"
+                                    :disabled="true"
+                            ></v-text-field>
+                        </v-flex>
+                        <v-flex xs12 sm6 md5>
+                            <v-text-field
+                                    v-model="items[0].telefono_de_contacto"
+                                    label="Telefono"
                                     :disabled="true"
                             ></v-text-field>
                         </v-flex>
@@ -42,13 +49,6 @@
                                     :disabled="true"
                             ></v-text-field>
                         </v-flex>
-                        <v-flex xs12 sm6 md5>
-                            <v-text-field
-                                    v-model="items[0].telefono_de_contacto"
-                                    label="Telefono"
-                                    :disabled="true"
-                            ></v-text-field>
-                        </v-flex>
                     </v-layout>
                 </v-container>
             </v-form>
@@ -62,15 +62,15 @@
     export default {
         data() {
             return {
-                dni: null,
+                id: null,
                 items: null
             }
         },
         created() {
-            this.dni = this.$route.query.id
+            this.id = this.$route.query.id
         },
         mounted() {
-            axios.get(constantes.path + 'centros/' + this.dni)
+            axios.get(constantes.path + 'centros/' + this.id)
                 .then(response => this.items = response.data)
         }
 

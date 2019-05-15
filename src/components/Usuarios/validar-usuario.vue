@@ -2,7 +2,7 @@
     <v-container>
         <v-layout style="padding-top: 150px">
             <v-flex xs12 sm8 offset-sm2>
-                <h1 style="text-align: center">Login Usuario</h1>
+                <h1 style="text-align: center">Login User</h1>
                 <v-card-text>
                     <v-container>
                         <form @submit.prevent="onSignup">
@@ -18,7 +18,7 @@
                             <v-layout row justify-center>
                                 <v-flex xs6>
                                     <v-text-field
-                                            label="pasword"
+                                            label="password"
                                             v-model="password"
                                             required
                                     ></v-text-field>
@@ -43,7 +43,8 @@
 
 <script>
     import axios from 'axios';
-     import constantes from '@/const.js';
+    import constantes from '@/const.js';
+
 
 
     export default {
@@ -51,26 +52,29 @@
 
         data(){
             return{
-                    login:false,
+
                     dni: '',
                     password:'',
-                    items:''
+                    items:'',
+
+
             }
         },
         methods: {
             async getData() {
                 await axios.get(constantes.path + 'empleados/' + this.dni)
                     .then(response => this.items = response.data)
-                window.sessionStorage
 
-
-
+                    sessionStorage.setItem("login",false)
 
                     if(this.items[0].password==this.password){
-                        sessionStorage.setItem("login",true)
 
+                        sessionStorage.setItem("login", true)
                         this.$router.push('/opcionCrea')
-                        alert("bienvenido " + this.items[0].nombre)
+                        alert("bienvenido "+ this.items[0].nombre)
+                        location.reload()
+
+
                     }
                     else{
                         alert("contraseña o dni incorrectos")

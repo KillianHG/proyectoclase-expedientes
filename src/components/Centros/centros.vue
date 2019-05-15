@@ -52,7 +52,7 @@
         },
         methods: {
             loadCentro(id){
-                this.$router.push('/centros?id=' + id)
+                this.$router.push('/centro?id=' + id)
             },
             newCentro(){
                 this.$router.push('/nuevocentros/nuevo')

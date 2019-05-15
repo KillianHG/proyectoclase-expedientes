@@ -63,7 +63,8 @@
                 this.$router.push('/intervenciones/nuevo')
             },
             newUser(){
-                this.$router.push('/Usuarios/nuevo')
+                alert(sessionStorage.getItem("login"))
+                //this.$router.push('/Usuarios/nuevo')
             },
             newTutor(){
                 this.$router.push('/Tutores/nuevo')
