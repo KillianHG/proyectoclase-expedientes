@@ -96,24 +96,66 @@
                             ></v-select>
                         </v-flex>
                     </v-layout>
-                    {{ tutoresDni }}
                     <v-layout v-for="(tutorDni, index) in tutoresDni" :key="index">
                         <v-flex xs12 sm1 md1>
                             <v-autocomplete
-                                    v-model="tutorDni.dni"
+                                    v-model="tutoresDni[index]"
                                     :items="tutores"
                                     :search-input.sync="search"
-                                    label="Tutor"
+                                    label="Dni"
                                     item-text="dni"
-                                    item-value="dni"
+                                    return-object
+                            ></v-autocomplete>
+                        </v-flex>
+                        <v-flex xs12 sm1 md1>
+                            <v-autocomplete
+                                    v-model="tutoresDni[index]"
+                                    :items="tutores"
+                                    :search-input.sync="search"
+                                    label="Nombre"
+                                    item-text="nombre"
+                                    return-object
                             ></v-autocomplete>
                         </v-flex>
                         <v-flex xs12 sm1 md1>
                             <v-text-field
-                                    v-model="tutorDni.nombre"
-                                    label="labeltest"
+                                    v-model="tutorDni.apellidos"
+                                    label="Apellidos"
                                     disabled
                             ></v-text-field>
+                        </v-flex>
+                        <v-flex xs12 sm1 md1>
+                            <v-text-field
+                                    v-model="tutorDni.nacionalidad"
+                                    label="Nacionalidad"
+                                    disabled
+                            ></v-text-field>
+                        </v-flex>
+                        <v-flex xs12 sm1 md1>
+                            <v-text-field
+                                    v-model="tutorDni.telefono1"
+                                    label="Telefono"
+                                    disabled
+                            ></v-text-field>
+                        </v-flex>
+                        <v-flex xs12 sm1 md1>
+                            <v-text-field
+                                    v-if="tutorDni.telefono2 != ''"
+                                    v-model="tutorDni.telefono2"
+                                    label="Telefono 2"
+                                    disabled
+
+                            ></v-text-field>
+                        </v-flex>
+                        <v-flex xs12 sm1 md1>
+                            <v-select
+                                    ref="Actuacion"
+                                    v-model="tutorDni.parentesco"
+                                    :items="parentesco"
+                                    label="Actuacion"
+                                    placeholder="Elige Actuacion"
+                                    required
+                            ></v-select>
                         </v-flex>
                         <v-flex xs12 sm1 md1>
                             <v-btn v-if="index!=0" flat icon color="red" @click="removeTutor(index)">
@@ -127,7 +169,7 @@
                     <v-flex xs12 sm5>
 
                         <div>
-                            <v-btn v-if="!test" large disabled @click="postData">Dar Alta</v-btn>
+                            <v-btn v-if="!enabled" large disabled @click="postData">Dar Alta</v-btn>
                             <v-btn v-else large color="primary" @click="postData">Dar Alta</v-btn>
 
                         </div>
@@ -137,7 +179,6 @@
                 </v-container>
             </v-form>
         </v-app>
-        {{ tutores }}
     </div>
 </template>
 
@@ -152,7 +193,15 @@
                 test: false,
                 centros: null,
                 tutores: null,
-                tutoresDni: [{dni: '', nombre: '', apellidos: '', nacionalidad: '', telefono1: '', telefono2: ''},]
+                tutoresDni: [{
+                    dni: '',
+                    nombre: '',
+                    apellidos: '',
+                    nacionalidad: '',
+                    telefono1: '',
+                    telefono2: '',
+                    parentesco: ''
+                },]
                 ,
                 data: {
                     dni: '',
@@ -166,6 +215,11 @@
                     provincia_reside: '',
                     id_centro: ''
                 },
+                parentesco: [
+                    'Padre',
+                    'Madre',
+                    'Tutor legal'
+                ],
                 show1: false,
                 show2: true,
                 show3: false,
@@ -191,10 +245,18 @@
         },
         methods: {
             postData() {
+                this.tutoresDni.map(c => {
+                    let alumnotutor = {
+                        alumnos_dni: this.data.dni,
+                        tutor_a_cargo_dni: c.dni,
+                        parentesco: c.parentesco,
+                    }
+                    axios.post(constantes.path + 'alumnoshastutor', alumnotutor)
+                })
                 axios.post(constantes.path + 'alumnos', this.data)
                     .then(this.$router.push('/alumnos'))
             },
-            querySelections (v) {
+            querySelections(v) {
                 setTimeout(() => {
                     this.items = this.states.filter(e => {
                         return (e || '').toLowerCase().indexOf((v || '').toLowerCase()) > -1
@@ -202,23 +264,39 @@
                 }, 500)
             },
             newTutor() {
-                this.tutoresDni.push({dni: '', nombre: '', apellidos: '', nacionalidad: '', telefono1: '', telefono2: ''})
+                this.tutoresDni.push({
+                    dni: '',
+                    nombre: '',
+                    apellidos: '',
+                    nacionalidad: '',
+                    telefono1: '',
+                    telefono2: ''
+                })
             },
             removeTutor(index) {
                 this.tutoresDni.splice(index, 1)
             },
+            enabled: function () {
+                if (this.tutoresDni[0].dni === '' && this.tutoresDni[0].parentesco === '') {
+                        return false
+                } else {
+                    return true
+                }
+
+
+            }
         },
         watch: {
             data: {
                 handler: function () {
                     // Return the object that changed
-                    if(this.data.id_centro != null) {
+                    if (this.data.id_centro != null) {
                         this.test = true
                     }
                 },
                 deep: true
             },
-            search (val) {
+            search(val) {
                 val && val !== this.select && this.querySelections(val)
             },
         }
@@ -226,12 +304,13 @@
 </script>
 
 <style scoped>
-    h1{
-        color:blue;
+    h1 {
+        color: #5887bc;
 
 
     }
-    h3{
+
+    h3 {
         text-decoration: underline;
         padding-top: 10px;
 
