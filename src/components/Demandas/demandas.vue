@@ -70,7 +70,7 @@
             },
             loadDemanda(id){
                 if (id != null) {
-                    this.$router.push('/demanda?id=' + id)
+                    this.$router.push('/demanda/' + id)
                 }
             },
         }

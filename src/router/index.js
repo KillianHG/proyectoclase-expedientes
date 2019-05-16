@@ -23,6 +23,7 @@ import Usuarios from '@/components/Usuarios/usuarios'
 import Usuario from '@/components/Usuarios/usuario'
 import OpcionesCrear from '@/components/opciones-crear'
 import OpcionesLista from '@/components/opciones-lista'
+import AuthGuard from './AuthGuard'
 
 Vue.use(Router)
 
@@ -50,8 +51,9 @@ export default new Router({
             component: Alumno
         },
         {
-            path: '/alumno',
+            path: '/alumno/:dni',
             name: 'alumno',
+            props: true,
             component: Alumno
         },
         {
@@ -75,13 +77,15 @@ export default new Router({
             component: NuevoDemandas
         },
         {
-            path: '/demanda/',
+            path: '/demanda/:id',
             name: 'demanda',
+            props: true,
             component: Demanda
         },
         {
-            path: '/intervencion',
+            path: '/intervencion/:id',
             name: 'intervencion',
+            props: true,
             component: Intervencion
         },
         {
@@ -157,7 +161,8 @@ export default new Router({
         {
             path: '/opcionLista',
             name: 'opcion-listar',
-            component: OpcionesLista
+            component: OpcionesLista,
+            beforeEnter: AuthGuard
         }
 
     ],

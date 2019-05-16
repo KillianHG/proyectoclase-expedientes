@@ -67,7 +67,7 @@
                 this.$router.push('/intervenciones/nuevo/?id=' + this.id )
             },
             loadIntervencion(id){
-                this.$router.push('/intervencion?id=' + id)
+                this.$router.push('/intervencion/' + id)
             },
         }
     }

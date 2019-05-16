@@ -104,14 +104,11 @@
     import constantes from '@/const.js';
 
     export default {
+        props: ['id'],
         data() {
             return {
-                id: null,
                 items: null
             }
-        },
-        created() {
-            this.id = this.$route.query.id
         },
         mounted() {
             axios.get(constantes.path + 'intervencion/' + this.id)

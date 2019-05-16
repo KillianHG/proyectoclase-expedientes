@@ -56,7 +56,7 @@
         },
         methods: {
             loadAlumno(id){
-                this.$router.push('/alumno?id=' + id)
+                this.$router.push('/alumno/' + id)
             },
             newAlumno(){
                 this.$router.push('/alumno/nuevo')
