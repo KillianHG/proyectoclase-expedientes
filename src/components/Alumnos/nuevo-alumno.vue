@@ -201,8 +201,7 @@
                     telefono1: '',
                     telefono2: '',
                     parentesco: ''
-                },]
-                ,
+                },],
                 data: {
                     dni: '',
                     nombre: '',

@@ -45,6 +45,15 @@
                     <i :class="'ss ss-2x ss-'+item.icon"></i>&nbsp;
                     {{ item.title }}
                 </v-btn>
+
+                <v-btn
+                        v-if="userIsAuthenticated"
+                        flat
+                        @click="onLogout">
+                    <v-icon right dark>exit_to_app</v-icon>
+                    Logout
+                </v-btn>
+
             </v-toolbar-items>
         </v-toolbar>
         <main>
@@ -64,31 +73,16 @@
                 login:true
             }
         },
-        mounted(){
-
-        },
         computed: {
-
-            autenticacion() {
-                return {
-
-                    login: sessionStorage.getItem("login")
-
-                }
-            },
             menuItems() {
-
-
-
                 let menuItems = [
                     //{icon: '', title: 'Alumnos', link: '/alumnos'},
                     //{icon: '', title: 'Demandas', link: '/demand  as'},
                     //{icon: '', title: 'Intervenciones', link: '/intervenciones'},
-
                     //{icon: '', title: 'Login', link: '/validarusuario'}
                 ]
 
-                    if(this.login==true){
+                    if(this.userIsAuthenticated){
                         menuItems = [
                             {icon: '', title: 'Crear Nuevo', link: '/opcionCrea'},
                             {icon: '', title: 'Listados', link: '/opcionLista'},
@@ -97,11 +91,18 @@
 
 
                 return menuItems
+            },
+            userIsAuthenticated () {
+                return this.$store.getters.user !== null && this.$store.getters.user !== undefined
             }
+
         },
-
-
-
+        methods: {
+            onLogout () {
+                this.$store.dispatch('logout')
+                this.$router.push('/')
+            }
+        }
     }
 </script>
 <style>

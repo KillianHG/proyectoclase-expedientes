@@ -48,44 +48,34 @@
     import axios from 'axios';
     import constantes from '@/const.js';
 
-
-
     export default {
         name: "validar-usuario",
 
         data(){
             return{
-
-                    dni: '',
-                    password:'',
-                    items:'',
-
-
+                dni: '',
+                password:'',
+                items:'',
             }
         },
+        computed: {
+            user () {
+                return this.$store.getters.user
+            },
+        },
         methods: {
-            async getData() {
-                await axios.get(constantes.path + 'empleados/' + this.dni)
-                    .then(response => this.items = response.data)
-
-                    sessionStorage.setItem("login",false)
-
-                    if(this.items[0].password==this.password){
-
-                        sessionStorage.setItem("login", true)
-                        //this.$router.push('/opcionCrea')
-
-                        alert("bienvenido "+ this.items[0].nombre)
-
-
-
-                    }
-                    else{
-                        alert("contraseña o dni incorrectos")
-                        location.reload()
-                    }
+            getData() {
+                this.$store.dispatch('signUserIn', {dni: this.dni, password: this.password})
                 },
+        },
+        watch: {
+            user (value) {
+                if (value !== null && value !== undefined) {
+                    this.$router.push('/opcionLista')
+                }
             }
+        },
+
 
     }
 </script>
