@@ -2,9 +2,9 @@ export const store = {
     state: {
         users: [
             {
-                id: '22',
-                name: 'hola',
-                login:'false'
+                id: null,
+                name: null,
+                login:null
             }
         ]
     },

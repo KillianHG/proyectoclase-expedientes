@@ -19,9 +19,11 @@
                                 @click="loadCentro(item.id_centro)"
                         >
                             <v-list-tile-content>
-                                <v-list-tile-sub-title>{{ item.id_centro }}</v-list-tile-sub-title>
                                 <v-list-tile-title>{{ item.nombre_de_centro }} {{ item.direccion_de_centro }}</v-list-tile-title>
                             </v-list-tile-content>
+                            <v-list-tile-action>
+                                <v-list-tile-action-text>{{ item.id_centro  }}</v-list-tile-action-text>
+                            </v-list-tile-action>
                         </v-list-tile>
                         <v-divider
                                 v-if="index + 1 < items.length"

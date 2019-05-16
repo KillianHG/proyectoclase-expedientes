@@ -54,7 +54,7 @@
 
         methods: {
             newAlumnos(){
-                this.$router.push('/alumno/nuevo')
+                this.$router.push('alumnos/nuevo')
             },
             newDemanda(){
                 this.$router.push('/Demandas/nuevo')
@@ -63,8 +63,7 @@
                 this.$router.push('/intervenciones/nuevo')
             },
             newUser(){
-                alert(sessionStorage.getItem("login"))
-                //this.$router.push('/Usuarios/nuevo')
+                this.$router.push('/usuario/nuevo')
             },
             newTutor(){
                 this.$router.push('/Tutores/nuevo')

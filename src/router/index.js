@@ -7,7 +7,6 @@ import Demanda from '@/components/Demandas/demanda'
 import Demandas from '@/components/Demandas/demandas'
 import Intervencion from '@/components/Intervenciones/intervencion'
 import Intervenciones from '@/components/Intervenciones/intervenciones'
-import CrearUsuario from '@/components/Usuarios/crear-usuario'
 import ValidarUsuario from '@/components/Usuarios/validar-usuario'
 import NuevoAlumno from '@/components/Alumnos/nuevo-alumno'
 import NuevoDemandas from '@/components/Demandas/nuevo-demandas'
@@ -57,7 +56,7 @@ export default new Router({
             component: Alumno
         },
         {
-            path: '/alumno/nuevo',
+            path: '/alumnos/nuevo',
             name: 'nuevo-alumno',
             component: NuevoAlumno
         },
@@ -97,11 +96,6 @@ export default new Router({
             path: '/intervenciones/nuevo',
             name: 'nuevo-intervenciones',
             component: NuevoIntervenciones
-        },
-        {
-            path: '/crearusuario',
-            name: 'crear-usuario',
-            component: CrearUsuario
         },
         {
             path: '/validarusuario',

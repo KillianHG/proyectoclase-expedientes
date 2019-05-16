@@ -61,7 +61,7 @@
         data() {
             return {
                 sideNav: false,
-                login:false
+                login:true
             }
         },
         mounted(){
@@ -88,9 +88,8 @@
                     //{icon: '', title: 'Login', link: '/validarusuario'}
                 ]
 
-                    if(this.login==false){
+                    if(this.login==true){
                         menuItems = [
-                            {icon: '', title: 'Login', link: '/validarusuario'},
                             {icon: '', title: 'Crear Nuevo', link: '/opcionCrea'},
                             {icon: '', title: 'Listados', link: '/opcionLista'},
                         ]

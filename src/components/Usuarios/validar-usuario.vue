@@ -20,6 +20,9 @@
                                     <v-text-field
                                             label="password"
                                             v-model="password"
+                                            :append-icon="show1 ? 'visibility_off' : 'visibility'"
+                                            :type="show1 ? 'text' : 'password'"
+                                            @click:append="show1 = !show1"
                                             required
                                     ></v-text-field>
                                 </v-flex>
@@ -70,9 +73,10 @@
                     if(this.items[0].password==this.password){
 
                         sessionStorage.setItem("login", true)
-                        this.$router.push('/opcionCrea')
+                        //this.$router.push('/opcionCrea')
+
                         alert("bienvenido "+ this.items[0].nombre)
-                        location.reload()
+
 
 
                     }

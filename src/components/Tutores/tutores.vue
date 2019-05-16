@@ -3,12 +3,12 @@
         <v-flex xs12 sm8 offset-sm2>
             <div>
                 <v-btn large color="primary"
-                       @click="newAlumno">Nuevo Tutor</v-btn>
+                       @click="newTutor">Nuevo Tutor</v-btn>
             </div>
             <v-card>
                 <v-list two-line>
                     <div class="grey lighten-5" >
-                        <v-subheader>LISTA TUTORES</v-subheader>
+                        <v-subheader>LISTADO DE TUTORES</v-subheader>
                         <v-divider divider></v-divider>
                     </div>
                     <template v-for="(item, index) in items">
@@ -56,6 +56,9 @@
             loadTutor(id){
                 this.$router.push('/tutor?id=' + id)
             },
+            newTutor(){
+                this.$router.push('/tutores/nuevo')
+            }
         }
     }
 </script>

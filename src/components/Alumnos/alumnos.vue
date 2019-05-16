@@ -59,7 +59,7 @@
                 this.$router.push('/alumno/' + id)
             },
             newAlumno(){
-                this.$router.push('/alumno/nuevo')
+                this.$router.push('/alumnos/nuevo')
             }
         }
     }
