@@ -81,14 +81,16 @@
 </script>
 
 <style scoped>
-
-h1{
-    color:darkblue;
-
-}
-.principal{
+    h1 {
+        color: #5887bc;
 
 
-}
+    }
+
+    h3 {
+        text-decoration: underline;
+        padding-top: 10px;
+
+    }
 
 </style>
