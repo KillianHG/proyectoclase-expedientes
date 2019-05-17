@@ -1,6 +1,8 @@
+import { store } from '../store/store'
+
 export default (to, from, next) => {
-    let a = true
-    if (a) {
+
+    if (store.getters.user) {
         next()
     } else {
         next('/validarusuario')

@@ -58,6 +58,11 @@
                 items:'',
             }
         },
+        mounted () {
+            if (this.$store.getters.user) {
+                this.$router.push('/opcionLista')
+            }
+        },
         computed: {
             user () {
                 return this.$store.getters.user
@@ -66,6 +71,7 @@
         methods: {
             getData() {
                 this.$store.dispatch('signUserIn', {dni: this.dni, password: this.password})
+                console.log('testisng')
                 },
         },
         watch: {

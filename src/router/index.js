@@ -23,6 +23,7 @@ import Usuario from '@/components/Usuarios/usuario'
 import OpcionesCrear from '@/components/opciones-crear'
 import OpcionesLista from '@/components/opciones-lista'
 import AuthGuard from './AuthGuard'
+import {store} from "../store/store";
 
 Vue.use(Router)
 
@@ -31,126 +32,163 @@ export default new Router({
         {
             path: '/',
             name: 'validar-usuario',
-            component: ValidarUsuario
+            component: ValidarUsuario,
+            beforeEnter: (to, from, next) => {
+                if (store.getters.user) {
+                    next('/opcionLista')
+                } else {
+                    next()
+                }
+            }
         },
         {
             path: '/Home',
             name: 'Home',
-            components:Home
+            components:Home,
+            beforeEnter: AuthGuard
         },
 
         {
             path: '/alumnos',
             name: 'alumnos',
-            component: Alumnos
+            component: Alumnos,
+            beforeEnter: AuthGuard
         },
         {
             path: '/alumno?id=',
             name: 'alumno',
-            component: Alumno
+            component: Alumno,
+            beforeEnter: AuthGuard
         },
         {
             path: '/alumno/:dni',
             name: 'alumno',
             props: true,
-            component: Alumno
+            component: Alumno,
+            beforeEnter: AuthGuard
         },
         {
             path: '/alumnos/nuevo',
             name: 'nuevo-alumno',
-            component: NuevoAlumno
+            component: NuevoAlumno,
+            beforeEnter: AuthGuard
         },
         {
             path: '/demandas?id=',
             name: 'demandas',
-            component: Demandas
+            component: Demandas,
+            beforeEnter: AuthGuard
         },
         {
             path: '/demandas/',
             name: 'demandas',
-            component: Demandas
+            component: Demandas,
+            beforeEnter: AuthGuard
         },
         {
             path: '/demandas/nuevo',
             name: 'nuevo-demandas',
-            component: NuevoDemandas
+            component: NuevoDemandas,
+            beforeEnter: AuthGuard
         },
         {
             path: '/demanda/:id',
             name: 'demanda',
             props: true,
-            component: Demanda
+            component: Demanda,
+            beforeEnter: AuthGuard
         },
         {
             path: '/intervencion/:id',
             name: 'intervencion',
             props: true,
-            component: Intervencion
+            component: Intervencion,
+            beforeEnter: AuthGuard
         },
         {
             path: '/intervenciones/',
             name: 'intervenciones',
-            component: Intervenciones
+            component: Intervenciones,
+            beforeEnter: AuthGuard
         },
         {
             path: '/intervenciones/nuevo',
             name: 'nuevo-intervenciones',
-            component: NuevoIntervenciones
+            component: NuevoIntervenciones,
+            beforeEnter: AuthGuard
         },
         {
             path: '/validarusuario',
             name: 'validar-usuario',
-            component: ValidarUsuario
+            component: ValidarUsuario,
+            beforeEnter: (to, from, next) => {
+                if (store.getters.user) {
+                    next('/opcionLista')
+                } else {
+                    next()
+                }
+            }
         },
         {
             path: '/tutores/nuevo',
             name: 'nuevo-tutores',
-            component: NuevoTutores
+            component: NuevoTutores,
+            beforeEnter: AuthGuard
         },
         {
             path: '/tutor/',
             name: 'tutor',
-            component: Tutor
+            component: Tutor,
+            beforeEnter: AuthGuard
         },
         {
             path: '/tutores/',
             name: 'tutores',
-            component: Tutores
+            component: Tutores,
+            beforeEnter: AuthGuard
         },
         {
             path: '/centro/',
             name: 'centro',
-            component: Centro
+            component: Centro,
+            beforeEnter: AuthGuard
         },
         {
             path: '/centros/',
             name: 'centros',
-            component: Centros
+            component: Centros,
+            beforeEnter: AuthGuard
         },
         {
             path: '/nuevocentros/',
             name: 'nuevo-centros',
-            component: NuevoCentros
+            component: NuevoCentros,
+            beforeEnter: AuthGuard
         },
         {
             path: '/usuario/nuevo',
             name: 'crear-usuario',
-            component: NuevoUsuario
+            component: NuevoUsuario,
+            beforeEnter: AuthGuard
         },
         {
             path: '/usuarios',
             name: 'usuarios',
-            component: Usuarios
+            component: Usuarios,
+            beforeEnter: AuthGuard
         },
         {
             path: '/usuario',
             name: 'usuario',
-            component: Usuario
+            component: Usuario,
+            beforeEnter: AuthGuard
+
         },
         {
             path: '/opcionCrea',
             name: 'opcion crear',
-            component: OpcionesCrear
+            component: OpcionesCrear,
+            beforeEnter: AuthGuard
         },
         {
             path: '/opcionLista',

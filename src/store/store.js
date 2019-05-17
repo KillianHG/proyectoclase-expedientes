@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import constantes from '@/const.js'
+import bcrypt from 'bcrypt'
 
 
 Vue.use(Vuex)
@@ -14,6 +15,8 @@ export const store = new Vuex.Store({
     },
     mutations: {
         setUser (state, payload) {
+            console.log("SET USER")
+            console.log(payload)
             if (payload != null)  {
                 state.user = payload
             } else {
@@ -36,14 +39,21 @@ export const store = new Vuex.Store({
         signUserUp ({commit}, payload) {
             commit('setLoading', true)
             commit('clearError')
+
+            axios.post(constantes.path + 'empleados', payload)
+                .then(commit('setLoading', false))
         },
         signUserIn ({commit}, payload) {
+            console.log("PAYLOAD")
+            console.log(payload)
             commit('setLoading', true)
             commit('clearError')
             axios.get(constantes.path + 'empleados/' + payload.dni)
                 .then(response => {
                     commit('setLoading', false)
                     let items = response.data
+                    console.log("SIGN USER IN")
+                    console.log(response.data)
                     if(items[0].password == payload.password){
                         //alert("bienvenido "+ items[0].nombre)
                         let user = {
@@ -69,7 +79,9 @@ export const store = new Vuex.Store({
                         location.reload()
                     }
 
-                })
+                }).catch(
+                    commit('setError', "error")
+            )
         },
         autoSignIn ({commit}, payload) {
             commit('setUser', payload)

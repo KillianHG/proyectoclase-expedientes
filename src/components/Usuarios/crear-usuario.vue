@@ -158,12 +158,10 @@
         },
         methods: {
             postData() {
-                axios.post(constantes.path + 'empleados', this.data)
-                    .then(this.$router.push('/usuarios'))
-
-                alert("Se ha dado de alta al usuario")
+                this.$store.dispatch('signUserUp', this.data)
+                this.$router.push('/opcionCrea')
             },
-        }
+        },
     }
 </script>
 
