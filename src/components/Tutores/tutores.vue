@@ -1,5 +1,5 @@
 <template>
-    <v-layout row>
+    <v-layout row >
         <v-flex xs12 sm8 offset-sm2>
             <div>
                 <v-btn large color="primary"
@@ -64,6 +64,8 @@
 </script>
 
 <style scoped>
+
+
     h1 {
         color: #5887bc;
 

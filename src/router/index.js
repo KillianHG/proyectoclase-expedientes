@@ -22,6 +22,12 @@ import Usuarios from '@/components/Usuarios/usuarios'
 import Usuario from '@/components/Usuarios/usuario'
 import OpcionesCrear from '@/components/opciones-crear'
 import OpcionesLista from '@/components/opciones-lista'
+import EditAlumno from'@/components/Alumnos/edit-alumno'
+import EditCentro from'@/components/Centros/edit-centro'
+import EditDemanda from'@/components/Demandas/edit-demanda'
+import EditIntervencion from'@/components/Intervenciones/edit-intervencion'
+import EditTutor from'@/components/Tutores/edit-tutor'
+import EditUsuario from'@/components/Usuarios/edit-user'
 import AuthGuard from './AuthGuard'
 import {store} from "../store/store";
 
@@ -195,7 +201,38 @@ export default new Router({
             name: 'opcion-listar',
             component: OpcionesLista,
             beforeEnter: AuthGuard
-        }
+        },
+        {
+            path:'/editarAlumno',
+            name:'editar-alumno',
+            component: EditAlumno
+        },
+        {
+            path:'/editarCentro',
+            name:'editar-centro',
+            component: EditCentro
+
+        },
+        {
+            path:'/editarDemanda',
+            name:'editar-demanda',
+            component: EditDemanda
+        },
+        {
+            path:'/editarIntervencion',
+            name:'editar-intervencion',
+            component: EditIntervencion
+        },
+        {
+            path:'/editarTutor',
+            name:'editar-tutor',
+            component: EditTutor
+        },
+        {
+            path:'/editarUsuario',
+            name:'editar-Usuario',
+            component: EditUsuario
+        },
 
     ],
     mode: 'history'
