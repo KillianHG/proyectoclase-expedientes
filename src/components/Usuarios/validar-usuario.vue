@@ -2,7 +2,12 @@
     <v-container>
         <v-layout style="padding-top: 150px">
             <v-flex xs12 sm8 offset-sm2>
-                <h1 style="text-align: center">Login User</h1>
+                <v-layout row justify-center v-if="error">
+                    <v-flex xs12 sm6>
+                        <app-alert @dismissed="onDismissed" :text="error"></app-alert>
+                    </v-flex>
+                </v-layout>
+                <h1 style="text-align: center">Login usuario</h1>
                 <v-card-text>
                     <v-container>
                         <form @submit.prevent="onSignup">
@@ -67,12 +72,20 @@
             user () {
                 return this.$store.getters.user
             },
+            error () {
+                return this.$store.getters.error
+            },
+            loading () {
+                return this.$store.getters.loading
+            }
         },
         methods: {
             getData() {
                 this.$store.dispatch('signUserIn', {dni: this.dni, password: this.password})
-                console.log('testisng')
                 },
+            onDismissed () {
+                this.$store.dispatch('clearError')
+            }
         },
         watch: {
             user (value) {

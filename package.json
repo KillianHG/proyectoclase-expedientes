@@ -10,7 +10,6 @@
   "dependencies": {
     "aws-sdk": "^2.457.0",
     "axios": "^0.18.0",
-    "bcrypt": "^3.0.6",
     "vue": "^2.6.6",
     "vue-axios": "^2.1.4",
     "vue-router": "^3.0.2",

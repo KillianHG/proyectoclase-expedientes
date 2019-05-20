@@ -3,6 +3,11 @@
         <v-app id="inspire">
             <v-form>
                 <v-container>
+                    <v-layout row justify-center v-if="error">
+                        <v-flex xs12 sm6>
+                            <app-alert @dismissed="onDismissed" :text="error"></app-alert>
+                        </v-flex>
+                    </v-layout>
                     <h1>ALTA USUARIO</h1>
                     <h3>Datos personales</h3>
                     <v-layout row wrap>
@@ -159,9 +164,17 @@
         methods: {
             postData() {
                 this.$store.dispatch('signUserUp', this.data)
-                this.$router.push('/opcionCrea')
+                //this.$router.push('/opcionCrea')
             },
+            onDismissed() {
+                this.$store.dispatch('clearError')
+            }
         },
+        computed: {
+            error() {
+                return this.$store.getters.error
+            }
+        }
     }
 </script>
 

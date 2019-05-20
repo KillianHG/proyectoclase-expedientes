@@ -6,6 +6,7 @@ import App from './App.vue'
 import Vuetify from 'vuetify'
 import router from './router'
 import { store } from './store/store'
+import AlertCmp from './components/Shared/alert'
 
 Vue.config.productionTip = false
 
@@ -13,6 +14,8 @@ Vue.use(Vuetify)
 Vue.use(VueAxios, axios)
 
 Vue.config.productionTip = false
+
+Vue.component('app-alert', AlertCmp)
 
 new Vue({
   el: '#app',
