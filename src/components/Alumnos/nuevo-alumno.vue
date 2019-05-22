@@ -96,9 +96,9 @@
                             ></v-select>
                         </v-flex>
                     </v-layout>
-                    <v-layout v-for="(tutorDni, index) in tutoresDni" :key="index">
+                    <v-layout class="featured-inputs" v-for="(tutorDni, index) in tutoresDni" :key="index">
                         <v-flex xs12 sm1 md1>
-                            <v-autocomplete
+                            <v-autocomplete class="ola"
                                     v-model="tutoresDni[index]"
                                     :items="tutores"
                                     :search-input.sync="search"
@@ -108,7 +108,7 @@
                             ></v-autocomplete>
                         </v-flex>
                         <v-flex xs12 sm1 md1>
-                            <v-autocomplete
+                            <v-autocomplete class="ola"
                                     v-model="tutoresDni[index]"
                                     :items="tutores"
                                     :search-input.sync="search"
@@ -118,28 +118,28 @@
                             ></v-autocomplete>
                         </v-flex>
                         <v-flex xs12 sm1 md1>
-                            <v-text-field
+                            <v-text-field class="ola"
                                     v-model="tutorDni.apellidos"
                                     label="Apellidos"
                                     disabled
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm1 md1>
-                            <v-text-field
+                            <v-text-field class="ola"
                                     v-model="tutorDni.nacionalidad"
                                     label="Nacionalidad"
                                     disabled
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm1 md1>
-                            <v-text-field
+                            <v-text-field class="ola"
                                     v-model="tutorDni.telefono1"
                                     label="Telefono"
                                     disabled
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm1 md1>
-                            <v-text-field
+                            <v-text-field class="ola"
                                     v-if="tutorDni.telefono2 != ''"
                                     v-model="tutorDni.telefono2"
                                     label="Telefono 2"
@@ -148,7 +148,7 @@
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm1 md1>
-                            <v-select
+                            <v-select class="ola"
                                     ref="Actuacion"
                                     v-model="tutorDni.parentesco"
                                     :items="parentesco"
@@ -303,6 +303,26 @@
 </script>
 
 <style scoped>
+
+
+    .featured-inputs {
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    @media (min-width: 100px) and (max-width: 1176px) {
+        .featured-inputs {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .ola {
+        width: 150px;
+        margin-right: 10px;
+    }
+
     h1 {
         color: #5887bc;
 

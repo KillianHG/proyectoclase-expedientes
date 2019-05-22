@@ -1,5 +1,6 @@
-<template class="principal">
+<template class="app-component">
     <v-app>
+        {{ error }}
         <v-navigation-drawer temporary absolute v-model="sideNav">
             <v-toolbar flat>
                 <v-list>
@@ -90,6 +91,9 @@
             },
             userIsAuthenticated () {
                 return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+            },
+            error () {
+                return this.$store.getters.error
             }
 
         },
@@ -101,11 +105,7 @@
         }
     }
 </script>
-<style>
-.principal{
-
-
-}
+<style lang="scss">
 
 
 </style>

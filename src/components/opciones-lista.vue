@@ -1,45 +1,43 @@
 <template>
     <div>
-    <table class="align">
-        <tr>
-            <td>
+    <table class="list-container">
+        <tr class="options-list">
+            <td class="inner-item">
                 <div>
-                    <v-btn large color="primary" @click="ListAlumnos">Lista de Alumno</v-btn>
+                    <v-btn  color="primary" @click="ListAlumnos">Lista de Alumno</v-btn>
                 </div>
+                <p>Descripcion</p>
             </td>
-            <td>
+            <td class="inner-item">
                 <div>
-                    <v-btn large color="primary" @click="ListDemanda">Lista de Demandas</v-btn>
+                    <v-btn  color="primary" @click="ListDemanda">Lista de Demandas</v-btn>
                 </div>
+                <p>Descripcion</p>
             </td>
-            <td>
+            <td class="inner-item">
                 <div>
-                    <v-btn large color="primary" @click="Listintervenviones">lista de Intervenciones</v-btn>
+                    <v-btn  color="primary" @click="Listintervenviones">lista de Intervenciones</v-btn>
                 </div>
+                <p>Descripcion</p>
             </td>
-            <td>
+            <td class="inner-item">
                 <div>
-                    <v-btn large color="primary" @click="ListUser">Lista de Usuarios</v-btn>
+                    <v-btn  color="primary" @click="ListUser">Lista de Usuarios</v-btn>
                 </div>
+                <p>Descripcion</p>
             </td>
-            <td>
+            <td class="inner-item">
                 <div>
-                    <v-btn large color="primary" @click="ListTutor()">Lista de Tutores</v-btn>
+                    <v-btn  color="primary" @click="ListTutor()">Lista de Tutores</v-btn>
                 </div>
+                <p>Descripcion</p>
             </td>
-            <td>
+            <td class="inner-item">
                 <div>
-                    <v-btn large color="primary" @click="ListCentros">Lista de Centros</v-btn>
+                    <v-btn  color="primary" @click="ListCentros">Lista de Centros</v-btn>
                 </div>
+                <p>Descripcion</p>
             </td>
-        </tr>
-        <tr>
-            <td><p>descripciones</p></td>
-            <td><p>descripciones</p></td>
-            <td><p>descripciones</p></td>
-            <td><p>descripciones</p></td>
-            <td><p>descripciones</p></td>
-            <td><p>descripciones</p></td>
         </tr>
     </table>
     </div>
@@ -72,25 +70,46 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss">
 
-    .align{
-        margin-left:auto;
-        margin-right: auto;
-        padding-top: 40px;
-        text-align: center;
+    // NO TOCAR!!!!!
+    .list-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 3vw;
 
-    }
-    h1 {
-        color: #5887bc;
+        .options-list {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 85%;
 
+            .inner-item {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
 
-    }
+                p {
+                    text-align: center;
+                }
 
-    h3 {
-        text-decoration: underline;
-        padding-top: 10px;
+            }
 
+            @media (min-width: 100px) and (max-width: 1176px) {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+
+                .inner-item {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
     }
 
 </style>

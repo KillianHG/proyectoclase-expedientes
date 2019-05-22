@@ -81,7 +81,6 @@
             }
         },
         mounted() {
-            console.log(this.id_centro)
             axios.get(constantes.path + 'centros/' + this.id_centro)
                 .then(response => this.items = response.data)
         },

@@ -1,45 +1,48 @@
 <template>
     <div >
-    <table class="align">
-        <tr>
-            <td>
+    <table class="list-container">
+        <tr class="options-list">
+            <td class="inner-item">
                 <div>
-                <v-btn large color="primary" @click="newAlumnos">Dar Alta Alumno</v-btn>
+                <v-btn  color="primary" @click="newAlumnos">Dar Alta Alumno</v-btn>
                 </div>
+                <p>Descripciones</p>
             </td>
-            <td>
+            <td class="inner-item">
                 <div>
-                    <v-btn large color="primary" @click="newDemanda">Crear Nueva Demanda</v-btn>
+                    <v-btn  color="primary" @click="newDemanda">Crear Nueva Demanda</v-btn>
                 </div>
+                <p>Descripciones</p>
+
             </td>
-            <td>
+            <td class="inner-item">
                 <div>
-                    <v-btn large color="primary" @click="newintervenviones">Nueva Intervencion</v-btn>
+                    <v-btn  color="primary" @click="newintervenviones">Nueva Intervencion</v-btn>
                 </div>
+                <p>Descripciones</p>
+
             </td>
-            <td>
+            <td class="inner-item">
                 <div>
-                    <v-btn large color="primary" @click="newUser">Dar Alta Usuario</v-btn>
+                    <v-btn  color="primary" @click="newUser">Dar Alta Usuario</v-btn>
                 </div>
+                <p>Descripciones</p>
+
             </td>
-            <td>
+            <td class="inner-item">
                 <div>
-                    <v-btn large color="primary" @click="newTutor">Agregar Tutor Alumno</v-btn>
+                    <v-btn  color="primary" @click="newTutor">Agregar Tutor Alumno</v-btn>
                 </div>
+                <p>Descripciones</p>
+
             </td>
-            <td>
+            <td class="inner-item">
                 <div>
-                    <v-btn large color="primary" @click="newCentro">Agregar Centro</v-btn>
+                    <v-btn  color="primary" @click="newCentro">Agregar Centro</v-btn>
                 </div>
+                <p>Descripciones</p>
+
             </td>
-        </tr>
-        <tr>
-            <td><p>descripciones</p></td>
-            <td><p>descripciones</p></td>
-            <td><p>descripciones</p></td>
-            <td><p>descripciones</p></td>
-            <td><p>descripciones</p></td>
-            <td><p>descripciones</p></td>
         </tr>
     </table>
     </div>
@@ -77,25 +80,42 @@
 
 </script>
 
-<style scoped>
+<style lang="scss">
 
-    .align{
-        margin-left:auto;
-        margin-right: auto;
-        padding:40px;
-        text-align: center;
-    }
+    // NO TOCAR!!!!!
+    .list-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 3vw;
 
-    h1 {
-        color: #5887bc;
+        .options-list {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 85%;
 
+            .inner-item {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
 
-    }
+            }
 
-    h3 {
-        text-decoration: underline;
-        padding-top: 10px;
+            @media (min-width: 100px) and (max-width: 1176px) {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
 
+                .inner-item {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
     }
 
 </style>

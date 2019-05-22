@@ -91,6 +91,7 @@
         watch: {
             user (value) {
                 if (value !== null && value !== undefined) {
+                    this.$store.dispatch('clearError')
                     this.$router.push('/opcionLista')
                 }
             }
