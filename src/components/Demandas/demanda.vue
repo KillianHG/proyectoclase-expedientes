@@ -3,7 +3,7 @@
         <v-app id="">
             <v-form>
                 <v-container>
-                    <h1>Demandas</h1>
+                    <h1>Demanda Alumno</h1>
                     <v-layout row wrap>
                         <v-flex xs12 sm6 md6>
                             <v-text-field
@@ -62,10 +62,23 @@
                                     :disabled="true"
                             ></v-textarea>
                         </v-flex>
-                        <v-flex xs12 sm6 md5>
-                            <v-btn large color="primary"
-                                   @click="showIntervenciones">Ver intervenciones</v-btn>
-                        </v-flex>
+
+                        <table>
+                            <tr>
+                                <td>
+                                    <v-flex xs12 sm6 md5>
+                                        <v-btn large color="primary"
+                                               @click="showIntervenciones">Ver intervenciones</v-btn>
+                                    </v-flex>
+                                </td>
+                                <td>
+                                    <v-flex xs12 sm6 md5>
+                                        <v-btn large color="primary"
+                                               @click="editar">Editar Demanda</v-btn>
+                                    </v-flex>
+                                </td>
+                            </tr>
+                        </table>
                     </v-layout>
                 </v-container>
             </v-form>
@@ -91,6 +104,9 @@
         methods: {
             showIntervenciones(){
                 this.$router.push('/intervenciones?id=' + this.id)
+            },
+            editar(){
+                this.$router.push('/editarDemanda/' + this.id)
             }
         }
 

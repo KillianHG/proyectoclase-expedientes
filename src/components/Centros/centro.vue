@@ -49,6 +49,11 @@
                                     :disabled="true"
                             ></v-text-field>
                         </v-flex>
+                        <v-flex xs12 sm5>
+                            <div>
+                                <v-btn large color="primary" @click="editar">Editar Centro</v-btn>
+                            </div>
+                        </v-flex>
                     </v-layout>
                 </v-container>
             </v-form>
@@ -79,6 +84,12 @@
             console.log(this.id_centro)
             axios.get(constantes.path + 'centros/' + this.id_centro)
                 .then(response => this.items = response.data)
+        },
+        methods: {
+
+            editar(){
+                this.$router.push('/editarCentro/' + this.id)
+            }
         }
 
     }

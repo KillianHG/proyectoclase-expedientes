@@ -125,8 +125,8 @@
 
 <script>
 
-    import axios from 'axios';
-    import constantes from '@/const.js';
+    //import axios from 'axios';
+    //import constantes from '@/const.js';
 
     export default {
         name: "crearusuario",

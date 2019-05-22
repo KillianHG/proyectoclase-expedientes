@@ -120,14 +120,11 @@
     import constantes from '@/const.js';
 
     export default {
+        props: ['dni'],
         data() {
             return {
-                dni: null,
                 items: null
             }
-        },
-        created() {
-            this.dni = this.$route.query.id
         },
         mounted() {
             axios.get(constantes.path + 'empleados/' + this.dni)
@@ -136,8 +133,8 @@
         methods: {
 
             savedata(){
-                axios.put(constantes.path + 'empleados/' + this.item[0].dni,this.items).then(
-                    alert("el usuario con dni"+ this.items[0].dni + " se ha editado")
+                axios.put(constantes.path + 'empleados/' + this.dni,this.items).then(
+                    alert("el usuario con dni"+ this.dni + " se ha editado")
 
                 )
                 this.$router.push('/usuarios')

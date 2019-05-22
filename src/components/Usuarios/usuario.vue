@@ -103,6 +103,10 @@
                                     :disabled="true"
                             ></v-text-field>
                         </v-flex>
+                        <v-flex xs12 sm6 md5>
+                            <v-btn large color="primary"
+                                   @click="editar">Editar Datos</v-btn>
+                        </v-flex>
                     </v-layout>
                 </v-container>
             </v-form>
@@ -128,6 +132,11 @@
         mounted() {
             axios.get(constantes.path + 'empleados/' + this.dni)
                 .then(response => this.items = response.data)
+        },
+        methods:{
+            editar(){
+                this.$router.push('/editarUsuario/' + this.dni)
+            }
         }
 
     }

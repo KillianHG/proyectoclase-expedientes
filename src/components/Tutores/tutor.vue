@@ -49,6 +49,10 @@
                         ></v-text-field>
                     </v-flex>
                 </v-layout>
+                <v-flex xs12 sm6 md5>
+                    <v-btn large color="primary"
+                           @click="editar">Editar Tutor</v-btn>
+                </v-flex>
             </v-container>
         </v-form>
     </v-app>
@@ -78,9 +82,9 @@
 
         },
         methods: {
-            /*showDemandas(){
-                this.$router.push('/demandas?id=' + this.dni)
-            }*/
+            editar(){
+                this.$router.push('/editarTutor/' + this.dni)
+            }
         }
 
     }

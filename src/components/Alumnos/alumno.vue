@@ -78,6 +78,8 @@
                         <v-flex xs12 sm6 md5>
                             <v-btn large color="primary"
                                    @click="showDemandas">Ver demandas</v-btn>
+                            <v-btn large color="primary"
+                                   @click="editar">Editar Alumno</v-btn>
                         </v-flex>
                     </v-layout>
                 </v-container>
@@ -103,6 +105,9 @@
         methods: {
             showDemandas(){
                 this.$router.push('/demandas/' + this.dni)
+            },
+            editar(){
+                    this.$router.push('/editarAlumno/' + this.dni)
             }
         }
 

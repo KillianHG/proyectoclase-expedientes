@@ -3,7 +3,7 @@
         <v-app id="">
             <v-form>
                 <v-container>
-                    <h1>Intervenciones</h1>
+                    <h1>Intervenciones al Alumno</h1>
                     <v-layout row wrap>
                         <v-flex xs12 sm12 md12>
                             <v-flex xs3 sm3 md3>
@@ -91,6 +91,10 @@
                                     :disabled="true"
                             ></v-textarea>
                         </v-flex>
+                        <v-flex xs12 sm6 md5>
+                            <v-btn large color="primary"
+                                   @click="editar">Editar Intervencion</v-btn>
+                        </v-flex>
                     </v-layout>
 
                 </v-container>
@@ -114,6 +118,12 @@
             axios.get(constantes.path + 'intervencion/' + this.id)
                 .then(response => this.items = response.data)
         },
+        methods:{
+            editar(){
+                this.$router.push('/editarIntervencion/' + this.id)
+            }
+        }
+
     }
 </script>
 

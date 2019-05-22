@@ -78,21 +78,25 @@
     import constantes from '@/const.js';
 
     export default {
-        props: ['id'],
+        props: ['id_demanda'],
         data() {
             return {
+
                 items: null
             }
         },
         mounted() {
-            axios.get(constantes.path + 'demanda/' + this.id)
+            axios.get(constantes.path + 'demanda/' + this.id_demanda)
                 .then(response => this.items = response.data)
+        },
+        created() {
+            this.id = this.$route.query.id
         },
         methods: {
 
             savedata(){
-                axios.put(constantes.path + 'demanda/' + this.item[0].id,this.items).then(
-                    alert("los datos de la demanda "+ this.items[0].id+ " se ha editado")
+                axios.put(constantes.path + 'demanda/' + this.id,this.items).then(
+                    alert("los datos de la demanda "+ this.id+ " se ha editado")
 
                 )
                 this.$router.push('/demandas')

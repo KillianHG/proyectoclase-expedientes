@@ -108,21 +108,22 @@
     import constantes from '@/const.js';
 
     export default {
-        props: ['id'],
+        props: ['id_intervencion'],
         data() {
             return {
+
                 items: null
             }
         },
         mounted() {
-            axios.get(constantes.path + 'intervencion/' + this.id)
+            axios.get(constantes.path + 'intervencion/' + this.id_intervencion)
                 .then(response => this.items = response.data)
         },
 
         methods:{
 
             savedata(){
-                axios.put(constantes.path + 'intervencion/' + this.item[0].id,this.items).then(
+                axios.put(constantes.path + 'intervencion/' + this.id,this.items).then(
                     alert("la intervencion con el id "+ this.items[0].id + " se ha editado")
 
                 )
