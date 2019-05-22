@@ -1,5 +1,5 @@
 <template>
-    <div id="crearusuario">
+    <div>
         <v-app id="inspire">
             <v-form>
                 <v-container>
@@ -16,63 +16,54 @@
                             <v-text-field
                                     v-model="items[0].nombre"
                                     label="Nombre"
-
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
                                     v-model="items[0].apellidos"
                                     label="Apellido"
-
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
                                     v-model="items[0].fecha_de_nacimiento"
                                     label="Fecha de nacimiento"
-
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
                                     v-model="items[0].ciudad_de_nacimiento"
                                     label="Ciudad de nacimiento"
-
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
                                     v-model="items[0].pais_de_nacimiento"
                                     label="Pais de nacimiento"
-
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
                                     v-model="items[0].direccion_reside"
                                     label="Direccion"
-
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
                                     v-model="items[0].poblacion_reside"
                                     label="Poblacion"
-
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
                                     v-model="items[0].provincia_reside"
                                     label="Provincia"
-
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
                                     v-model="items[0].id_centro"
                                     label="ID Centro"
-
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md5>

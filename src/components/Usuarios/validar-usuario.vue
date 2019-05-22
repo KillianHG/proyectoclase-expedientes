@@ -35,7 +35,7 @@
                             <v-layout>
                                 <v-flex xs12>
                                     <div class="text-xs-center">
-                                    <v-btn large color="primary" @click="getData">Log in</v-btn>
+                                    <v-btn large color="primary" @click="getData" :disabled="loading" :loading="loading">Log in</v-btn>
                                     </div>
                                 </v-flex>
                             </v-layout>
@@ -58,6 +58,7 @@
 
         data(){
             return{
+                show1: false,
                 dni: '',
                 password:'',
                 items:'',

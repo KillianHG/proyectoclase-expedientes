@@ -1,5 +1,5 @@
 <template>
-    <div id="crearusuario">
+    <div>
         <v-app id="inspire">
             <v-form>
                 <v-container>
@@ -102,7 +102,7 @@
         },
         methods: {
             showDemandas(){
-                this.$router.push('/demandas?id=' + this.dni)
+                this.$router.push('/demandas/' + this.dni)
             }
         }
 

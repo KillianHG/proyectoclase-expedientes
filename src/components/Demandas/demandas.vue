@@ -46,16 +46,16 @@
     import constantes from '@/const.js';
 
     export default {
+        props:['dni'],
         data() {
             return {
                 alert: false,
-                id: this.$route.query.id,
                 items: null
             }
         },
         mounted() {
-            if(this.id != null) {
-                axios.get(constantes.path + 'demandas/' + this.id)
+            if(this.dni != null) {
+                axios.get(constantes.path + 'demandas/' + this.dni)
                     .then(response => this.items = response.data)
             } else {
                 axios.get(constantes.path + 'demandas/')

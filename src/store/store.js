@@ -43,12 +43,12 @@ export const store = new Vuex.Store({
         signUserIn ({commit}, payload) {
             commit('setLoading', true)
             commit('clearError')
+            let user = null
             axios.get(constantes.path + 'empleados/' + payload.dni)
                 .then(response => {
                     let items = response.data
-                    if(items[0].password == payload.password){
-                        //alert("bienvenido "+ items[0].nombre)
-                        let user = {
+                    if(items[0].password === payload.password){
+                        user = {
                             dni: items[0].dni,
                             nombre: items[0].nombre,
                             apellidos: items[0].dni,
@@ -69,7 +69,11 @@ export const store = new Vuex.Store({
                         commit('setError', "Contraseña incorrecta")
                     }
 
-                }).catch(commit('setError', "El DNI introducido no existe"))
+                }).catch( function (){
+                    if (user == null) {
+                        commit('setError', "El DNI introducido no existe")
+                    }
+            })
                 .finally(commit('setLoading', false))
         },
         autoSignIn ({commit}, payload) {

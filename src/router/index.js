@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
+import Home from '@/components/home'
 import Alumno from '@/components/Alumnos/alumno'
 import Alumnos from '@/components/Alumnos/alumnos'
 import Demanda from '@/components/Demandas/demanda'
@@ -22,7 +22,7 @@ import Usuarios from '@/components/Usuarios/usuarios'
 import Usuario from '@/components/Usuarios/usuario'
 import OpcionesCrear from '@/components/opciones-crear'
 import OpcionesLista from '@/components/opciones-lista'
-import EditAlumno from'@/components/Alumnos/edit-alumno'
+import EditAlumno from '@/components/Alumnos/edit-alumno'
 import EditCentro from'@/components/Centros/edit-centro'
 import EditDemanda from'@/components/Demandas/edit-demanda'
 import EditIntervencion from'@/components/Intervenciones/edit-intervencion'
@@ -48,12 +48,11 @@ export default new Router({
             }
         },
         {
-            path: '/Home',
-            name: 'Home',
+            path: '/home',
+            name: 'home',
             components:Home,
             beforeEnter: AuthGuard
         },
-
         {
             path: '/alumnos',
             name: 'alumnos',
@@ -80,9 +79,10 @@ export default new Router({
             beforeEnter: AuthGuard
         },
         {
-            path: '/demandas?id=',
+            path: '/demandas/:dni',
             name: 'demandas',
             component: Demandas,
+            props: true,
             beforeEnter: AuthGuard
         },
         {
@@ -122,18 +122,6 @@ export default new Router({
             name: 'nuevo-intervenciones',
             component: NuevoIntervenciones,
             beforeEnter: AuthGuard
-        },
-        {
-            path: '/validarusuario',
-            name: 'validar-usuario',
-            component: ValidarUsuario,
-            beforeEnter: (to, from, next) => {
-                if (store.getters.user) {
-                    next('/opcionLista')
-                } else {
-                    next()
-                }
-            }
         },
         {
             path: '/tutores/nuevo',
@@ -192,7 +180,7 @@ export default new Router({
         },
         {
             path: '/opcionCrea',
-            name: 'opcion crear',
+            name: 'opcion-crear',
             component: OpcionesCrear,
             beforeEnter: AuthGuard
         },
@@ -203,9 +191,10 @@ export default new Router({
             beforeEnter: AuthGuard
         },
         {
-            path:'/editarAlumno',
-            name:'editar-alumno',
-            component: EditAlumno
+            path:'/editarAlumno/:dni',
+            name:'edit-alumno',
+            props: true,
+            component: EditAlumno,
         },
         {
             path:'/editarCentro',

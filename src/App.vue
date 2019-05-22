@@ -19,10 +19,14 @@
                         :key="item.title"
                         router
                         :to="item.link">
-                    <v-list-tile-action>
-                        <v-icon>{{ item.icon }}</v-icon>
-                    </v-list-tile-action>
                     <v-list-tile-content>{{ item.title }}</v-list-tile-content>
+                </v-list-tile>
+                <v-list-tile
+                        v-if="userIsAuthenticated"
+                        @click="onLogout">
+                    <v-list-tile-content>
+                        Logout
+                    </v-list-tile-content>
                 </v-list-tile>
             </v-list>
         </v-navigation-drawer>
@@ -75,21 +79,13 @@
         },
         computed: {
             menuItems() {
-                let menuItems = [
-                    //{icon: '', title: 'Alumnos', link: '/alumnos'},
-                    //{icon: '', title: 'Demandas', link: '/demand  as'},
-                    //{icon: '', title: 'Intervenciones', link: '/intervenciones'},
-                    //{icon: '', title: 'Login', link: '/validarusuario'}
-                ]
-
+                let menuItems = []
                     if(this.userIsAuthenticated){
                         menuItems = [
                             {icon: '', title: 'Crear Nuevo', link: '/opcionCrea'},
                             {icon: '', title: 'Listados', link: '/opcionLista'},
                         ]
                     }
-
-
                 return menuItems
             },
             userIsAuthenticated () {
