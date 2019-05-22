@@ -6,7 +6,7 @@
             <v-layout row wrap>
                 <v-flex xs12 sm6 md3>
                     <v-text-field
-                            v-model="dni"
+                            v-model="data.dni"
                             label="Dni"
                             required
                     ></v-text-field>
@@ -15,41 +15,34 @@
             <v-layout row wrap>
                 <v-flex xs12 sm6 md5>
                     <v-text-field
-                            v-model="nombre"
+                            v-model="data.nombre"
                             label="Nombre"
                             required
                     ></v-text-field>
                 </v-flex>
                 <v-flex xs12 sm6 md5>
                     <v-text-field
-                            v-model="apellidos"
+                            v-model="data.apellidos"
                             label="Apellido"
                             required
                     ></v-text-field>
                 </v-flex>
                 <v-flex xs12 sm6 md5>
                     <v-text-field
-                            v-model="parentesco"
-                            label="Parentesco"
-                            required
-                    ></v-text-field>
-                </v-flex>
-                <v-flex xs12 sm6 md5>
-                    <v-text-field
-                            v-model="nacionalidad"
+                            v-model="data.nacionalidad"
                             label="Nacionalidad"
                     ></v-text-field>
                 </v-flex>
                 <v-flex xs12 sm6 md5>
                     <v-text-field
-                            v-model="telefono_1"
+                            v-model="data.telefono1"
                             label="Telefono"
                             required
                     ></v-text-field>
                 </v-flex>
                 <v-flex xs12 sm6 md5>
                     <v-text-field
-                            v-model="telefono_2"
+                            v-model="data.telefono2"
                             label="Telefono 2(Opcional)"
                     ></v-text-field>
                 </v-flex>
@@ -76,17 +69,16 @@
                     dni: '',
                     nombre: '',
                     apellidos: '',
-                    parentesco: '',
                     nacionalidad: '',
-                    telefono_1: '',
-                    telefono_2: ''
+                    telefono1: '',
+                    telefono2: ''
                 },
-                methods: {
-                    postData() {
-                        axios.post(constantes.path + 'tutores', this.data)
-                            .then(this.$router.push('/tutores'))
-                    }
-                }
+            }
+        },
+        methods: {
+            postData() {
+                axios.post(constantes.path + 'tutores', this.data)
+                    .then(this.$router.push('/tutores'))
             }
         }
     }

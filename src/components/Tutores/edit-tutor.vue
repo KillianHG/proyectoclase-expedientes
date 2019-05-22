@@ -6,7 +6,7 @@
                 <v-layout row wrap>
                     <v-flex xs12 sm6 md3>
                         <v-text-field
-                                v-model="items[0].dni"
+                                v-model="dni"
                                 label="Dni"
                                 :disabled="true"
                         ></v-text-field>
@@ -36,14 +36,14 @@
                     </v-flex>
                     <v-flex xs12 sm6 md5>
                         <v-text-field
-                                v-model="items[0].telefono_1"
+                                v-model="items[0].telefono1"
                                 label="Telefono"
 
                         ></v-text-field>
                     </v-flex>
                     <v-flex xs12 sm6 md5>
                         <v-text-field
-                                v-model="items[0].telefono_2"
+                                v-model="items[0].telefono2"
                                 label="Telefono 2"
                         ></v-text-field>
                     </v-flex>
@@ -62,14 +62,18 @@
     import constantes from '@/const.js';
 
     export default {
+        props: ['dni'],
         data() {
             return {
-                dni: null,
-                items: null
+                items: [{
+                    dni: '',
+                    nombre: '',
+                    apellidos: '',
+                    nacionalidad: '',
+                    telefono1: '',
+                    telefono2: ''
+                }]
             }
-        },
-        created() {
-            this.dni = this.$route.query.id
         },
         mounted() {
             axios.get(constantes.path + 'tutores/' + this.dni)
@@ -82,12 +86,10 @@
             }*/
 
             savedata(){
-                axios.put(constantes.path + 'tutores/' + this.item[0].dni,this.items).then(
+                axios.put(constantes.path + 'tutores/' + this.dni, this.items[0]).then(
                     alert("el tutor con dni"+ this.items[0].dni + " se ha editado")
 
-                )
-                this.$router.push('/alumnos')
-
+                ).finally( this.$router.push('/alumnos'))
             }
         }
 

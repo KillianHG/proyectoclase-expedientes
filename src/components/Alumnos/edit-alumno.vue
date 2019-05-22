@@ -85,7 +85,18 @@
         props: ['dni'],
         data() {
             return {
-                items: null
+                items: [{
+                    dni: '',
+                    nombre: '',
+                    apellidos: '',
+                    fecha_de_nacimiento: '',
+                    ciudad_de_nacimiento: '',
+                    pais_de_nacimiento: '',
+                    direccion_reside: '',
+                    poblacion_reside: '',
+                    provincia_reside: '',
+                    id_centro: ''
+                }]
             }
         },
         mounted() {
@@ -96,7 +107,6 @@
             savedata(){
                 axios.put(constantes.path + 'alumnos/' + this.item[0].dni,this.items).then(
                     alert("el alumno con dni"+ this.items[0].dni + " se ha editado")
-
                 )
                 this.$router.push('/alumnos')
 

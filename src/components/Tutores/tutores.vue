@@ -54,7 +54,7 @@
         },
         methods: {
             loadTutor(id){
-                this.$router.push('/tutor?id=' + id)
+                this.$router.push('/tutor/' + id)
             },
             newTutor(){
                 this.$router.push('/tutores/nuevo')

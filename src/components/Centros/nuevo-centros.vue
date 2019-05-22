@@ -6,7 +6,7 @@
                 <v-layout row wrap>
                     <v-flex xs12 sm5 md5>
                         <v-text-field
-                                v-model="nombre_de_centro"
+                                v-model="data.nombre_de_centro"
                                 label="Nombre Del Centro"
                                 required
                         ></v-text-field>
@@ -14,7 +14,7 @@
 
                 <v-flex xs12 sm6 md5>
                     <v-text-field
-                            v-model="telefono_de_contacto"
+                            v-model="data.telefono_de_contacto"
                             label="Telefono"
                             required
                     ></v-text-field>
@@ -23,28 +23,28 @@
                 <v-layout row wrap>
                     <v-flex xs12 sm6 md5>
                         <v-text-field
-                                v-model="nom_director_centro"
+                                v-model="data.nombre_director_centro"
                                 label="Nombre Director del Centro"
 
                         ></v-text-field>
                     </v-flex>
                     <v-flex xs12 sm6 md5>
                         <v-text-field
-                                v-model="direccion_de_centro"
+                                v-model="data.direccion_de_centro"
                                 label="Direccion del Centro"
                                 required
                         ></v-text-field>
                     </v-flex>
                     <v-flex xs12 sm6 md5>
                         <v-text-field
-                                v-model="poblacion"
+                                v-model="data.poblacion"
                                 label="Poblacion"
                                 required
                         ></v-text-field>
                     </v-flex>
                     <v-flex xs12 sm6 md5>
                         <v-text-field
-                                v-model="provincia"
+                                v-model="data.provincia"
                                 label="Provincia"
                                 required
                         ></v-text-field>
@@ -69,19 +69,19 @@
         data (){
             return {
                 data: {
-                nombre_de_centro: '',
-                nom_director_centro: '',
+                    nombre_de_centro: '',
+                    nombre_director_centro: '',
                     direccion_de_centro: '',
                     poblacion: '',
                     provincia: '',
                     telefono_de_contacto: ''
-                },
-                methods: {
-                    postData() {
-                        axios.post(constantes.path + 'centros', this.data)
-                            .then(this.$router.push('/centros'))
-                    }
                 }
+            }
+        },
+        methods: {
+            postData() {
+                axios.post(constantes.path + 'centros', this.data)
+                    .finally(this.$router.push('/centros'))
             }
         }
     }

@@ -130,9 +130,10 @@ export default new Router({
             beforeEnter: AuthGuard
         },
         {
-            path: '/tutor/',
+            path: '/tutor/:dni',
             name: 'tutor',
             component: Tutor,
+            props: true,
             beforeEnter: AuthGuard
         },
         {
@@ -142,9 +143,10 @@ export default new Router({
             beforeEnter: AuthGuard
         },
         {
-            path: '/centro/',
+            path: '/centro/:id_centro',
             name: 'centro',
             component: Centro,
+            props: true,
             beforeEnter: AuthGuard
         },
         {
@@ -154,7 +156,7 @@ export default new Router({
             beforeEnter: AuthGuard
         },
         {
-            path: '/nuevocentros/',
+            path: '/centros/nuevo',
             name: 'nuevo-centros',
             component: NuevoCentros,
             beforeEnter: AuthGuard
@@ -197,29 +199,34 @@ export default new Router({
             component: EditAlumno,
         },
         {
-            path:'/editarCentro',
-            name:'editar-centro',
+            path:'/editarCentro/:id_centro',
+            name:'edit-centro',
+            props: true,
             component: EditCentro
 
         },
         {
-            path:'/editarDemanda',
-            name:'editar-demanda',
+            path:'/editarDemanda/:id_demanda',
+            name:'edit-demanda',
+            props: true,
             component: EditDemanda
         },
         {
-            path:'/editarIntervencion',
-            name:'editar-intervencion',
+            path:'/editarIntervencion/:id_intervencion',
+            name:'edit-intervencion',
+            props: true,
             component: EditIntervencion
         },
         {
-            path:'/editarTutor',
-            name:'editar-tutor',
+            path:'/editarTutor/:dni',
+            name:'edit-tutor',
+            props: true,
             component: EditTutor
         },
         {
-            path:'/editarUsuario',
-            name:'editar-Usuario',
+            path:'/editarUsuario/:dni',
+            name:'edit-Usuario',
+            props: true,
             component: EditUsuario
         },
 

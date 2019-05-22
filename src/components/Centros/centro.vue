@@ -23,7 +23,7 @@
                     <v-layout row wrap>
                         <v-flex xs12 sm6 md5>
                             <v-text-field
-                                    v-model="items[0].nom_director_centro"
+                                    v-model="items[0].nombre_director_centro"
                                     label="Nombre Director del Centro"
                                     :disabled="true"
                             ></v-text-field>
@@ -61,17 +61,23 @@
     import constantes from '@/const.js';
 
     export default {
+        props: ['id_centro'],
         data() {
             return {
-                id: null,
-                items: null
+                items:[{
+                    id_centro: '',
+                    nombre_de_centro: '',
+                    nombre_director_centro: '',
+                    direccion_de_centro: '',
+                    poblacion: '',
+                    provincia: '',
+                    telefono_de_contacto: ''
+                }]
             }
         },
-        created() {
-            this.id = this.$route.query.id
-        },
         mounted() {
-            axios.get(constantes.path + 'centros/' + this.id)
+            console.log(this.id_centro)
+            axios.get(constantes.path + 'centros/' + this.id_centro)
                 .then(response => this.items = response.data)
         }
 

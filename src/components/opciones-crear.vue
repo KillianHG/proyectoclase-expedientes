@@ -57,7 +57,7 @@
                 this.$router.push('alumnos/nuevo')
             },
             newDemanda(){
-                this.$router.push('/Demandas/nuevo')
+                this.$router.push('/demandas/nuevo')
             },
             newintervenviones(){
                 this.$router.push('/intervenciones/nuevo')
@@ -66,10 +66,10 @@
                 this.$router.push('/usuario/nuevo')
             },
             newTutor(){
-                this.$router.push('/Tutores/nuevo')
+                this.$router.push('/tutores/nuevo')
             },
             newCentro(){
-                this.$router.push('/nuevocentros/')
+                this.$router.push('/centros/nuevo')
             }
 
         }

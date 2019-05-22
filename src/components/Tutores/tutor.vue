@@ -36,14 +36,14 @@
                     </v-flex>
                     <v-flex xs12 sm6 md5>
                         <v-text-field
-                                v-model="items[0].telefono_1"
+                                v-model="items[0].telefono1"
                                 label="Telefono"
                                 :disabled="true"
                         ></v-text-field>
                     </v-flex>
                     <v-flex xs12 sm6 md5>
                         <v-text-field
-                                v-model="items[0].telefono_2"
+                                v-model="items[0].telefono2"
                                 label="Telefono 2"
                                 :disabled="true"
                         ></v-text-field>
@@ -59,14 +59,18 @@
     import constantes from '@/const.js';
 
     export default {
+        props: ['dni'],
         data() {
             return {
-                dni: null,
-                items: null
+                items: [{
+                    dni: '',
+                    nombre: '',
+                    apellidos: '',
+                    nacionalidad: '',
+                    telefono1: '',
+                    telefono2: ''
+                }]
             }
-        },
-        created() {
-            this.dni = this.$route.query.id
         },
         mounted() {
             axios.get(constantes.path + 'tutores/' + this.dni)

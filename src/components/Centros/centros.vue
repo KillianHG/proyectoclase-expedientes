@@ -11,9 +11,9 @@
                         <v-subheader>LISTA DE CENTROS</v-subheader>
                         <v-divider divider></v-divider>
                     </div>
-                    <template v-for="(item, index) in items">
+                    <template v-for="(item, index) in items ">
                         <v-list-tile
-                                :key="item.id_centro"
+                                :key="index"
                                 avatar
                                 ripple
                                 @click="loadCentro(item.id_centro)"
@@ -26,8 +26,6 @@
                             </v-list-tile-action>
                         </v-list-tile>
                         <v-divider
-                                v-if="index + 1 < items.length"
-                                :key="index"
                         ></v-divider>
                     </template>
                 </v-list>
@@ -44,7 +42,6 @@
     export default {
         data () {
             return {
-                selected: [],
                 items: null
             }
         },
@@ -54,10 +51,10 @@
         },
         methods: {
             loadCentro(id){
-                this.$router.push('/centro?id=' + id)
+                this.$router.push('/centro/' + id)
             },
             newCentro(){
-                this.$router.push('/nuevocentros/nuevo')
+                this.$router.push('/centros/nuevo')
             }
         }
     }
