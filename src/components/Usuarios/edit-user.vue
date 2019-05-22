@@ -134,7 +134,7 @@
 
             savedata(){
                 axios.put(constantes.path + 'empleados/' + this.dni,this.items).then(
-                    alert("el usuario con dni"+ this.dni + " se ha editado")
+                    alert("el usuario con dni "+ this.dni + " se ha editado")
 
                 )
                 this.$router.push('/usuarios')

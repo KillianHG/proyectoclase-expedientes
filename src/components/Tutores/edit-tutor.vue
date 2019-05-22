@@ -87,7 +87,7 @@
 
             savedata(){
                 axios.put(constantes.path + 'tutores/' + this.dni, this.items[0]).then(
-                    alert("el tutor con dni"+ this.items[0].dni + " se ha editado")
+                    alert("el tutor con dni "+ this.items[0].dni + " se ha editado")
 
                 ).finally( this.$router.push('/tutores'))
             }
