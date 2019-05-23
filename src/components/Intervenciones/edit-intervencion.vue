@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
     <div id="nuevo-intervenciones">
         <v-app id="">
             <v-form>
@@ -8,35 +8,36 @@
                         <v-flex xs12 sm12 md12>
                             <v-flex xs3 sm3 md3>
                                 <v-text-field
-                                        v-model="items[0].dni"
+                                        v-model="fullItems[0].dni"
                                         label="Dni"
                                         required
-
+                                        :disabled="true"
                                 ></v-text-field>
                             </v-flex>
                         </v-flex>
                         <v-flex xs12 sm6 md6>
                             <v-text-field
-                                    v-model="items[0].nombre"
+                                    v-model="fullItems[0].nombre"
                                     label="Nombre"
                                     required
+                                    :disabled="true"
 
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md6>
                             <v-text-field
-                                    v-model="items[0].apellidos"
+                                    v-model="fullItems[0].apellidos"
                                     label="Apellidos"
                                     required
-
+                                    :disabled="true"
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md6>
                             <v-text-field
-                                    v-model="items[0].id_centro"
+                                    v-model="fullItems[0].id_centro"
                                     label="Centro"
                                     required
-
+                                    :disabled="true"
                             ></v-text-field>
                         </v-flex>
                         <v-flex xs12 sm6 md4>
@@ -73,14 +74,15 @@
                             </v-menu>
                         </v-flex>
                         <v-flex xs12 sm6 md6>
-                            <v-autocomplete
+                            <v-select
                                     ref="Actuacion"
                                     v-model="items[0].actuacion"
+                                    :items="actuaciones"
                                     label="Actuacion"
                                     :placeholder="items[0].actuacion"
                                     required
 
-                            ></v-autocomplete>
+                            ></v-select>
                         </v-flex>
                         <v-flex xs12>
                             <v-textarea
@@ -93,7 +95,8 @@
                         </v-flex>
                         <v-flex xs12 sm6 md5>
                             <v-btn large color="primary"
-                                   @click="savedata">Guardar</v-btn>
+                                   @click="savedata">Guardar
+                            </v-btn>
                         </v-flex>
                     </v-layout>
 
@@ -111,23 +114,54 @@
         props: ['id_intervencion'],
         data() {
             return {
-
-                items: null
+                fullItems: [
+                    {
+                    dni: '',
+                    nombre: '',
+                    apellidos: '',
+                    id_centro: ''
+                    }
+                ],
+                items: [
+                    {
+                        no_registro: '',
+                        ficha_demanda_id_demanda: '',
+                        fecha_intervencion: '',
+                        actuacion: '',
+                        descripcion_de_la_intervencion: ''
+                    }
+                ],
+                actuaciones:[
+                    'Avaluació psicopedagògica',
+                    'Coordinació amb el centre',
+                    'Entrevista família',
+                    'CAD-Comissió social',
+                    'Coordinació Serveis Socials',
+                    'Coordinació CSMIJ',
+                    'Coordinació CDIAP',
+                    'Coordinació CEE',
+                    'Coordinació serveis externs',
+                    'Altres'],
             }
         },
         mounted() {
             axios.get(constantes.path + 'intervencion/' + this.id_intervencion)
-                .then(response => this.items = response.data)
+                .then(response => {
+                    this.fullItems = response.data
+                    this.items[0].no_registro = this.fullItems[0].no_registro
+                    this.items[0].ficha_demanda_id_demanda = this.fullItems[0].ficha_demanda_id_demanda
+                    this.items[0].fecha_intervencion = this.fullItems[0].fecha_intervencion
+                    this.items[0].actuacion = this.fullItems[0].actuacion
+                    this.items[0].descripcion_de_la_intervencion = this.fullItems[0].descripcion_de_la_intervencion
+                })
         },
 
-        methods:{
+        methods: {
 
-            savedata(){
-                axios.put(constantes.path + 'intervencion/' + this.id,this.items).then(
-                    alert("la intervencion con el id "+ this.items[0].id + " se ha editado")
-
-                )
-                this.$router.push('/intervenciones')
+            savedata() {
+                axios.put(constantes.path + 'intervencion/' + this.id_intervencion, this.items[0]).then(
+                    alert("la intervencion con el id " + this.id_intervencion + " se ha editado")
+                ).finally(this.$router.push('/intervenciones'))
 
             }
 
@@ -147,3 +181,4 @@
         padding-top: 10px;
 
     }
+</style>

@@ -87,7 +87,7 @@
         methods: {
 
             editar(){
-                this.$router.push('/editarCentro/' + this.id)
+                this.$router.push('/editarCentro/' + this.id_centro)
             }
         }
 

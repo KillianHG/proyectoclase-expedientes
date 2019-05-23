@@ -120,14 +120,11 @@
     import constantes from '@/const.js';
 
     export default {
+        props: ['dni'],
         data() {
             return {
-                dni: null,
                 items: null
             }
-        },
-        created() {
-            this.dni = this.$route.query.id
         },
         mounted() {
             axios.get(constantes.path + 'empleados/' + this.dni)

@@ -54,19 +54,14 @@
             }
         },
         mounted() {
-            if(this.dni != null) {
-                axios.get(constantes.path + 'demandas/' + this.dni)
-                    .then(response => this.items = response.data)
-            } else {
-                axios.get(constantes.path + 'demandas/')
-                    .then(response => this.items = response.data)
-            }
+            axios.get(constantes.path + 'demandas/')
+                .then(response => this.items = response.data)
 
 
         },
         methods: {
             newDemanda() {
-                this.$router.push('/demandas/nuevo/?id=' + this.id)
+                this.$router.push('/nuevoDemanda')
             },
             loadDemanda(id){
                 if (id != null) {

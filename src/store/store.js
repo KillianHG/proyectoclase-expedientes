@@ -37,8 +37,6 @@ export const store = new Vuex.Store({
             commit('clearError')
             axios.post(constantes.path + 'empleados', payload)
                 .then(commit('setLoading', false))
-                .catch(commit('setError', "El DNI introducido ya existe"))
-                .finally(commit('setLoading', false))
         },
         signUserIn ({commit}, payload) {
             commit('setLoading', true)

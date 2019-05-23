@@ -90,7 +90,7 @@
                             </v-menu>
                         </v-flex>
                         <v-flex xs12 sm6 md6>
-                            <v-autocomplete
+                            <v-select
                                     ref="Actuacion"
                                     v-model="data.actuacion"
                                     :rules="[() => !!data.actuacion || 'Este apartado es requerido']"
@@ -98,7 +98,7 @@
                                     label="Actuacion"
                                     placeholder="Elige Actuacion"
                                     required
-                            ></v-autocomplete>
+                            ></v-select>
                         </v-flex>
                         <v-flex xs12>
                             <v-textarea
@@ -143,7 +143,7 @@
                     'Altres'],
                 alumnos: null,
                 dni: null,
-                id_demanda: this.$route.query.id,
+                id_demanda: '',
                 demandas: [],
                 curso: '',
                 items: [{}],
@@ -163,7 +163,7 @@
             postData() {
                 this.data.ficha_demanda_id_demanda = this.id_demanda
                 axios.post(constantes.path + 'intervenciones', this.data)
-                    .then(this.$router.push('/intervenciones/?id=' +this.id_demanda))
+                    .then(this.$router.push('/intervenciones/?id=' + this.id_demanda))
             },
             querySelections (v) {
                 setTimeout(() => {

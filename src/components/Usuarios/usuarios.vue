@@ -56,10 +56,10 @@
         },
         methods: {
             loadUsuarios(id){
-                this.$router.push('/usuario?id=' + id)
+                this.$router.push('/usuario/' + id)
             },
             newUsuarios(){
-                this.$router.push('usuario/nuevo')
+                this.$router.push('nuevoUsuario')
             }
         }
     }

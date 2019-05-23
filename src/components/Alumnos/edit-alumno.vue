@@ -85,6 +85,19 @@
         props: ['dni'],
         data() {
             return {
+                finalItems: [{
+                    dni: '',
+                    nombre: '',
+                    apellidos: '',
+                    fecha_de_nacimiento: '',
+                    ciudad_de_nacimiento: '',
+                    pais_de_nacimiento: '',
+                    direccion_reside: '',
+                    poblacion_reside: '',
+                    provincia_reside: '',
+                    id_centro: '',
+                    nombre_de_centro: ''
+                }],
                 items: [{
                     dni: '',
                     nombre: '',
@@ -101,14 +114,25 @@
         },
         mounted() {
             axios.get(constantes.path + 'alumnos/' + this.dni)
-                .then(response => this.items = response.data)
+                .then(response => {
+                    this.fullItems = response.data
+                    this.items[0].dni = this.fullItems[0].dni
+                    this.items[0].nombre = this.fullItems[0].nombre
+                    this.items[0].apellidos = this.fullItems[0].apellidos
+                    this.items[0].fecha_de_nacimiento = this.fullItems[0].fecha_de_nacimiento
+                    this.items[0].ciudad_de_nacimiento = this.fullItems[0].ciudad_de_nacimiento
+                    this.items[0].direccion_reside = this.fullItems[0].direccion_reside
+                    this.items[0].poblacion_reside = this.fullItems[0].poblacion_reside
+                    this.items[0].provincia_reside = this.fullItems[0].provincia_reside
+                    this.items[0].id_centro = this.fullItems[0].id_centro
+
+                })
         },
         methods: {
             savedata(){
-                axios.put(constantes.path + 'alumnos/' + this.item[0].dni,this.items).then(
-                    alert("el alumno con dni"+ this.items[0].dni + " se ha editado")
-                )
-                this.$router.push('/alumnos')
+                axios.put(constantes.path + 'alumnos/' + this.items[0].dni ,this.items[0])
+                    .then(alert("el alumno con dni"+ this.items[0].dni + " se ha editado"))
+                    .finally(this.$router.push('/alumnos'))
 
             }
         }

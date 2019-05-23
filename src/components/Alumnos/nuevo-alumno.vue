@@ -97,8 +97,8 @@
                         </v-flex>
                     </v-layout>
                     <v-layout class="featured-inputs" v-for="(tutorDni, index) in tutoresDni" :key="index">
-                        <v-flex xs12 sm1 md1>
-                            <v-autocomplete class="ola"
+                        <v-flex xs12 sm2 md2>
+                            <v-autocomplete class="info-tutor"
                                     v-model="tutoresDni[index]"
                                     :items="tutores"
                                     :search-input.sync="search"
@@ -107,8 +107,8 @@
                                     return-object
                             ></v-autocomplete>
                         </v-flex>
-                        <v-flex xs12 sm1 md1>
-                            <v-autocomplete class="ola"
+                        <v-flex xs12 sm2 md2>
+                            <v-autocomplete class="info-tutor"
                                     v-model="tutoresDni[index]"
                                     :items="tutores"
                                     :search-input.sync="search"
@@ -117,29 +117,29 @@
                                     return-object
                             ></v-autocomplete>
                         </v-flex>
-                        <v-flex xs12 sm1 md1>
-                            <v-text-field class="ola"
+                        <v-flex xs12 sm2 md2>
+                            <v-text-field class="info-tutor"
                                     v-model="tutorDni.apellidos"
                                     label="Apellidos"
                                     disabled
                             ></v-text-field>
                         </v-flex>
-                        <v-flex xs12 sm1 md1>
-                            <v-text-field class="ola"
+                        <v-flex xs12 sm2 md2>
+                            <v-text-field class="info-tutor"
                                     v-model="tutorDni.nacionalidad"
                                     label="Nacionalidad"
                                     disabled
                             ></v-text-field>
                         </v-flex>
-                        <v-flex xs12 sm1 md1>
-                            <v-text-field class="ola"
+                        <v-flex xs12 sm2 md2>
+                            <v-text-field class="info-tutor"
                                     v-model="tutorDni.telefono1"
                                     label="Telefono"
                                     disabled
                             ></v-text-field>
                         </v-flex>
-                        <v-flex xs12 sm1 md1>
-                            <v-text-field class="ola"
+                        <v-flex xs12 sm2 md2>
+                            <v-text-field class="info-tutor"
                                     v-if="tutorDni.telefono2 != ''"
                                     v-model="tutorDni.telefono2"
                                     label="Telefono 2"
@@ -147,8 +147,8 @@
 
                             ></v-text-field>
                         </v-flex>
-                        <v-flex xs12 sm1 md1>
-                            <v-select class="ola"
+                        <v-flex xs12 sm2 md2>
+                            <v-select class="info-tutor"
                                     ref="Actuacion"
                                     v-model="tutorDni.parentesco"
                                     :items="parentesco"
@@ -157,7 +157,7 @@
                                     required
                             ></v-select>
                         </v-flex>
-                        <v-flex xs12 sm1 md1>
+                        <v-flex xs12 sm2 md2>
                             <v-btn v-if="index!=0" flat icon color="red" @click="removeTutor(index)">
                                 <v-icon>clear</v-icon>
                             </v-btn>
@@ -318,7 +318,7 @@
         }
     }
 
-    .ola {
+    .info-tutor {
         width: 150px;
         margin-right: 10px;
     }

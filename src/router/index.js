@@ -89,10 +89,11 @@ export default new Router({
             path: '/demandas/',
             name: 'demandas',
             component: Demandas,
+            props: true,
             beforeEnter: AuthGuard
         },
         {
-            path: '/demandas/nuevo',
+            path: '/nuevoDemanda',
             name: 'nuevo-demandas',
             component: NuevoDemandas,
             beforeEnter: AuthGuard
@@ -162,7 +163,7 @@ export default new Router({
             beforeEnter: AuthGuard
         },
         {
-            path: '/usuario/nuevo',
+            path: '/nuevoUsuario',
             name: 'crear-usuario',
             component: NuevoUsuario,
             beforeEnter: AuthGuard
@@ -174,9 +175,10 @@ export default new Router({
             beforeEnter: AuthGuard
         },
         {
-            path: '/usuario',
+            path: '/usuario/:dni',
             name: 'usuario',
             component: Usuario,
+            props: true,
             beforeEnter: AuthGuard
 
         },

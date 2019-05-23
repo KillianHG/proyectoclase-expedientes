@@ -75,11 +75,13 @@
                                     :disabled="true"
                             ></v-text-field>
                         </v-flex>
-                        <v-flex xs12 sm6 md5>
+                        <v-flex xs12 sm4 md4>
                             <v-btn large color="primary"
                                    @click="showDemandas">Ver demandas</v-btn>
                             <v-btn large color="primary"
                                    @click="editar">Editar Alumno</v-btn>
+                            <v-btn large color="error"
+                                   @click="removeAlumno">Remove Alumno</v-btn>
                         </v-flex>
                     </v-layout>
                 </v-container>
@@ -108,6 +110,19 @@
             },
             editar(){
                     this.$router.push('/editarAlumno/' + this.dni)
+            },
+            removeAlumno() {
+                axios.delete(constantes.path + 'alumnos/' + this.dni, {
+                    dni: this.items[0].dni,
+                    nombre: this.items[0].nombre,
+                    apellidos: this.items[0].apellidos,
+                    fecha_de_nacimiento: this.items[0].fecha_de_nacimiento,
+                    ciudad_de_nacimiento: this.items[0].ciudad_de_nacimiento,
+                    pais_de_nacimiento: this.items[0].pais_de_nacimiento,
+                    direccion_reside: this.items[0].direccion_reside,
+                    provincia_reside: this.items[0].provincia_reside,
+                    id_centro: this.items[0].id_centro,
+                }).then(this.$router.push('/alumnos'))
             }
         }
 

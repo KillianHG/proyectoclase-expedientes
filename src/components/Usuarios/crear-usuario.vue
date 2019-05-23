@@ -164,7 +164,7 @@
         methods: {
             postData() {
                 this.$store.dispatch('signUserUp', this.data)
-                //this.$router.push('/opcionCrea')
+                this.$router.push('/opcionCrea')
             },
             onDismissed() {
                 this.$store.dispatch('clearError')
