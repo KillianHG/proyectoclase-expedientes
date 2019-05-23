@@ -94,6 +94,8 @@
                         <v-flex xs12 sm6 md5>
                             <v-btn large color="primary"
                                    @click="editar">Editar Intervencion</v-btn>
+                            <v-btn large color="error"
+                                   @click="removeIntervencion">Borrar Intervencion</v-btn>
                         </v-flex>
                     </v-layout>
 
@@ -121,6 +123,10 @@
         methods:{
             editar(){
                 this.$router.push('/editarIntervencion/' + this.id)
+            },
+            removeIntervencion() {
+                axios.delete(constantes.path + 'intervenciones/' + this.id)
+                    .finally(this.$router.push('/intervenciones'))
             }
         }
 

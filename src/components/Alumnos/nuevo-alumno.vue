@@ -89,7 +89,7 @@
                         <v-flex xs12 sm6 md5>
                             <v-select
                                     v-model="data.id_centro"
-                                    :items="centros.items"
+                                    :items="centros"
                                     label="Centro"
                                     item-text="nombre_de_centro"
                                     item-value="id_centro"
@@ -152,8 +152,8 @@
                                     ref="Actuacion"
                                     v-model="tutorDni.parentesco"
                                     :items="parentesco"
-                                    label="Actuacion"
-                                    placeholder="Elige Actuacion"
+                                    label="Parentesco"
+                                    placeholder="Elige Parentesco"
                                     required
                             ></v-select>
                         </v-flex>
@@ -191,7 +191,7 @@
         data() {
             return {
                 test: false,
-                centros: null,
+                centros: [{}],
                 tutores: null,
                 tutoresDni: [{
                     dni: '',

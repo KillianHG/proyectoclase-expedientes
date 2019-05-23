@@ -75,6 +75,8 @@
                                     <v-flex xs12 sm6 md5>
                                         <v-btn large color="primary"
                                                @click="editar">Editar Demanda</v-btn>
+                                        <v-btn large color="error"
+                                               @click="removeDemanda">Borrar Demanda</v-btn>
                                     </v-flex>
                                 </td>
                             </tr>
@@ -107,6 +109,10 @@
             },
             editar(){
                 this.$router.push('/editarDemanda/' + this.id)
+            },
+            removeDemanda() {
+                axios.delete(constantes.path + 'demandas/' + this.id)
+                    .finally(this.$router.push('/demandas'))
             }
         }
 

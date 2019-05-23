@@ -106,6 +106,8 @@
                         <v-flex xs12 sm6 md5>
                             <v-btn large color="primary"
                                    @click="editar">Editar Datos</v-btn>
+                            <v-btn large color="error"
+                                   @click="removeUsuario">Borrar Usuario</v-btn>
                         </v-flex>
                     </v-layout>
                 </v-container>
@@ -133,6 +135,9 @@
         methods:{
             editar(){
                 this.$router.push('/editarUsuario/' + this.dni)
+            },
+            removeUsuario() {
+                axios.delete(constantes.path + 'empleados/' + this.dni).then(this.$router.push('/empleados'))
             }
         }
 

@@ -52,6 +52,8 @@
                 <v-flex xs12 sm6 md5>
                     <v-btn large color="primary"
                            @click="editar">Editar Tutor</v-btn>
+                    <v-btn large color="error"
+                           @click="removeTutor">Borrar Tutor</v-btn>
                 </v-flex>
             </v-container>
         </v-form>
@@ -84,6 +86,11 @@
         methods: {
             editar(){
                 this.$router.push('/editarTutor/' + this.dni)
+            },
+            removeTutor() {
+                axios.delete(constantes.path + 'tutores/' + this.dni)
+                    .then(axios.delete(constantes.path + 'tutorhasalumnos/' + this.dni)
+                        .then(this.$router.push('/tutores')))
             }
         }
 

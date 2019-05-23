@@ -51,7 +51,10 @@
                         </v-flex>
                         <v-flex xs12 sm5>
                             <div>
-                                <v-btn large color="primary" @click="editar">Editar Centro</v-btn>
+                                <v-btn large color="primary" @click="editar">Editar Centro
+                                </v-btn>
+                                <v-btn large color="error"
+                                       @click="removeCentro">Borrar Centr</v-btn>
                             </div>
                         </v-flex>
                     </v-layout>
